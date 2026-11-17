@@ -1,0 +1,166 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Dark mode is class-based so the inline theme script in layout.tsx can set it before first paint. */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-atkinson);
+  --font-heading: var(--font-overpass);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Transit-map "line" colours: one per faculty, used for route lines, stops and badges. */
+  --color-line-engineering: var(--line-engineering);
+  --color-line-sciences: var(--line-sciences);
+  --color-line-health: var(--line-health);
+  --color-line-business: var(--line-business);
+  --color-line-arts: var(--line-arts);
+  --color-line-skills: var(--line-skills);
+
+  /* Progress status colours */
+  --color-status-done: var(--status-done);
+  --color-status-progress: var(--status-progress);
+
+  --color-chart-1: var(--line-engineering);
+  --color-chart-2: var(--line-sciences);
+  --color-chart-3: var(--line-health);
+  --color-chart-4: var(--line-business);
+  --color-chart-5: var(--line-arts);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/*
+ * Palette: cool paper, biro-ink navy, pen blue.
+ * Every text/background pair below meets WCAG AA (4.5:1); line colours meet 3:1 for graphics.
+ */
+:root {
+  --radius: 0.625rem;
+
+  --background: #f6f7fa;
+  --foreground: #16213e;
+  --card: #ffffff;
+  --card-foreground: #16213e;
+  --popover: #ffffff;
+  --popover-foreground: #16213e;
+  --primary: #2b45c9;
+  --primary-foreground: #ffffff;
+  --secondary: #e9ecf3;
+  --secondary-foreground: #16213e;
+  --muted: #eceff5;
+  --muted-foreground: #4a5470;
+  --accent: #e3e8fb;
+  --accent-foreground: #1b2c86;
+  --destructive: #c92a2a;
+  --border: #d9dee8;
+  --input: #cdd3df;
+  --ring: #2b45c9;
+
+  --line-engineering: #d9480f;
+  --line-sciences: #2b8a3e;
+  --line-health: #c2255c;
+  --line-business: #a86500;
+  --line-arts: #7048e8;
+  --line-skills: #0b7285;
+
+  --status-done: #2b8a3e;
+  --status-progress: #a86500;
+}
+
+.dark {
+  --background: #0d1424;
+  --foreground: #e4e8f1;
+  --card: #141d31;
+  --card-foreground: #e4e8f1;
+  --popover: #141d31;
+  --popover-foreground: #e4e8f1;
+  --primary: #8ea2ff;
+  --primary-foreground: #0d1424;
+  --secondary: #1d2740;
+  --secondary-foreground: #e4e8f1;
+  --muted: #1a2338;
+  --muted-foreground: #a3adc4;
+  --accent: #22305a;
+  --accent-foreground: #dce3ff;
+  --destructive: #ff6b6b;
+  --border: #26314b;
+  --input: #2e3a57;
+  --ring: #8ea2ff;
+
+  --line-engineering: #ff8a4c;
+  --line-sciences: #51cf66;
+  --line-health: #f06595;
+  --line-business: #fcc419;
+  --line-arts: #9775fa;
+  --line-skills: #3bc9db;
+
+  --status-done: #51cf66;
+  --status-progress: #fcc419;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    line-height: 1.55;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+    text-wrap: balance;
+    line-height: 1.15;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  /* Clearly visible keyboard focus everywhere (WCAG 2.4.7). */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
