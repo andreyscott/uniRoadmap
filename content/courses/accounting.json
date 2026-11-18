@@ -1,0 +1,697 @@
+{
+  "id": "accounting",
+  "name": "Accounting",
+  "faculty": "business",
+  "summary": "Learn to record, report, audit and analyse the money side of organisations, and prepare for professional exams like ICAN, ACCA or CPA.",
+  "overview": "Accounting is the language of business. Accountants record what an organisation earns, owns and owes, turn that into financial statements people can trust, and use the numbers to help managers decide what to do next.\n\nThe degree starts with the principles of double-entry bookkeeping, economics and business maths. It then builds through financial and cost accounting to the core professional subjects: financial reporting under IFRS, auditing, taxation, management accounting and corporate finance. Most programmes include an industrial placement and a final-year research project.\n\nAn accounting degree pairs naturally with a professional qualification (ICAN or ANAN in Nigeria, ACCA or ICAEW in the UK, CPA in the US), and many universities give exemptions from some of those papers.",
+  "durationYears": 4,
+  "durationNotes": "4 years in Nigeria and the US; usually 3 years in England, or 4 with a placement year.",
+  "difficulty": "intermediate",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Economics",
+        "Two of: Financial Accounting, Commerce, Government, Geography, or another subject"
+      ],
+      "notes": "Five credits in not more than two sittings. Check your chosen university's exact subject list."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Mathematics",
+        "Economics",
+        "One other Arts or Social Science subject (e.g. Principles of Accounts, Commerce, Government)"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "No specific subjects usually required",
+        "Mathematics, Economics or Accounting are helpful"
+      ],
+      "notes": "Most universities also ask for a good GCSE pass in Mathematics."
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Algebra",
+        "Statistics (helpful)",
+        "Accounting or Business (helpful, not required)"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Chartered accountant",
+      "description": "Prepares and advises on financial statements, often in a firm, after passing professional exams."
+    },
+    {
+      "title": "Auditor",
+      "description": "Independently checks that an organisation's financial statements are true and fair."
+    },
+    {
+      "title": "Tax consultant",
+      "description": "Helps individuals and companies comply with tax law and plan their tax position."
+    },
+    {
+      "title": "Management accountant or financial analyst",
+      "description": "Works inside a business on budgets, costs, forecasts and investment decisions."
+    },
+    {
+      "title": "Forensic accountant",
+      "description": "Investigates fraud and financial disputes, sometimes as an expert witness."
+    },
+    {
+      "title": "Public sector accountant",
+      "description": "Manages and reports public funds in government ministries, agencies and NGOs."
+    }
+  ],
+  "tags": {
+    "maths": 2,
+    "economics": 3,
+    "analytical": 2,
+    "detail-oriented": 3,
+    "structured": 3,
+    "business-minded": 3,
+    "office": 3,
+    "independent": 1,
+    "teamwork": 1,
+    "communication": 1,
+    "job-security": 3,
+    "high-earning": 2,
+    "entrepreneurship": 1,
+    "global-mobility": 2
+  },
+  "roadmap": {
+    "stages": [
+      {
+        "stage": 1,
+        "title": "Year 1",
+        "summary": "Double-entry bookkeeping, economics and the maths of business."
+      },
+      {
+        "stage": 2,
+        "title": "Year 2",
+        "summary": "Company accounts, costing, business law and accounting systems."
+      },
+      {
+        "stage": 3,
+        "title": "Year 3",
+        "summary": "The core professional subjects (IFRS, audit, tax, management accounting and finance) plus industrial training."
+      },
+      {
+        "stage": 4,
+        "title": "Final year",
+        "summary": "Group accounts, advanced audit, public sector accounting, electives and a research project."
+      }
+    ],
+    "nodes": [
+      {
+        "id": "acc-y1-principles-of-accounting",
+        "title": "Principles of Accounting",
+        "description": "The foundation of everything that follows: the accounting equation, double-entry bookkeeping, books of original entry, the trial balance and simple final accounts.",
+        "keyConcepts": [
+          "The accounting equation",
+          "Double entry",
+          "Journals and ledgers",
+          "Trial balance",
+          "Income statement and balance sheet"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Principles of Accounting, Volume 1: Financial Accounting (OpenStax)",
+            "url": "https://openstax.org/details/books/principles-financial-accounting",
+            "type": "book"
+          },
+          {
+            "title": "AccountingCoach: free explanations and quizzes",
+            "url": "https://www.accountingcoach.com/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y1-economics",
+        "title": "Principles of Economics",
+        "description": "Microeconomics (how households and firms make choices, supply and demand, market structures) and macroeconomics (inflation, unemployment, interest rates and government policy).",
+        "keyConcepts": [
+          "Supply and demand",
+          "Elasticity",
+          "Market structures",
+          "GDP and inflation",
+          "Monetary and fiscal policy"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Principles of Economics 3e (OpenStax)",
+            "url": "https://openstax.org/details/books/principles-economics-3e",
+            "type": "book"
+          },
+          {
+            "title": "Microeconomics (Khan Academy)",
+            "url": "https://www.khanacademy.org/economics-finance-domain/microeconomics",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "acc-y1-business-maths",
+        "title": "Business Mathematics and Statistics",
+        "description": "The quantitative tools accountants use daily: percentages, interest and discounting, basic algebra, and descriptive statistics and probability.",
+        "keyConcepts": [
+          "Simple and compound interest",
+          "Present value",
+          "Linear equations",
+          "Descriptive statistics",
+          "Probability"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Introductory Business Statistics 2e (OpenStax)",
+            "url": "https://openstax.org/details/books/introductory-business-statistics-2e",
+            "type": "book"
+          },
+          {
+            "title": "Interest and debt (Khan Academy)",
+            "url": "https://www.khanacademy.org/economics-finance-domain/core-finance/interest-tutorial",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "acc-y1-intro-business",
+        "title": "Introduction to Business and Management",
+        "description": "How organisations are structured and run: forms of business, management functions, marketing, operations and the business environment.",
+        "keyConcepts": [
+          "Forms of business organisation",
+          "Functions of management",
+          "Marketing basics",
+          "Business environment"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Introduction to Business (OpenStax)",
+            "url": "https://openstax.org/details/books/introduction-business",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "acc-y1-spreadsheets",
+        "title": "Spreadsheets for accountants",
+        "description": "Excel or Google Sheets skills that save hours: formulas, lookups, pivot tables and clean layout. Employers expect them from day one.",
+        "keyConcepts": [
+          "Formulas and references",
+          "XLOOKUP and VLOOKUP",
+          "Pivot tables",
+          "Charts",
+          "Keyboard shortcuts"
+        ],
+        "type": "optional-skill",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Exceljet: Excel formulas and functions",
+            "url": "https://exceljet.net/",
+            "type": "article"
+          },
+          {
+            "title": "Excel foundations (GCFLearnFree)",
+            "url": "https://www.learnfree.org/series/excel-foundations",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "acc-y2-financial-accounting",
+        "title": "Financial Accounting",
+        "description": "Preparing full financial statements for sole traders, partnerships and companies, including adjustments, depreciation, inventory valuation and cash flow statements.",
+        "keyConcepts": [
+          "Accruals and prepayments",
+          "Depreciation",
+          "Inventory valuation",
+          "Partnership accounts",
+          "Company accounts and cash flow statements"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "acc-y1-principles-of-accounting",
+        "resources": [
+          {
+            "title": "Principles of Accounting, Volume 1 (OpenStax)",
+            "url": "https://openstax.org/details/books/principles-financial-accounting",
+            "type": "book"
+          },
+          {
+            "title": "Accounting and financial statements (Khan Academy)",
+            "url": "https://www.khanacademy.org/economics-finance-domain/core-finance/accounting-and-financial-stateme",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "acc-y2-cost-accounting",
+        "title": "Cost Accounting",
+        "description": "Working out what products and services really cost: material, labour and overhead costing, job and process costing, and marginal versus absorption costing.",
+        "keyConcepts": [
+          "Cost classification",
+          "Overhead absorption",
+          "Job and process costing",
+          "Marginal vs absorption costing",
+          "Cost-volume-profit analysis"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "acc-y1-principles-of-accounting",
+        "resources": [
+          {
+            "title": "Principles of Accounting, Volume 2: Managerial Accounting (OpenStax)",
+            "url": "https://openstax.org/details/books/principles-managerial-accounting",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "acc-y2-business-law",
+        "title": "Business and Company Law",
+        "description": "The legal rules businesses operate under: contracts, agency, partnership, and company law such as Nigeria's Companies and Allied Matters Act (CAMA) 2020.",
+        "keyConcepts": [
+          "Law of contract",
+          "Agency",
+          "Company formation",
+          "Directors' duties",
+          "Insolvency"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "acc-y1-intro-business",
+        "resources": [
+          {
+            "title": "Business Law I Essentials (OpenStax)",
+            "url": "https://openstax.org/details/books/business-law-i-essentials",
+            "type": "book"
+          },
+          {
+            "title": "Corporate Affairs Commission, Nigeria",
+            "url": "https://www.cac.gov.ng/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y2-accounting-information-systems",
+        "title": "Accounting Information Systems",
+        "description": "How accounting data is captured, processed and controlled in software, from ledgers and ERP systems to internal controls over them.",
+        "keyConcepts": [
+          "Transaction processing",
+          "Accounting software and ERP",
+          "Internal controls",
+          "Data security"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "acc-y1-principles-of-accounting",
+        "resources": [
+          {
+            "title": "Principles of Accounting, Volume 1, chapter 7 (OpenStax)",
+            "url": "https://openstax.org/details/books/principles-financial-accounting",
+            "type": "book"
+          },
+          {
+            "title": "GnuCash: free accounting software to practise on",
+            "url": "https://www.gnucash.org/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "acc-y3-financial-reporting",
+        "title": "Financial Reporting (IFRS)",
+        "description": "Preparing financial statements under International Financial Reporting Standards, which Nigeria, the UK and over 140 other jurisdictions require for listed companies.",
+        "keyConcepts": [
+          "Conceptual Framework",
+          "IAS 16 Property, plant and equipment",
+          "IFRS 15 Revenue",
+          "IFRS 16 Leases",
+          "IAS 37 Provisions"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "acc-y2-financial-accounting",
+        "resources": [
+          {
+            "title": "IFRS Accounting Standards (IFRS Foundation)",
+            "url": "https://www.ifrs.org/issued-standards/list-of-standards/",
+            "type": "article"
+          },
+          {
+            "title": "IAS Plus: standard summaries (Deloitte)",
+            "url": "https://www.iasplus.com/en/standards",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y3-auditing",
+        "title": "Auditing and Assurance",
+        "description": "How auditors gather evidence to give an opinion on financial statements: planning, risk assessment, internal controls, testing and reporting.",
+        "keyConcepts": [
+          "Audit risk",
+          "Materiality",
+          "Internal control evaluation",
+          "Audit evidence and sampling",
+          "Audit reports"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "acc-y2-financial-accounting",
+        "resources": [
+          {
+            "title": "International Standards on Auditing (IAASB)",
+            "url": "https://www.iaasb.org/",
+            "type": "article"
+          },
+          {
+            "title": "ACCA student resources",
+            "url": "https://www.accaglobal.com/gb/en/student.html",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y3-taxation",
+        "title": "Taxation",
+        "description": "How individuals and companies are taxed: personal income tax, company income tax, VAT and capital gains, plus tax administration. Tax law changes often (Nigeria overhauled its tax laws in 2025), so always check the current rules.",
+        "keyConcepts": [
+          "Personal income tax",
+          "Company income tax",
+          "Value added tax",
+          "Capital allowances",
+          "Tax administration and compliance"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "acc-y2-financial-accounting",
+        "resources": [
+          {
+            "title": "Worldwide Tax Summaries: Nigeria (PwC)",
+            "url": "https://taxsummaries.pwc.com/nigeria",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y3-management-accounting",
+        "title": "Management Accounting",
+        "description": "Using accounting information to plan and control a business: budgeting, standard costing and variances, decision-making and performance measurement.",
+        "keyConcepts": [
+          "Budgeting",
+          "Standard costing and variance analysis",
+          "Relevant costing for decisions",
+          "Pricing",
+          "Performance measurement"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "acc-y2-cost-accounting",
+        "resources": [
+          {
+            "title": "Principles of Accounting, Volume 2: Managerial Accounting (OpenStax)",
+            "url": "https://openstax.org/details/books/principles-managerial-accounting",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "acc-y3-corporate-finance",
+        "title": "Corporate Finance",
+        "description": "How companies decide what to invest in and how to pay for it: time value of money, investment appraisal, cost of capital, and working capital management.",
+        "keyConcepts": [
+          "Time value of money",
+          "NPV and IRR",
+          "Cost of capital",
+          "Capital structure",
+          "Working capital management"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "acc-y1-business-maths",
+        "resources": [
+          {
+            "title": "Finance and capital markets (Khan Academy)",
+            "url": "https://www.khanacademy.org/economics-finance-domain/core-finance",
+            "type": "course"
+          },
+          {
+            "title": "Corporate finance lectures and notes (Aswath Damodaran, NYU)",
+            "url": "https://pages.stern.nyu.edu/~adamodar/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "acc-y3-industrial-training",
+        "title": "Industrial training (SIWES or placement)",
+        "description": "Work in an accounting firm, a company's finance team or a public body. In Nigeria this is the SIWES placement; in the UK it's an optional placement year. Audit firms often hire from their interns.",
+        "keyConcepts": [
+          "Finding a placement",
+          "Workplace skills",
+          "Logbook and report",
+          "Graduate job offers"
+        ],
+        "type": "core",
+        "stage": 3,
+        "resources": [
+          {
+            "title": "Industrial Training Fund (SIWES administrator, Nigeria)",
+            "url": "https://itf.gov.ng/",
+            "type": "article"
+          },
+          {
+            "title": "Work experience and internships (Prospects)",
+            "url": "https://www.prospects.ac.uk/jobs-and-work-experience/work-experience-and-internships/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y4-advanced-financial-reporting",
+        "title": "Advanced Financial Reporting",
+        "description": "Reporting for groups of companies and complex transactions: consolidation, associates and joint ventures, financial instruments, and interpreting financial statements.",
+        "keyConcepts": [
+          "Consolidated financial statements (IFRS 10)",
+          "Associates and joint ventures",
+          "Financial instruments (IFRS 9)",
+          "Foreign currency",
+          "Ratio analysis"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "acc-y3-financial-reporting",
+        "resources": [
+          {
+            "title": "IFRS 10 Consolidated Financial Statements summary (IAS Plus)",
+            "url": "https://www.iasplus.com/en/standards/ifrs/ifrs10",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y4-advanced-audit",
+        "title": "Advanced Audit and Assurance",
+        "description": "Audit of groups and complex entities, assurance engagements beyond the financial statements, quality management, and current issues like data analytics in audit.",
+        "keyConcepts": [
+          "Group audits",
+          "Assurance engagements",
+          "Quality management",
+          "Audit data analytics",
+          "Corporate governance"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "acc-y3-auditing",
+        "resources": [
+          {
+            "title": "International Standards on Auditing (IAASB)",
+            "url": "https://www.iaasb.org/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y4-public-sector-accounting",
+        "title": "Public Sector Accounting",
+        "description": "How governments and public bodies budget, account for and report public money, including International Public Sector Accounting Standards (IPSAS).",
+        "keyConcepts": [
+          "Government budgeting",
+          "Fund accounting",
+          "IPSAS",
+          "Public financial management",
+          "Accountability and audit of public funds"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "acc-y2-financial-accounting",
+        "resources": [
+          {
+            "title": "IPSAS Board (IPSASB)",
+            "url": "https://www.ipsasb.org/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y4-professional-ethics",
+        "title": "Professional Ethics and Governance",
+        "description": "The ethical code accountants must follow (integrity, objectivity, competence, confidentiality and professional behaviour) and how corporate governance protects investors.",
+        "keyConcepts": [
+          "Fundamental ethical principles",
+          "Threats and safeguards",
+          "Independence",
+          "Corporate governance codes",
+          "Whistleblowing"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "acc-y3-auditing",
+        "resources": [
+          {
+            "title": "International Code of Ethics for Professional Accountants (IESBA)",
+            "url": "https://www.ethicsboard.org/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y4-research-project",
+        "title": "Research Project",
+        "description": "An independent study of an accounting or finance question, such as the effect of IFRS adoption or tax reform, written up as a dissertation.",
+        "keyConcepts": [
+          "Research question",
+          "Literature review",
+          "Data collection",
+          "Analysis",
+          "Dissertation writing"
+        ],
+        "type": "core",
+        "stage": 4,
+        "resources": [
+          {
+            "title": "Writing a thesis (UNC Writing Center)",
+            "url": "https://writingcenter.unc.edu/tips-and-tools/honors-theses/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y4-forensic-accounting",
+        "title": "Forensic Accounting and Fraud Examination",
+        "description": "How financial fraud is committed, detected and investigated, and how forensic accountants present evidence.",
+        "keyConcepts": [
+          "The fraud triangle",
+          "Fraud schemes",
+          "Red flags",
+          "Investigation techniques",
+          "Expert evidence"
+        ],
+        "type": "elective",
+        "stage": 4,
+        "parent": "acc-y3-auditing",
+        "resources": [
+          {
+            "title": "Fraud resources (Association of Certified Fraud Examiners)",
+            "url": "https://www.acfe.com/fraud-resources",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y4-data-analytics",
+        "title": "Data Analytics for Accountants",
+        "description": "Analyse financial data at scale with Power BI and SQL: cleaning data, building dashboards and spotting anomalies. Increasingly expected in audit and finance roles.",
+        "keyConcepts": [
+          "Data cleaning",
+          "SQL queries",
+          "Dashboards",
+          "Anomaly detection",
+          "Data visualisation"
+        ],
+        "type": "elective",
+        "stage": 4,
+        "parent": "acc-y1-spreadsheets",
+        "resources": [
+          {
+            "title": "Power BI training (Microsoft Learn)",
+            "url": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi",
+            "type": "course"
+          },
+          {
+            "title": "SQLBolt: interactive SQL lessons",
+            "url": "https://sqlbolt.com/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "acc-y4-sustainability-reporting",
+        "title": "Sustainability Reporting",
+        "description": "Reporting on climate and other sustainability risks under the ISSB's IFRS S1 and S2 standards, which more countries (including Nigeria) are adopting.",
+        "keyConcepts": [
+          "IFRS S1 and S2",
+          "Climate-related disclosures",
+          "Greenhouse gas emissions",
+          "Assurance of sustainability information"
+        ],
+        "type": "elective",
+        "stage": 4,
+        "parent": "acc-y3-financial-reporting",
+        "resources": [
+          {
+            "title": "International Sustainability Standards Board (IFRS Foundation)",
+            "url": "https://www.ifrs.org/groups/international-sustainability-standards-board/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "acc-y4-professional-exams",
+        "title": "Professional qualifications",
+        "description": "Plan your route to chartered status: ICAN or ANAN in Nigeria, ACCA or ICAEW internationally, or CPA in the US. Check which papers your degree exempts you from.",
+        "keyConcepts": [
+          "ICAN",
+          "ACCA",
+          "CPA",
+          "Exemptions",
+          "Practical experience requirements"
+        ],
+        "type": "optional-skill",
+        "stage": 4,
+        "parent": "acc-y4-professional-ethics",
+        "resources": [
+          {
+            "title": "Institute of Chartered Accountants of Nigeria (ICAN)",
+            "url": "https://icanig.org/",
+            "type": "article"
+          },
+          {
+            "title": "ACCA",
+            "url": "https://www.accaglobal.com/",
+            "type": "article"
+          }
+        ]
+      }
+    ]
+  }
+}

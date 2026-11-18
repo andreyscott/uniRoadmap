@@ -1,0 +1,198 @@
+{
+  "id": "study-skills",
+  "title": "Study skills",
+  "summary": "Evidence-based ways to learn more in less time: planning, active recall, spaced repetition and better notes.",
+  "description": "Most students were never taught how to study, so they reread notes and highlight textbooks, which feel productive but don't stick. This roadmap walks through the techniques with the strongest research behind them, in the order that makes them easiest to adopt.",
+  "roadmap": {
+    "stages": [
+      {
+        "stage": 1,
+        "title": "Get organised",
+        "summary": "Know what you need to learn and when you'll learn it."
+      },
+      {
+        "stage": 2,
+        "title": "Learn actively",
+        "summary": "Swap passive rereading for techniques that build lasting memory."
+      },
+      {
+        "stage": 3,
+        "title": "Make it sustainable",
+        "summary": "Protect your focus and your health so you can keep going all semester."
+      }
+    ],
+    "nodes": [
+      {
+        "id": "ss-learning-how-to-learn",
+        "title": "How learning works",
+        "description": "A short tour of how memory forms: why focused and diffuse thinking both matter, why cramming fades fast, and why struggling a little while studying is a good sign.",
+        "keyConcepts": [
+          "Focused vs diffuse thinking",
+          "Chunking",
+          "The forgetting curve",
+          "Desirable difficulty"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Learning How to Learn (Coursera, free to audit)",
+            "url": "https://www.coursera.org/learn/learning-how-to-learn",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "ss-time-management",
+        "title": "Semester planning and time management",
+        "description": "Map every deadline and exam for the semester, then plan each week backwards from them so nothing arrives as a surprise.",
+        "keyConcepts": [
+          "Semester calendar",
+          "Weekly review",
+          "Time blocking",
+          "Prioritising by deadline and weight"
+        ],
+        "type": "core",
+        "stage": 1,
+        "parent": "ss-learning-how-to-learn",
+        "resources": [
+          {
+            "title": "Semester action plan (UNC Learning Center)",
+            "url": "https://learningcenter.unc.edu/tips-and-tools/semester-action-plan/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ss-note-taking",
+        "title": "Taking useful notes",
+        "description": "Take notes you can actually study from: capture the structure of a lecture, leave room for questions, and summarise each page in your own words.",
+        "keyConcepts": [
+          "Cornell method",
+          "Summarising in your own words",
+          "Cue questions",
+          "Reviewing within 24 hours"
+        ],
+        "type": "core",
+        "stage": 1,
+        "parent": "ss-learning-how-to-learn",
+        "resources": [
+          {
+            "title": "The Cornell note-taking system (Cornell University)",
+            "url": "https://lsc.cornell.edu/how-to-study/taking-notes/cornell-note-taking-system/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ss-active-recall",
+        "title": "Active recall",
+        "description": "Test yourself instead of rereading. Pulling information out of memory is what strengthens it, and it shows you exactly what you don't know yet.",
+        "keyConcepts": [
+          "Retrieval practice",
+          "Blank-page recall",
+          "Self-quizzing",
+          "Explaining aloud"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "ss-note-taking",
+        "resources": [
+          {
+            "title": "Retrieval practice guides (The Learning Scientists)",
+            "url": "https://www.learningscientists.org/retrieval-practice",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ss-spaced-repetition",
+        "title": "Spaced repetition",
+        "description": "Review material at growing intervals (a day, a few days, a week) instead of all at once. Flashcard apps can schedule the intervals for you.",
+        "keyConcepts": [
+          "Spacing effect",
+          "Review intervals",
+          "Flashcard design",
+          "Anki"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "ss-active-recall",
+        "resources": [
+          {
+            "title": "Spaced practice (The Learning Scientists)",
+            "url": "https://www.learningscientists.org/spaced-practice",
+            "type": "article"
+          },
+          {
+            "title": "Anki: free flashcard app",
+            "url": "https://apps.ankiweb.net/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "ss-reading-academic-texts",
+        "title": "Reading textbooks and papers efficiently",
+        "description": "Preview before you read, read with a question in mind, and stop to recall after each section, so a chapter takes one careful pass instead of three passive ones.",
+        "keyConcepts": [
+          "SQ3R",
+          "Skimming for structure",
+          "Reading with a question",
+          "Summarising sections"
+        ],
+        "type": "elective",
+        "stage": 2,
+        "parent": "ss-active-recall",
+        "resources": [
+          {
+            "title": "Reading textbooks effectively (UNC Learning Center)",
+            "url": "https://learningcenter.unc.edu/tips-and-tools/reading-textbooks-effectively/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ss-focus",
+        "title": "Focus and avoiding procrastination",
+        "description": "Make starting easy: short timed work sessions, phone out of reach, and a clear first step. Procrastination is usually about the task feeling vague, not about laziness.",
+        "keyConcepts": [
+          "Pomodoro technique",
+          "Removing distractions",
+          "Breaking tasks down",
+          "Starting rituals"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "ss-time-management",
+        "resources": [
+          {
+            "title": "How to tame procrastination (UNC Learning Center)",
+            "url": "https://learningcenter.unc.edu/tips-and-tools/how-to-tame-procrastination/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ss-wellbeing",
+        "title": "Sleep, exercise and stress",
+        "description": "Sleep is when memories consolidate, so all-nighters undo your studying. Regular sleep, movement and breaks are part of an effective study plan.",
+        "keyConcepts": [
+          "Sleep and memory",
+          "Breaks",
+          "Exercise",
+          "Asking for help early"
+        ],
+        "type": "optional-skill",
+        "stage": 3,
+        "resources": [
+          {
+            "title": "Student mental health (Mind)",
+            "url": "https://www.mind.org.uk/information-support/tips-for-everyday-living/student-life/",
+            "type": "article"
+          }
+        ]
+      }
+    ]
+  }
+}

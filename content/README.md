@@ -1,20 +1,59 @@
 # Roadmap content
 
-All course and skill content lives here as JSON. Adding a new course means adding a file;
-no code changes needed.
+All course and skill content lives here as JSON. Adding a course means adding a file; no code
+changes needed.
 
 ```
 content/
-├── faculties.json      # faculty ids, names, line colours
-├── quiz.json           # Course Finder questions and tag weights
-├── courses/<slug>.json # one degree roadmap per file
-└── skills/<slug>.json  # non-degree skill roadmaps
+├── faculties.json        # faculties and their line colour
+├── courses/<id>.json     # one degree per file (the filename must match "id")
+└── skills/<id>.json      # non-degree skill roadmaps
 ```
 
-Files are validated against zod schemas in `src/lib/content/` at build time and by
-`npm run db:seed`, so a typo fails loudly instead of shipping a broken page.
+The full schema, with comments, is in [`src/lib/content/schemas.ts`](../src/lib/content/schemas.ts).
 
-Node ids (e.g. `cs-y1-discrete-math`) are permanent: user progress is stored against them.
-Rename a title freely, but never change or reuse an id.
+## Workflow
 
-The schema and the first three courses are added in the "schema + seed" step.
+1. Edit or add a file.
+2. Run `npm run content:check`. It tells you exactly which field is wrong.
+3. Run `npm run db:seed` to copy the changes into the database.
+
+## Courses
+
+| Field               | Notes                                                                        |
+| ------------------- | ---------------------------------------------------------------------------- |
+| `id`                | URL slug, e.g. `computer-science` → `/courses/computer-science`              |
+| `faculty`           | An `id` from `faculties.json`                                                |
+| `summary`           | One sentence (≤200 chars), used on cards and as the meta description         |
+| `overview`          | A few paragraphs separated by blank lines (`\n\n`)                           |
+| `durationYears`     | Typical length; must equal the number of roadmap stages                      |
+| `difficulty`        | `beginner`, `intermediate` or `advanced`                                     |
+| `entryRequirements` | List of `{ exam, subjects, notes? }`; `exam` is `olevel`, `utme`, `alevel` or `us-highschool` |
+| `careers`           | List of `{ title, description }`                                             |
+| `tags`              | Quiz matching weights from 1 to 3, e.g. `{ "maths": 3, "helping-people": 1 }`. Allowed tags are listed in `schemas.ts` |
+| `roadmap`           | Optional. A course without one is still listed and matched by the quiz       |
+
+## Roadmaps
+
+A roadmap has `stages` (numbered 1..n, e.g. one per year) and `nodes`:
+
+| Field         | Notes                                                                           |
+| ------------- | ------------------------------------------------------------------------------- |
+| `id`          | **Permanent and unique across all files.** Convention: `<prefix>-y<year>-<topic>`, e.g. `cs-y1-discrete-math` |
+| `type`        | `core`, `elective` or `optional-skill`                                          |
+| `stage`       | Which stage (year) it belongs to                                                |
+| `parent`      | Optional id of the topic it builds on (same roadmap, same or earlier stage)     |
+| `keyConcepts` | At least two                                                                    |
+| `resources`   | At least one free resource: `{ title, url (https), type }`, where `type` is `video`, `course`, `book`, `article` or `tool` |
+
+Nodes appear in the order they're written within each stage.
+
+**Never rename or reuse a node id.** User progress is stored against it. You can change a
+node's title, description or position freely. If you delete a node, the seed script warns
+instead of deleting it from the database; run `npm run db:seed -- --prune` to remove it
+(this also deletes users' progress on it).
+
+## Checking links
+
+Prefer stable sources (OpenStax, MIT OpenCourseWare, Khan Academy, university pages, official
+standards bodies) and open each link before adding it.

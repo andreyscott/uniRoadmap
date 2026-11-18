@@ -1,0 +1,779 @@
+{
+  "id": "computer-science",
+  "name": "Computer Science",
+  "faculty": "engineering",
+  "summary": "Learn how computers and software work, from programming and algorithms to operating systems, networks and AI.",
+  "overview": "Computer Science is the study of computation: how to describe problems precisely, design efficient solutions, and build reliable software and systems that carry them out. It is more mathematical than many students expect, with discrete maths, logic and algorithms at its core.\n\nThe first two years build foundations in programming, mathematics and data structures. The later years cover how real systems work (operating systems, networks, databases), how to build software in teams, and specialist areas like artificial intelligence and security, ending with an independent final-year project.\n\nGraduates work across almost every industry, and the skills transfer well internationally.",
+  "durationYears": 4,
+  "durationNotes": "4 years in Nigeria and the US; usually 3 years in England (4 in Scotland), or 4 with a placement year.",
+  "difficulty": "advanced",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Physics",
+        "Two of: Chemistry, Biology, Further Mathematics, Economics, Agricultural Science"
+      ],
+      "notes": "Five credits in not more than two sittings. Exact subject combinations vary by university, so check your chosen school's brochure."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Mathematics",
+        "Physics",
+        "One of: Chemistry, Biology, Economics, Agricultural Science"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "Mathematics (usually required)",
+        "Further Mathematics, Computer Science or Physics (often preferred)"
+      ]
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Precalculus or Calculus",
+        "Computer Science (helpful, not required)",
+        "Physics (recommended)"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Software engineer",
+      "description": "Designs, builds and maintains applications and services, usually as part of a product team."
+    },
+    {
+      "title": "Data scientist or ML engineer",
+      "description": "Builds models that find patterns in data and puts them into production."
+    },
+    {
+      "title": "Cybersecurity analyst",
+      "description": "Protects systems and networks, investigates incidents and tests defences."
+    },
+    {
+      "title": "Systems or cloud engineer",
+      "description": "Runs the infrastructure that software depends on: servers, networks and cloud platforms."
+    },
+    {
+      "title": "Product manager",
+      "description": "Decides what a software team should build next, working between users, engineers and the business."
+    },
+    {
+      "title": "Researcher or lecturer",
+      "description": "Advances the field through postgraduate research in academia or industry labs."
+    }
+  ],
+  "tags": {
+    "maths": 3,
+    "technology": 3,
+    "analytical": 3,
+    "problem-solving": 3,
+    "physics": 1,
+    "creative": 2,
+    "independent": 2,
+    "teamwork": 1,
+    "office": 2,
+    "high-earning": 3,
+    "entrepreneurship": 2,
+    "global-mobility": 3
+  },
+  "roadmap": {
+    "stages": [
+      {
+        "stage": 1,
+        "title": "Year 1",
+        "summary": "Programming foundations and the maths that computer science is built on."
+      },
+      {
+        "stage": 2,
+        "title": "Year 2",
+        "summary": "Core data structures, object-oriented design and how computers work underneath."
+      },
+      {
+        "stage": 3,
+        "title": "Year 3",
+        "summary": "Algorithms, operating systems, networks and building software in teams, plus industrial training."
+      },
+      {
+        "stage": 4,
+        "title": "Final year",
+        "summary": "Specialise in AI, security or systems, and deliver an independent project."
+      }
+    ],
+    "nodes": [
+      {
+        "id": "cs-y1-intro-computing",
+        "title": "Introduction to Computing",
+        "description": "A broad first look at what computers are, how they represent information, and the main areas of computer science you'll meet later in the degree.",
+        "keyConcepts": [
+          "Binary and data representation",
+          "Hardware vs software",
+          "Algorithms and problem solving",
+          "History of computing"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "CS50x: Introduction to Computer Science (Harvard)",
+            "url": "https://cs50.harvard.edu/x/",
+            "type": "course"
+          },
+          {
+            "title": "Crash Course Computer Science (YouTube)",
+            "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo",
+            "type": "video"
+          }
+        ]
+      },
+      {
+        "id": "cs-y1-programming-fundamentals",
+        "title": "Programming Fundamentals",
+        "description": "Write your first real programs, usually in Python or C. You'll learn to break problems into steps, use variables, conditions, loops and functions, and debug your own code.",
+        "keyConcepts": [
+          "Variables and types",
+          "Control flow",
+          "Functions",
+          "Recursion",
+          "Debugging"
+        ],
+        "type": "core",
+        "stage": 1,
+        "parent": "cs-y1-intro-computing",
+        "resources": [
+          {
+            "title": "MIT 6.0001: Introduction to Computer Science and Programming in Python",
+            "url": "https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/",
+            "type": "course"
+          },
+          {
+            "title": "Python Programming MOOC (University of Helsinki)",
+            "url": "https://programming-25.mooc.fi/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y1-calculus",
+        "title": "Calculus",
+        "description": "Limits, derivatives and integrals. Calculus underpins machine learning, graphics, simulation and the analysis of how algorithms grow.",
+        "keyConcepts": [
+          "Limits",
+          "Differentiation",
+          "Integration",
+          "Series"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Essence of Calculus (3Blue1Brown)",
+            "url": "https://www.3blue1brown.com/topics/calculus",
+            "type": "video"
+          },
+          {
+            "title": "Calculus 1 (Khan Academy)",
+            "url": "https://www.khanacademy.org/math/calculus-1",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y1-discrete-math",
+        "title": "Discrete Mathematics",
+        "description": "The mathematics of computer science: logic, proofs, sets, counting and graphs. It teaches you to reason precisely about programs and is the foundation for algorithms and theory.",
+        "keyConcepts": [
+          "Propositional logic",
+          "Proof techniques",
+          "Sets and functions",
+          "Combinatorics",
+          "Graph theory"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "MIT 6.042J: Mathematics for Computer Science",
+            "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/",
+            "type": "course"
+          },
+          {
+            "title": "Discrete Mathematics: An Open Introduction (Levin)",
+            "url": "https://discrete.openmathbooks.org/",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "cs-y1-tools",
+        "title": "Command line and Git",
+        "description": "The everyday tools of programmers that courses rarely teach: the terminal, a good editor, and version control with Git and GitHub.",
+        "keyConcepts": [
+          "Shell commands",
+          "Version control",
+          "Branches and merges",
+          "GitHub"
+        ],
+        "type": "optional-skill",
+        "stage": 1,
+        "parent": "cs-y1-programming-fundamentals",
+        "resources": [
+          {
+            "title": "The Missing Semester of Your CS Education (MIT)",
+            "url": "https://missing.csail.mit.edu/",
+            "type": "course"
+          },
+          {
+            "title": "Pro Git (free book)",
+            "url": "https://git-scm.com/book/en/v2",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "cs-y2-oop",
+        "title": "Object-Oriented Programming",
+        "description": "Organise larger programs with classes and objects, usually in Java or C++. Covers encapsulation, inheritance, polymorphism and interfaces.",
+        "keyConcepts": [
+          "Classes and objects",
+          "Encapsulation",
+          "Inheritance",
+          "Polymorphism",
+          "Interfaces"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "cs-y1-programming-fundamentals",
+        "resources": [
+          {
+            "title": "Java Programming MOOC (University of Helsinki)",
+            "url": "https://java-programming.mooc.fi/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y2-data-structures",
+        "title": "Data Structures",
+        "description": "How to store and organise data so programs stay fast: arrays, linked lists, stacks, queues, hash tables, trees, heaps and graphs, and the trade-offs between them.",
+        "keyConcepts": [
+          "Big-O notation",
+          "Lists, stacks and queues",
+          "Hash tables",
+          "Trees and heaps",
+          "Graphs"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "cs-y1-programming-fundamentals",
+        "resources": [
+          {
+            "title": "Open Data Structures (Morin, free book)",
+            "url": "https://opendatastructures.org/",
+            "type": "book"
+          },
+          {
+            "title": "VisuAlgo: data structure visualisations",
+            "url": "https://visualgo.net/en",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "cs-y2-linear-algebra",
+        "title": "Linear Algebra",
+        "description": "Vectors, matrices and linear transformations. Essential for graphics, machine learning, data science and scientific computing.",
+        "keyConcepts": [
+          "Vectors and matrices",
+          "Linear transformations",
+          "Systems of equations",
+          "Eigenvalues and eigenvectors"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "cs-y1-calculus",
+        "resources": [
+          {
+            "title": "Essence of Linear Algebra (3Blue1Brown)",
+            "url": "https://www.3blue1brown.com/topics/linear-algebra",
+            "type": "video"
+          },
+          {
+            "title": "MIT 18.06: Linear Algebra (Gilbert Strang)",
+            "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y2-probability-statistics",
+        "title": "Probability and Statistics",
+        "description": "Reason about uncertainty and data: probability rules, random variables, distributions and statistical inference. Key for AI, networking and randomised algorithms.",
+        "keyConcepts": [
+          "Probability rules",
+          "Random variables",
+          "Common distributions",
+          "Expectation and variance",
+          "Hypothesis testing"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "cs-y1-calculus",
+        "resources": [
+          {
+            "title": "Statistics 110: Probability (Harvard, Joe Blitzstein)",
+            "url": "https://stat110.hsites.harvard.edu/",
+            "type": "course"
+          },
+          {
+            "title": "Statistics and Probability (Khan Academy)",
+            "url": "https://www.khanacademy.org/math/statistics-probability",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y2-computer-architecture",
+        "title": "Digital Logic and Computer Architecture",
+        "description": "How a computer works from logic gates up: circuits, the CPU, memory, instruction sets and assembly language.",
+        "keyConcepts": [
+          "Logic gates and Boolean algebra",
+          "Combinational and sequential circuits",
+          "CPU and instruction sets",
+          "Assembly language",
+          "Memory hierarchy"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "cs-y1-intro-computing",
+        "resources": [
+          {
+            "title": "Nand2Tetris: build a computer from first principles",
+            "url": "https://www.nand2tetris.org/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y2-databases",
+        "title": "Database Systems",
+        "description": "Design and query relational databases: data modelling, SQL, normalisation, indexes and transactions.",
+        "keyConcepts": [
+          "Entity-relationship modelling",
+          "SQL",
+          "Normalisation",
+          "Indexes",
+          "Transactions"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "cs-y2-data-structures",
+        "resources": [
+          {
+            "title": "CMU 15-445: Database Systems",
+            "url": "https://15445.courses.cs.cmu.edu/",
+            "type": "course"
+          },
+          {
+            "title": "SQLBolt: interactive SQL lessons",
+            "url": "https://sqlbolt.com/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "cs-y2-web-development",
+        "title": "Web Development",
+        "description": "Build websites and web apps with HTML, CSS and JavaScript, and learn how browsers talk to servers. A practical way to build a portfolio early.",
+        "keyConcepts": [
+          "HTML and CSS",
+          "JavaScript",
+          "HTTP",
+          "Front end vs back end",
+          "Accessibility"
+        ],
+        "type": "elective",
+        "stage": 2,
+        "parent": "cs-y1-programming-fundamentals",
+        "resources": [
+          {
+            "title": "MDN: Learn web development",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+            "type": "course"
+          },
+          {
+            "title": "The Odin Project",
+            "url": "https://www.theodinproject.com/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y3-algorithms",
+        "title": "Design and Analysis of Algorithms",
+        "description": "Techniques for designing efficient algorithms and proving they are correct and fast: sorting, searching, graph algorithms, divide and conquer, greedy methods and dynamic programming.",
+        "keyConcepts": [
+          "Asymptotic analysis",
+          "Divide and conquer",
+          "Greedy algorithms",
+          "Dynamic programming",
+          "Graph algorithms"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "cs-y2-data-structures",
+        "resources": [
+          {
+            "title": "MIT 6.006: Introduction to Algorithms",
+            "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+            "type": "course"
+          },
+          {
+            "title": "Algorithms (Jeff Erickson, free book)",
+            "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "cs-y3-operating-systems",
+        "title": "Operating Systems",
+        "description": "How an operating system shares one machine between many programs: processes, threads, scheduling, memory management, file systems and concurrency.",
+        "keyConcepts": [
+          "Processes and threads",
+          "CPU scheduling",
+          "Virtual memory",
+          "Concurrency and locks",
+          "File systems"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "cs-y2-computer-architecture",
+        "resources": [
+          {
+            "title": "Operating Systems: Three Easy Pieces (free book)",
+            "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "cs-y3-networks",
+        "title": "Computer Networks",
+        "description": "How data moves across the internet, layer by layer: from physical links and routing to TCP/IP, DNS and HTTP.",
+        "keyConcepts": [
+          "Network layers",
+          "TCP and UDP",
+          "IP addressing and routing",
+          "DNS",
+          "HTTP"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "cs-y3-operating-systems",
+        "resources": [
+          {
+            "title": "Computer Networking video lectures (Kurose and Ross)",
+            "url": "https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm",
+            "type": "video"
+          },
+          {
+            "title": "Beej's Guide to Network Programming",
+            "url": "https://beej.us/guide/bgnet/",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "cs-y3-software-engineering",
+        "title": "Software Engineering",
+        "description": "How professional teams build software that lasts: requirements, design, testing, version control, code review and agile processes.",
+        "keyConcepts": [
+          "Requirements and user stories",
+          "Software design and UML",
+          "Testing",
+          "Agile and Scrum",
+          "Code review"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "cs-y2-oop",
+        "resources": [
+          {
+            "title": "MIT 6.031: Software Construction (readings)",
+            "url": "https://web.mit.edu/6.031/www/sp22/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y3-theory-of-computation",
+        "title": "Theory of Computation",
+        "description": "What can be computed at all, and how efficiently: finite automata, regular languages, context-free grammars, Turing machines and complexity classes like P and NP.",
+        "keyConcepts": [
+          "Finite automata",
+          "Regular expressions",
+          "Context-free grammars",
+          "Turing machines",
+          "P vs NP"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "cs-y1-discrete-math",
+        "resources": [
+          {
+            "title": "MIT 18.404J: Theory of Computation (Michael Sipser)",
+            "url": "https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y3-hci",
+        "title": "Human-Computer Interaction",
+        "description": "Design software people can actually use: user research, prototyping, usability testing and accessible design.",
+        "keyConcepts": [
+          "User research",
+          "Prototyping",
+          "Usability testing",
+          "Accessibility (WCAG)"
+        ],
+        "type": "elective",
+        "stage": 3,
+        "parent": "cs-y2-web-development",
+        "resources": [
+          {
+            "title": "Usability articles (Nielsen Norman Group)",
+            "url": "https://www.nngroup.com/articles/",
+            "type": "article"
+          },
+          {
+            "title": "WCAG overview (W3C)",
+            "url": "https://www.w3.org/WAI/standards-guidelines/wcag/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "cs-y3-industrial-training",
+        "title": "Industrial training (SIWES or placement)",
+        "description": "Work in a real software or IT team. In Nigeria this is the compulsory SIWES placement, usually 6 months; in the UK it's an optional placement year. Keep a logbook: you'll write a report on it.",
+        "keyConcepts": [
+          "Finding a placement",
+          "Professional conduct",
+          "Logbook and report",
+          "Turning it into a job offer"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "cs-y3-software-engineering",
+        "resources": [
+          {
+            "title": "Work experience and internships (Prospects)",
+            "url": "https://www.prospects.ac.uk/jobs-and-work-experience/work-experience-and-internships/",
+            "type": "article"
+          },
+          {
+            "title": "Industrial Training Fund (SIWES administrator, Nigeria)",
+            "url": "https://itf.gov.ng/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "cs-y4-artificial-intelligence",
+        "title": "Artificial Intelligence",
+        "description": "Classic AI techniques for making computers act intelligently: search, constraint satisfaction, logic, planning, probabilistic reasoning and an introduction to learning.",
+        "keyConcepts": [
+          "Search algorithms",
+          "Adversarial search",
+          "Constraint satisfaction",
+          "Bayesian networks",
+          "Reinforcement learning"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "cs-y3-algorithms",
+        "resources": [
+          {
+            "title": "CS50's Introduction to AI with Python (Harvard)",
+            "url": "https://cs50.harvard.edu/ai/",
+            "type": "course"
+          },
+          {
+            "title": "MIT 6.034: Artificial Intelligence",
+            "url": "https://ocw.mit.edu/courses/6-034-artificial-intelligence-fall-2010/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y4-machine-learning",
+        "title": "Machine Learning",
+        "description": "Build systems that learn from data: regression, classification, neural networks, evaluation, and the maths that makes them work.",
+        "keyConcepts": [
+          "Supervised vs unsupervised learning",
+          "Gradient descent",
+          "Overfitting and regularisation",
+          "Neural networks",
+          "Model evaluation"
+        ],
+        "type": "elective",
+        "stage": 4,
+        "parent": "cs-y4-artificial-intelligence",
+        "resources": [
+          {
+            "title": "Machine Learning Crash Course (Google)",
+            "url": "https://developers.google.com/machine-learning/crash-course",
+            "type": "course"
+          },
+          {
+            "title": "Dive into Deep Learning (free book)",
+            "url": "https://d2l.ai/",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "cs-y4-compilers",
+        "title": "Compiler Construction",
+        "description": "How source code becomes a running program: lexing, parsing, semantic analysis, interpretation and code generation.",
+        "keyConcepts": [
+          "Lexical analysis",
+          "Parsing",
+          "Abstract syntax trees",
+          "Semantic analysis",
+          "Code generation"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "cs-y3-theory-of-computation",
+        "resources": [
+          {
+            "title": "Crafting Interpreters (Robert Nystrom, free online)",
+            "url": "https://craftinginterpreters.com/",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "cs-y4-security",
+        "title": "Computer Security",
+        "description": "How systems are attacked and defended: cryptography basics, authentication, web and network security, and secure coding.",
+        "keyConcepts": [
+          "Cryptography basics",
+          "Authentication and access control",
+          "Common web vulnerabilities",
+          "Network security",
+          "Threat modelling"
+        ],
+        "type": "elective",
+        "stage": 4,
+        "parent": "cs-y3-networks",
+        "resources": [
+          {
+            "title": "CS50's Introduction to Cybersecurity (Harvard)",
+            "url": "https://cs50.harvard.edu/cybersecurity/",
+            "type": "course"
+          },
+          {
+            "title": "OWASP Top 10",
+            "url": "https://owasp.org/projects/top-ten",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "cs-y4-distributed-systems",
+        "title": "Distributed and Cloud Computing",
+        "description": "Build systems that run across many machines: replication, consistency, fault tolerance, and how cloud platforms deliver them at scale.",
+        "keyConcepts": [
+          "Replication",
+          "Consistency models",
+          "Fault tolerance",
+          "Consensus",
+          "Cloud services"
+        ],
+        "type": "elective",
+        "stage": 4,
+        "parent": "cs-y3-networks",
+        "resources": [
+          {
+            "title": "MIT 6.824: Distributed Systems",
+            "url": "https://pdos.csail.mit.edu/6.824/",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "cs-y4-professional-ethics",
+        "title": "Professional Practice and Ethics",
+        "description": "The responsibilities that come with building software: privacy, data protection, intellectual property, accessibility and professional codes of conduct.",
+        "keyConcepts": [
+          "Professional codes of ethics",
+          "Data protection law",
+          "Intellectual property",
+          "Social impact of computing"
+        ],
+        "type": "core",
+        "stage": 4,
+        "resources": [
+          {
+            "title": "ACM Code of Ethics and Professional Conduct",
+            "url": "https://www.acm.org/code-of-ethics",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "cs-y4-final-project",
+        "title": "Final Year Project",
+        "description": "Plan, build and write up a substantial piece of independent work under a supervisor, usually a software system or a small research study. It's often the most-discussed item in graduate interviews.",
+        "keyConcepts": [
+          "Choosing a project",
+          "Literature review",
+          "Project planning",
+          "Evaluation",
+          "Report writing and defence"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "cs-y3-software-engineering",
+        "resources": [
+          {
+            "title": "Writing a thesis (UNC Writing Center)",
+            "url": "https://writingcenter.unc.edu/tips-and-tools/honors-theses/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "cs-y4-career-prep",
+        "title": "Portfolio and technical interviews",
+        "description": "Turn your projects into a portfolio, and practise the data-structure and algorithm problems that most software interviews use.",
+        "keyConcepts": [
+          "GitHub portfolio",
+          "Coding interview practice",
+          "System design basics",
+          "Behavioural interviews"
+        ],
+        "type": "optional-skill",
+        "stage": 4,
+        "parent": "cs-y3-algorithms",
+        "resources": [
+          {
+            "title": "Tech Interview Handbook (free)",
+            "url": "https://www.techinterviewhandbook.org/",
+            "type": "article"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "engineering",
+    "name": "Engineering & Computing",
+    "description": "Design, build and program the systems the world runs on, from bridges and power grids to software and AI.",
+    "color": "engineering"
+  },
+  {
+    "id": "sciences",
+    "name": "Natural Sciences",
+    "description": "Study how the natural world works through experiments, data and theory: physics, chemistry, biology and earth sciences.",
+    "color": "sciences"
+  },
+  {
+    "id": "health",
+    "name": "Health Sciences & Medicine",
+    "description": "Prepare to diagnose, treat and care for people: medicine, nursing, pharmacy and allied health professions.",
+    "color": "health"
+  },
+  {
+    "id": "business",
+    "name": "Business & Management",
+    "description": "Learn how organisations make, spend and report money, and how to lead them: accounting, finance, economics and management.",
+    "color": "business"
+  },
+  {
+    "id": "arts",
+    "name": "Arts & Humanities",
+    "description": "Explore language, culture, history and ideas, and learn to argue, write and create with them.",
+    "color": "arts"
+  }
+]

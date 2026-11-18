@@ -1,0 +1,193 @@
+{
+  "id": "exam-prep",
+  "title": "Exam prep",
+  "summary": "A step-by-step plan for the weeks before exams: past questions, revision timetables, practice under exam conditions and exam-day technique.",
+  "description": "Good exam results come from a plan that starts weeks before the exam, not from the night before. This roadmap takes you from working out what will be examined to walking out of the hall, and what to do with your results afterwards.",
+  "roadmap": {
+    "stages": [
+      {
+        "stage": 1,
+        "title": "Six weeks out",
+        "summary": "Find out what's examined and build a realistic plan."
+      },
+      {
+        "stage": 2,
+        "title": "Two to five weeks out",
+        "summary": "Practise retrieving and applying what you know."
+      },
+      {
+        "stage": 3,
+        "title": "Final week and exam day",
+        "summary": "Sharpen technique, rest, and perform."
+      }
+    ],
+    "nodes": [
+      {
+        "id": "ep-know-the-exam",
+        "title": "Know what's being examined",
+        "description": "Collect the course outline, learning outcomes and past questions, then list the topics that come up most and how marks are split between them.",
+        "keyConcepts": [
+          "Course outline",
+          "Learning outcomes",
+          "Topic frequency",
+          "Mark allocation"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Preparing for finals (UNC Learning Center)",
+            "url": "https://learningcenter.unc.edu/tips-and-tools/preparing-for-finals/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ep-revision-timetable",
+        "title": "Build a revision timetable",
+        "description": "Spread topics across the weeks you have left, interleave subjects, and schedule review sessions for topics you've already covered.",
+        "keyConcepts": [
+          "Backwards planning",
+          "Interleaving",
+          "Buffer days",
+          "Weekly targets"
+        ],
+        "type": "core",
+        "stage": 1,
+        "parent": "ep-know-the-exam",
+        "resources": [
+          {
+            "title": "Interleaving (The Learning Scientists)",
+            "url": "https://www.learningscientists.org/interleaving",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ep-past-questions",
+        "title": "Work through past questions",
+        "description": "Past questions show the style, depth and wording examiners use. Attempt them before looking at answers, then mark yourself honestly.",
+        "keyConcepts": [
+          "Question patterns",
+          "Command words",
+          "Marking schemes",
+          "Error log"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "ep-revision-timetable",
+        "resources": [
+          {
+            "title": "Strategic test prep (UNC Learning Center)",
+            "url": "https://learningcenter.unc.edu/tips-and-tools/strategic-test-prep/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ep-practice-testing",
+        "title": "Practice testing and active recall",
+        "description": "Turn each topic into questions and answer them from memory. Keep an error log of what you got wrong and revisit it every few days.",
+        "keyConcepts": [
+          "Retrieval practice",
+          "Flashcards",
+          "Error log",
+          "Explaining to someone else"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "ep-revision-timetable",
+        "resources": [
+          {
+            "title": "Retrieval practice (The Learning Scientists)",
+            "url": "https://www.learningscientists.org/retrieval-practice",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ep-study-groups",
+        "title": "Revising with a study group",
+        "description": "Groups work best when everyone prepares first and the session is spent quizzing each other and explaining tricky ideas, not reading notes together.",
+        "keyConcepts": [
+          "Peer teaching",
+          "Shared question banks",
+          "Keeping groups small",
+          "Agenda for each session"
+        ],
+        "type": "elective",
+        "stage": 2,
+        "parent": "ep-practice-testing",
+        "resources": [
+          {
+            "title": "Study groups (UNC Learning Center)",
+            "url": "https://learningcenter.unc.edu/tips-and-tools/study-partners/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ep-exam-technique",
+        "title": "Exam technique",
+        "description": "Plan your time per question by marks, read every question first, answer what is asked, and show working so you collect method marks even when the final answer is wrong.",
+        "keyConcepts": [
+          "Time per mark",
+          "Reading the paper first",
+          "Answer planning",
+          "Method marks"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "ep-past-questions",
+        "resources": [
+          {
+            "title": "Test day game plan (UNC Learning Center)",
+            "url": "https://learningcenter.unc.edu/tips-and-tools/test-day-game-plan/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ep-managing-anxiety",
+        "title": "Managing exam stress",
+        "description": "Some nerves help performance. Breathing techniques, sleep, and a clear plan for the morning of the exam keep them from tipping into panic.",
+        "keyConcepts": [
+          "Box breathing",
+          "Sleep before exams",
+          "Exam-morning routine",
+          "Getting support"
+        ],
+        "type": "optional-skill",
+        "stage": 3,
+        "resources": [
+          {
+            "title": "Coping with exam stress (NHS)",
+            "url": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ep-review-results",
+        "title": "Review your results",
+        "description": "After results come out, compare your marks with your error log and plan. Note which revision methods worked so next semester's plan starts stronger.",
+        "keyConcepts": [
+          "Script review",
+          "Reflection",
+          "Adjusting your plan",
+          "Resit planning"
+        ],
+        "type": "optional-skill",
+        "stage": 3,
+        "parent": "ep-exam-technique",
+        "resources": [
+          {
+            "title": "Learn from past exams with the test analyzer (UNC Learning Center)",
+            "url": "https://learningcenter.unc.edu/tips-and-tools/test-analyzer/",
+            "type": "article"
+          }
+        ]
+      }
+    ]
+  }
+}

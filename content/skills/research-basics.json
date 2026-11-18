@@ -1,0 +1,214 @@
+{
+  "id": "research-basics",
+  "title": "Research basics",
+  "summary": "Everything for your first research project or final-year thesis: research questions, literature search, referencing, methods and writing.",
+  "description": "Almost every degree ends with a project or dissertation, and most students meet research methods for the first time just before it. This roadmap takes you from a vague topic to a submitted, properly referenced write-up.",
+  "roadmap": {
+    "stages": [
+      {
+        "stage": 1,
+        "title": "Frame the question",
+        "summary": "Pick a topic and turn it into a question you can answer."
+      },
+      {
+        "stage": 2,
+        "title": "Find and read",
+        "summary": "Search the literature, read it critically and keep track of sources."
+      },
+      {
+        "stage": 3,
+        "title": "Do and write",
+        "summary": "Choose methods, collect and analyse data, and write it up."
+      }
+    ],
+    "nodes": [
+      {
+        "id": "rb-research-question",
+        "title": "Choosing a topic and research question",
+        "description": "Narrow an interest into a specific, answerable question that fits your time, skills and data access, and agree it with your supervisor early.",
+        "keyConcepts": [
+          "Narrowing a topic",
+          "Feasibility",
+          "Aims and objectives",
+          "Working with a supervisor"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Writing a strong research question (Scribbr)",
+            "url": "https://www.scribbr.com/research-process/research-questions/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "rb-research-ethics",
+        "title": "Research ethics",
+        "description": "Any project involving people or their data needs informed consent, confidentiality and usually approval from your institution's ethics committee before you start.",
+        "keyConcepts": [
+          "Informed consent",
+          "Anonymity",
+          "Ethics approval",
+          "Plagiarism and integrity"
+        ],
+        "type": "core",
+        "stage": 1,
+        "parent": "rb-research-question",
+        "resources": [
+          {
+            "title": "Ethical considerations in research (Scribbr)",
+            "url": "https://www.scribbr.com/methodology/research-ethics/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "rb-literature-search",
+        "title": "Searching the literature",
+        "description": "Use Google Scholar and your library's databases with well-chosen keywords and filters, and follow the references of the best papers you find.",
+        "keyConcepts": [
+          "Keywords and Boolean search",
+          "Google Scholar",
+          "Library databases",
+          "Citation chaining"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "rb-research-question",
+        "resources": [
+          {
+            "title": "Google Scholar",
+            "url": "https://scholar.google.com/",
+            "type": "tool"
+          },
+          {
+            "title": "Literature reviews (UNC Writing Center)",
+            "url": "https://writingcenter.unc.edu/tips-and-tools/literature-reviews/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "rb-reading-papers",
+        "title": "Reading papers critically",
+        "description": "Read abstract, figures and conclusion first, then decide whether the paper deserves a full read. Judge the methods before trusting the results.",
+        "keyConcepts": [
+          "Three-pass reading",
+          "Evaluating methods",
+          "Sample size and bias",
+          "Synthesising sources"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "rb-literature-search",
+        "resources": [
+          {
+            "title": "How to Read a Paper (S. Keshav, PDF)",
+            "url": "https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "rb-referencing",
+        "title": "Referencing and reference managers",
+        "description": "Use a reference manager from day one so citations and bibliographies are generated for you in your department's style (APA, Harvard, IEEE, Vancouver).",
+        "keyConcepts": [
+          "Citation styles",
+          "In-text citations",
+          "Zotero",
+          "Avoiding plagiarism"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "rb-literature-search",
+        "resources": [
+          {
+            "title": "Zotero: free reference manager",
+            "url": "https://www.zotero.org/",
+            "type": "tool"
+          },
+          {
+            "title": "Citing sources (Purdue OWL)",
+            "url": "https://owl.purdue.edu/owl/research_and_citation/resources.html",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "rb-research-methods",
+        "title": "Research methods",
+        "description": "Choose qualitative, quantitative or mixed methods based on your question, and justify your design, sampling and data collection.",
+        "keyConcepts": [
+          "Qualitative vs quantitative",
+          "Surveys and interviews",
+          "Experimental design",
+          "Sampling"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "rb-reading-papers",
+        "resources": [
+          {
+            "title": "Research Methods: Plan and Evaluate Research Studies (Coursera)",
+            "url": "https://www.coursera.org/learn/research-methods",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "rb-data-analysis",
+        "title": "Analysing your data",
+        "description": "Learn the descriptive and inferential statistics your design needs, or a coding approach for qualitative data, and use free tools to run the analysis.",
+        "keyConcepts": [
+          "Descriptive statistics",
+          "Hypothesis testing",
+          "Thematic analysis",
+          "Free tools (R, JASP)"
+        ],
+        "type": "elective",
+        "stage": 3,
+        "parent": "rb-research-methods",
+        "resources": [
+          {
+            "title": "Statistics and probability (Khan Academy)",
+            "url": "https://www.khanacademy.org/math/statistics-probability",
+            "type": "course"
+          },
+          {
+            "title": "JASP: free statistics software",
+            "url": "https://jasp-stats.org/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "rb-academic-writing",
+        "title": "Writing up your project",
+        "description": "Structure the report (introduction, literature review, methods, results, discussion, conclusion), write in drafts, and leave time for your supervisor's feedback.",
+        "keyConcepts": [
+          "Dissertation structure",
+          "Academic tone",
+          "Drafting and editing",
+          "Abstracts"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "rb-research-methods",
+        "resources": [
+          {
+            "title": "Academic Phrasebank (University of Manchester)",
+            "url": "https://www.phrasebank.manchester.ac.uk/",
+            "type": "tool"
+          },
+          {
+            "title": "Writing a thesis (UNC Writing Center)",
+            "url": "https://writingcenter.unc.edu/tips-and-tools/honors-theses/",
+            "type": "article"
+          }
+        ]
+      }
+    ]
+  }
+}

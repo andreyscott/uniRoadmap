@@ -1,0 +1,198 @@
+// Uniroadmap database schema.
+//
+// Course and roadmap content is authored in /content (JSON) and copied here by
+// `npm run db:seed`, so the content files stay the source of truth. The database exists so
+// user data (progress, saves, quiz results) can reference real rows with foreign keys.
+//
+// Connection URLs live in prisma.config.ts (Prisma 7), not in this file.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum RoadmapKind {
+  DEGREE
+  SKILL
+}
+
+enum NodeType {
+  CORE
+  ELECTIVE
+  OPTIONAL_SKILL
+}
+
+enum ProgressStatus {
+  DONE
+  IN_PROGRESS
+  SKIPPED
+}
+
+enum ResourceType {
+  VIDEO
+  COURSE
+  BOOK
+  ARTICLE
+  TOOL
+}
+
+/// One row per Supabase Auth user. `id` is the auth.users id, so no password data lives here.
+model User {
+  id          String         @id @db.Uuid
+  email       String         @unique
+  name        String?
+  createdAt   DateTime       @default(now())
+  progress    UserProgress[]
+  saved       SavedRoadmap[]
+  quizResults QuizResult[]
+
+  @@map("users")
+}
+
+model Faculty {
+  id          String   @id // slug, e.g. "engineering"
+  name        String
+  description String
+  /// Which transit "line" colour token the UI uses for this faculty.
+  color       String
+  position    Int
+  courses     Course[]
+
+  @@map("faculties")
+}
+
+model Course {
+  id                String     @id // slug, e.g. "computer-science"
+  name              String
+  facultyId         String
+  faculty           Faculty    @relation(fields: [facultyId], references: [id])
+  summary           String
+  overview          String
+  durationYears     Int
+  durationNotes     String?
+  difficulty        Difficulty
+  /// [{ exam: "olevel" | "utme" | "alevel" | "us-highschool", subjects: string[], notes?: string }]
+  entryRequirements Json
+  /// [{ title, description }]
+  careers           Json
+  /// Quiz-matching weights, e.g. { "maths": 3, "helping-people": 1 }
+  tagProfile        Json
+  roadmap           Roadmap?
+  updatedAt         DateTime   @updatedAt
+
+  @@index([facultyId])
+  @@map("courses")
+}
+
+model Roadmap {
+  id          String         @id // same slug as the course, or the skill roadmap slug
+  kind        RoadmapKind
+  title       String
+  description String
+  /// Stage headings in order, e.g. [{ stage: 1, title: "Year 1", summary }]
+  stages      Json
+  courseId    String?        @unique // null for skill roadmaps
+  course      Course?        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  nodes       RoadmapNode[]
+  saves       SavedRoadmap[]
+  updatedAt   DateTime       @updatedAt
+
+  @@index([kind])
+  @@map("roadmaps")
+}
+
+model RoadmapNode {
+  /// Stable, globally unique id (e.g. "cs-y1-discrete-math"). Never rename: progress points here.
+  id          String         @id
+  roadmapId   String
+  roadmap     Roadmap        @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+  /// The topic this one builds on, drawn as a connector in the roadmap view.
+  parentId    String?
+  parent      RoadmapNode?   @relation("NodeTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children    RoadmapNode[]  @relation("NodeTree")
+  title       String
+  description String
+  keyConcepts String[]
+  type        NodeType
+  stage       Int // year number for degrees, step number for skill roadmaps
+  position    Int // order within the stage
+  resources   Resource[]
+  progress    UserProgress[]
+
+  @@index([roadmapId, stage, position])
+  @@index([parentId])
+  @@map("roadmap_nodes")
+}
+
+model Resource {
+  id       String       @id @default(cuid())
+  nodeId   String
+  node     RoadmapNode  @relation(fields: [nodeId], references: [id], onDelete: Cascade)
+  title    String
+  url      String
+  type     ResourceType
+  free     Boolean      @default(true)
+  position Int
+
+  @@index([nodeId])
+  @@map("resources")
+}
+
+model UserProgress {
+  userId    String         @db.Uuid
+  nodeId    String
+  status    ProgressStatus
+  updatedAt DateTime       @updatedAt
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  node      RoadmapNode    @relation(fields: [nodeId], references: [id], onDelete: Cascade)
+
+  @@id([userId, nodeId])
+  @@index([nodeId])
+  @@map("user_progress")
+}
+
+model SavedRoadmap {
+  userId    String   @db.Uuid
+  roadmapId String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  roadmap   Roadmap  @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roadmapId])
+  @@index([roadmapId])
+  @@map("saved_roadmaps")
+}
+
+model QuizQuestion {
+  id       String @id
+  position Int
+  prompt   String
+  /// [{ id, label, weights: { tag: number } }]
+  options  Json
+
+  @@map("quiz_questions")
+}
+
+model QuizResult {
+  id         String   @id @default(cuid())
+  userId     String?  @db.Uuid // null for anonymous results (shareable by link)
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  /// { questionId: optionId }
+  answers    Json
+  /// [{ courseId, score, reasons: string[] }]
+  topCourses Json
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@map("quiz_results")
+}

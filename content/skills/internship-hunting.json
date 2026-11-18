@@ -1,0 +1,204 @@
+{
+  "id": "internship-hunting",
+  "title": "Internship hunting",
+  "summary": "Land an internship, SIWES placement or placement year: CV, LinkedIn, finding roles, applications, interviews and making the most of it.",
+  "description": "Internships are where most students get their first real experience and, often, their first job offer. This roadmap covers the whole process from an empty CV to your last day on placement, including Nigeria's SIWES scheme and UK placement years.",
+  "roadmap": {
+    "stages": [
+      {
+        "stage": 1,
+        "title": "Get ready",
+        "summary": "Build the materials employers will look at."
+      },
+      {
+        "stage": 2,
+        "title": "Find and apply",
+        "summary": "Find the right roles and send strong applications."
+      },
+      {
+        "stage": 3,
+        "title": "Interview and start",
+        "summary": "Win the offer and make the placement count."
+      }
+    ],
+    "nodes": [
+      {
+        "id": "ih-cv",
+        "title": "Write a student CV",
+        "description": "One page that leads with education and relevant projects, uses bullet points that start with action verbs, and shows results with numbers where you can.",
+        "keyConcepts": [
+          "One-page format",
+          "Action verbs",
+          "Quantified achievements",
+          "Tailoring to each role"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "CVs and cover letters (Prospects)",
+            "url": "https://www.prospects.ac.uk/careers-advice/cvs-and-cover-letters",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ih-linkedin",
+        "title": "Set up LinkedIn",
+        "description": "A clear photo, a headline that says what you study and what you're looking for, and your projects and coursework listed so recruiters find you.",
+        "keyConcepts": [
+          "Headline",
+          "About section",
+          "Projects and skills",
+          "Connecting with alumni"
+        ],
+        "type": "core",
+        "stage": 1,
+        "parent": "ih-cv",
+        "resources": [
+          {
+            "title": "How to improve your LinkedIn profile (Prospects)",
+            "url": "https://www.prospects.ac.uk/careers-advice/getting-a-job/how-to-improve-your-linkedin-profile/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ih-portfolio",
+        "title": "Build proof of skills",
+        "description": "A small portfolio of projects, writing or case studies gives you something concrete to talk about when you have little work experience.",
+        "keyConcepts": [
+          "Personal projects",
+          "Volunteering",
+          "Student societies",
+          "Online certificates"
+        ],
+        "type": "elective",
+        "stage": 1,
+        "parent": "ih-cv",
+        "resources": [
+          {
+            "title": "How to get a job with no experience (Prospects)",
+            "url": "https://www.prospects.ac.uk/careers-advice/getting-a-job/get-a-job-with-no-experience/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ih-finding-roles",
+        "title": "Find internships and placements",
+        "description": "Use your faculty's industrial training unit, careers service, company graduate pages and job boards. In Nigeria, SIWES placements are often found through department lists and alumni networks.",
+        "keyConcepts": [
+          "SIWES (Nigeria)",
+          "Placement years (UK)",
+          "Company early-careers pages",
+          "Application deadlines"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "ih-linkedin",
+        "resources": [
+          {
+            "title": "Industrial Training Fund (SIWES administrator, Nigeria)",
+            "url": "https://itf.gov.ng/",
+            "type": "article"
+          },
+          {
+            "title": "Internships and placements (Prospects)",
+            "url": "https://www.prospects.ac.uk/jobs-and-work-experience/work-experience-and-internships/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ih-applications",
+        "title": "Applications and cover letters",
+        "description": "Answer three questions in every cover letter: why this company, why this role, and why you. Keep it under a page and send it early, because many roles close once they fill.",
+        "keyConcepts": [
+          "Researching the company",
+          "Matching the job description",
+          "Cover letter structure",
+          "Tracking applications"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "ih-finding-roles",
+        "resources": [
+          {
+            "title": "How to write a cover letter (Prospects)",
+            "url": "https://www.prospects.ac.uk/careers-advice/cvs-and-cover-letters/cover-letters",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ih-networking",
+        "title": "Networking without the awkwardness",
+        "description": "Short, specific messages to alumni and professionals asking for 15 minutes of advice open more doors than cold applications alone.",
+        "keyConcepts": [
+          "Informational interviews",
+          "Alumni networks",
+          "Career fairs",
+          "Following up"
+        ],
+        "type": "optional-skill",
+        "stage": 2,
+        "parent": "ih-linkedin",
+        "resources": [
+          {
+            "title": "Making the most of careers fairs (Prospects)",
+            "url": "https://www.prospects.ac.uk/careers-advice/getting-a-job/5-ways-to-make-the-most-of-careers-fairs/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ih-interviews",
+        "title": "Interviews",
+        "description": "Prepare five or six stories from your studies and activities, and practise telling them with the STAR method. Prepare questions to ask the interviewer too.",
+        "keyConcepts": [
+          "STAR method",
+          "Competency questions",
+          "Technical or case questions",
+          "Questions to ask"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "ih-applications",
+        "resources": [
+          {
+            "title": "The STAR method (MIT Career Advising)",
+            "url": "https://capd.mit.edu/resources/the-star-method-for-behavioral-interviews/",
+            "type": "article"
+          },
+          {
+            "title": "Interview tips (Prospects)",
+            "url": "https://www.prospects.ac.uk/careers-advice/interview-tips",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "ih-during-internship",
+        "title": "Make the placement count",
+        "description": "Ask for clear goals in week one, keep a log of what you did and learned (you'll need it for SIWES reports and future CVs), and ask for feedback before you leave.",
+        "keyConcepts": [
+          "Setting goals",
+          "Logbook and reports",
+          "Asking for feedback",
+          "Turning it into an offer"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "ih-interviews",
+        "resources": [
+          {
+            "title": "Internships (Prospects)",
+            "url": "https://www.prospects.ac.uk/jobs-and-work-experience/work-experience-and-internships/internships/",
+            "type": "article"
+          }
+        ]
+      }
+    ]
+  }
+}

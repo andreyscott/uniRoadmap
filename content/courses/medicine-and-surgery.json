@@ -1,0 +1,852 @@
+{
+  "id": "medicine-and-surgery",
+  "name": "Medicine and Surgery",
+  "faculty": "health",
+  "summary": "Train to become a doctor: the sciences of the human body, how disease works, and years of supervised clinical practice.",
+  "overview": "Medicine and Surgery (MBBS or MBChB) trains you to diagnose and treat illness. It is long and demanding, with heavy memorisation early on and long clinical hours later, but it leads to one of the most secure and respected professions anywhere.\n\nThe early years cover the basic medical sciences: anatomy, physiology and biochemistry. The middle years cover how disease works and how drugs act (pathology, pharmacology, microbiology, haematology). The final years are spent on clinical rotations in hospitals and communities, learning medicine, surgery, obstetrics and gynaecology, paediatrics, psychiatry and public health on real patients.\n\nAfter graduating you still need supervised practice before full registration: housemanship in Nigeria, the Foundation Programme in the UK, or residency in the US.",
+  "durationYears": 6,
+  "durationNotes": "6 years in Nigeria (MBBS), then a 1-year housemanship. Usually 5 years in the UK (6 with an intercalated degree). In the US, medicine is a 4-year graduate degree (MD) taken after a bachelor's.",
+  "difficulty": "advanced",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology"
+      ],
+      "notes": "Credits in all five. Most universities require them in one sitting, and competition means high UTME and post-UTME scores."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Biology",
+        "Chemistry",
+        "Physics"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "Chemistry",
+        "Biology",
+        "One more academic subject (Maths or Physics are common)"
+      ],
+      "notes": "Usually A*AA to AAA, plus the UCAT admissions test and an interview. Some schools accept Chemistry with one other science."
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Biology",
+        "Chemistry",
+        "Physics",
+        "Calculus or Statistics"
+      ],
+      "notes": "In the US you first complete a bachelor's degree with pre-med courses, then take the MCAT to apply to medical school."
+    }
+  ],
+  "careers": [
+    {
+      "title": "Hospital doctor",
+      "description": "Specialises through residency in areas like internal medicine, surgery, paediatrics or emergency medicine."
+    },
+    {
+      "title": "General practitioner (family doctor)",
+      "description": "Provides first-contact care in the community and manages long-term conditions."
+    },
+    {
+      "title": "Surgeon",
+      "description": "Operates to treat injury and disease after years of specialist surgical training."
+    },
+    {
+      "title": "Public health physician",
+      "description": "Works on disease prevention, outbreaks and health policy for whole populations."
+    },
+    {
+      "title": "Medical researcher",
+      "description": "Runs clinical trials or laboratory research to develop new treatments."
+    },
+    {
+      "title": "Pharmaceutical or health-tech advisor",
+      "description": "Brings clinical expertise to drug development, health insurance or digital health companies."
+    }
+  ],
+  "tags": {
+    "biology": 3,
+    "chemistry": 3,
+    "physics": 1,
+    "helping-people": 3,
+    "clinical": 3,
+    "communication": 2,
+    "detail-oriented": 2,
+    "analytical": 2,
+    "teamwork": 2,
+    "lab": 1,
+    "research": 1,
+    "job-security": 3,
+    "social-impact": 3,
+    "high-earning": 2,
+    "global-mobility": 2
+  },
+  "roadmap": {
+    "stages": [
+      {
+        "stage": 1,
+        "title": "Year 1",
+        "summary": "Pre-medical sciences: the biology, chemistry and physics that medicine builds on."
+      },
+      {
+        "stage": 2,
+        "title": "Year 2",
+        "summary": "Basic medical sciences: the structure and function of the healthy body."
+      },
+      {
+        "stage": 3,
+        "title": "Year 3",
+        "summary": "Finish the pre-clinical sciences and sit Part I MBBS."
+      },
+      {
+        "stage": 4,
+        "title": "Year 4",
+        "summary": "How disease works and how drugs act, plus your first clinical skills. Ends with Part II MBBS."
+      },
+      {
+        "stage": 5,
+        "title": "Year 5",
+        "summary": "Clinical rotations in medicine, surgery, psychiatry and community health."
+      },
+      {
+        "stage": 6,
+        "title": "Final year",
+        "summary": "Obstetrics, paediatrics, an elective posting and Final MBBS."
+      }
+    ],
+    "nodes": [
+      {
+        "id": "med-y1-biology",
+        "title": "General Biology",
+        "description": "Cell biology, genetics, evolution and basic physiology. This is the base for anatomy, physiology and biochemistry next year.",
+        "keyConcepts": [
+          "Cell structure and function",
+          "Genetics and inheritance",
+          "Cell division",
+          "Classification of organisms"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Biology 2e (OpenStax, free textbook)",
+            "url": "https://openstax.org/details/books/biology-2e",
+            "type": "book"
+          },
+          {
+            "title": "Biology (Khan Academy)",
+            "url": "https://www.khanacademy.org/science/biology",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "med-y1-chemistry",
+        "title": "General and Organic Chemistry",
+        "description": "Atomic structure, bonding, acids and bases, reaction rates and organic chemistry. You'll need it for biochemistry and pharmacology.",
+        "keyConcepts": [
+          "Atomic structure and bonding",
+          "Acids, bases and buffers",
+          "Thermodynamics and kinetics",
+          "Organic functional groups",
+          "Reaction mechanisms"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Chemistry 2e (OpenStax, free textbook)",
+            "url": "https://openstax.org/details/books/chemistry-2e",
+            "type": "book"
+          },
+          {
+            "title": "Organic Chemistry (Khan Academy)",
+            "url": "https://www.khanacademy.org/science/organic-chemistry",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "med-y1-physics",
+        "title": "General Physics",
+        "description": "Mechanics, fluids, electricity, optics and radiation. It explains blood flow, nerve signals, how the eye works and how imaging machines see inside the body.",
+        "keyConcepts": [
+          "Mechanics and forces",
+          "Fluids and pressure",
+          "Electricity",
+          "Optics",
+          "Radiation and imaging"
+        ],
+        "type": "core",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "College Physics 2e (OpenStax, free textbook)",
+            "url": "https://openstax.org/details/books/college-physics-2e",
+            "type": "book"
+          },
+          {
+            "title": "Physics (Khan Academy)",
+            "url": "https://www.khanacademy.org/science/physics",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "med-y1-medical-terminology",
+        "title": "Medical terminology",
+        "description": "Learn the Greek and Latin roots, prefixes and suffixes medical words are built from. Lectures in later years get much easier once these are automatic.",
+        "keyConcepts": [
+          "Word roots",
+          "Prefixes and suffixes",
+          "Anatomical position and planes",
+          "Common abbreviations"
+        ],
+        "type": "optional-skill",
+        "stage": 1,
+        "resources": [
+          {
+            "title": "Understanding medical words (MedlinePlus)",
+            "url": "https://medlineplus.gov/medwords/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y2-gross-anatomy",
+        "title": "Gross Anatomy",
+        "description": "The structure of the human body region by region, usually learned through cadaver dissection: upper and lower limbs, thorax, abdomen, pelvis, head and neck.",
+        "keyConcepts": [
+          "Upper and lower limbs",
+          "Thorax",
+          "Abdomen and pelvis",
+          "Head and neck",
+          "Surface and radiological anatomy"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "med-y1-biology",
+        "resources": [
+          {
+            "title": "TeachMeAnatomy",
+            "url": "https://teachmeanatomy.info/",
+            "type": "article"
+          },
+          {
+            "title": "Anatomy and Physiology 2e (OpenStax, free textbook)",
+            "url": "https://openstax.org/details/books/anatomy-and-physiology-2e",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "med-y2-histology-embryology",
+        "title": "Histology and Embryology",
+        "description": "Histology is the microscopic structure of tissues; embryology is how the body develops before birth. Together they explain the normal structure that pathology later compares against.",
+        "keyConcepts": [
+          "Basic tissue types",
+          "Microscopy and staining",
+          "Organ histology",
+          "Germ layers",
+          "Development of organ systems"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "med-y1-biology",
+        "resources": [
+          {
+            "title": "Virtual histology slides (University of Michigan)",
+            "url": "https://histology.medicine.umich.edu/",
+            "type": "tool"
+          },
+          {
+            "title": "UNSW Embryology",
+            "url": "https://embryology.med.unsw.edu.au/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y2-physiology",
+        "title": "Physiology",
+        "description": "How the healthy body works, system by system: cells, nerves and muscle, blood, heart and circulation, lungs, kidneys, gut and hormones.",
+        "keyConcepts": [
+          "Cell and membrane physiology",
+          "Cardiovascular physiology",
+          "Respiratory physiology",
+          "Renal physiology",
+          "Endocrine physiology"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "med-y1-biology",
+        "resources": [
+          {
+            "title": "Health and medicine (Khan Academy)",
+            "url": "https://www.khanacademy.org/science/health-and-medicine",
+            "type": "course"
+          },
+          {
+            "title": "Anatomy and Physiology 2e (OpenStax, free textbook)",
+            "url": "https://openstax.org/details/books/anatomy-and-physiology-2e",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "med-y2-biochemistry",
+        "title": "Medical Biochemistry",
+        "description": "The chemistry of life: proteins and enzymes, how cells make and use energy, metabolism of carbohydrates, fats and amino acids, and molecular biology.",
+        "keyConcepts": [
+          "Proteins and enzymes",
+          "Carbohydrate metabolism",
+          "Lipid metabolism",
+          "Nucleic acids and gene expression",
+          "Vitamins and nutrition"
+        ],
+        "type": "core",
+        "stage": 2,
+        "parent": "med-y1-chemistry",
+        "resources": [
+          {
+            "title": "Biomolecules (Khan Academy MCAT collection)",
+            "url": "https://www.khanacademy.org/test-prep/mcat/biomolecules",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "med-y2-basic-life-support",
+        "title": "First aid and Basic Life Support",
+        "description": "Learn CPR and basic first aid early. It's a skill you can use immediately, and many schools expect it before clinical placements.",
+        "keyConcepts": [
+          "Recognising cardiac arrest",
+          "Chest compressions",
+          "Rescue breaths",
+          "Using an AED",
+          "Recovery position"
+        ],
+        "type": "optional-skill",
+        "stage": 2,
+        "resources": [
+          {
+            "title": "Resuscitation guidelines 2025 (Resuscitation Council UK)",
+            "url": "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y3-neuroanatomy",
+        "title": "Neuroanatomy and Neuroscience",
+        "description": "The brain, spinal cord and nerves: their structure, pathways and how damage in a specific place produces specific symptoms.",
+        "keyConcepts": [
+          "Brain regions",
+          "Spinal cord tracts",
+          "Cranial nerves",
+          "Blood supply of the brain",
+          "Lesion localisation"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "med-y2-gross-anatomy",
+        "resources": [
+          {
+            "title": "Neuroanatomy (TeachMeAnatomy)",
+            "url": "https://teachmeanatomy.info/neuroanatomy/",
+            "type": "article"
+          },
+          {
+            "title": "Neuroscience Online (UTHealth Houston, free textbook)",
+            "url": "https://nba.uth.tmc.edu/neuroscience/",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "med-y3-medical-ethics",
+        "title": "Medical Ethics and Professionalism",
+        "description": "The principles that guide doctors' decisions: consent, confidentiality, capacity, and professional duties set out by regulators like the MDCN and GMC.",
+        "keyConcepts": [
+          "Four principles of medical ethics",
+          "Informed consent",
+          "Confidentiality",
+          "Mental capacity",
+          "Professional codes of conduct"
+        ],
+        "type": "core",
+        "stage": 3,
+        "resources": [
+          {
+            "title": "WMA Declaration of Geneva (World Medical Association)",
+            "url": "https://www.wma.net/policies-post/wma-declaration-of-geneva/",
+            "type": "article"
+          },
+          {
+            "title": "Good medical practice (General Medical Council)",
+            "url": "https://www.gmc-uk.org/professional-standards/the-professional-standards/good-medical-practice",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y3-research-biostatistics",
+        "title": "Research Methods and Biostatistics",
+        "description": "How to read and judge medical research: study designs, bias, basic statistics and evidence-based medicine.",
+        "keyConcepts": [
+          "Study designs",
+          "Bias and confounding",
+          "P-values and confidence intervals",
+          "Sensitivity and specificity",
+          "Evidence-based medicine"
+        ],
+        "type": "core",
+        "stage": 3,
+        "resources": [
+          {
+            "title": "Statistics and Probability (Khan Academy)",
+            "url": "https://www.khanacademy.org/math/statistics-probability",
+            "type": "course"
+          }
+        ]
+      },
+      {
+        "id": "med-y3-part-one-mbbs",
+        "title": "Part I MBBS examination",
+        "description": "The professional exam covering anatomy, physiology and biochemistry. You must pass it to move on to the clinical part of the course, so plan revision months ahead.",
+        "keyConcepts": [
+          "Written papers",
+          "Practical and spotter exams",
+          "Viva voce",
+          "Long-term revision planning"
+        ],
+        "type": "core",
+        "stage": 3,
+        "parent": "med-y2-physiology",
+        "resources": [
+          {
+            "title": "Osmosis medical videos (YouTube)",
+            "url": "https://www.youtube.com/@osmosis",
+            "type": "video"
+          },
+          {
+            "title": "Anki: spaced-repetition flashcards",
+            "url": "https://apps.ankiweb.net/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "med-y4-pathology",
+        "title": "Pathology",
+        "description": "How disease changes cells, tissues and organs: inflammation, repair, tumours and the disease processes of each body system.",
+        "keyConcepts": [
+          "Cell injury and death",
+          "Inflammation and repair",
+          "Neoplasia",
+          "Haemodynamic disorders",
+          "Systemic pathology"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "med-y3-part-one-mbbs",
+        "resources": [
+          {
+            "title": "WebPath: Internet Pathology Laboratory (University of Utah)",
+            "url": "https://webpath.med.utah.edu/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "med-y4-pharmacology",
+        "title": "Pharmacology and Therapeutics",
+        "description": "How drugs work in the body and how the body handles drugs, plus the main drug classes for each system and how to prescribe safely.",
+        "keyConcepts": [
+          "Pharmacokinetics",
+          "Pharmacodynamics",
+          "Autonomic drugs",
+          "Antimicrobials",
+          "Adverse effects and interactions"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "med-y3-part-one-mbbs",
+        "resources": [
+          {
+            "title": "Pharmacology Education Project (British Pharmacological Society)",
+            "url": "https://www.pharmacologyeducation.org/",
+            "type": "article"
+          },
+          {
+            "title": "WHO Model List of Essential Medicines",
+            "url": "https://www.who.int/groups/expert-committee-on-selection-and-use-of-essential-medicines/essential-medicines-lists",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y4-microbiology",
+        "title": "Medical Microbiology and Parasitology",
+        "description": "The bacteria, viruses, fungi and parasites that cause disease, how they're identified in the lab, and how infections are treated and prevented, including malaria and other tropical diseases.",
+        "keyConcepts": [
+          "Bacteriology",
+          "Virology",
+          "Mycology",
+          "Parasitology",
+          "Immunology basics",
+          "Infection control"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "med-y3-part-one-mbbs",
+        "resources": [
+          {
+            "title": "Microbiology (OpenStax, free textbook)",
+            "url": "https://openstax.org/details/books/microbiology",
+            "type": "book"
+          },
+          {
+            "title": "DPDx: parasite identification (CDC)",
+            "url": "https://www.cdc.gov/dpdx/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "med-y4-haematology",
+        "title": "Haematology and Blood Transfusion",
+        "description": "Disorders of blood cells and clotting, such as anaemias (including sickle cell disease), leukaemias and bleeding disorders, plus safe blood transfusion.",
+        "keyConcepts": [
+          "Haematopoiesis",
+          "Anaemias",
+          "Haemoglobinopathies",
+          "Haemostasis and clotting",
+          "Blood groups and transfusion"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "med-y2-physiology",
+        "resources": [
+          {
+            "title": "Hematologic system (Khan Academy)",
+            "url": "https://www.khanacademy.org/science/health-and-medicine/hematologic-system",
+            "type": "course"
+          },
+          {
+            "title": "ASH Image Bank (American Society of Hematology)",
+            "url": "https://imagebank.hematology.org/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "med-y4-chemical-pathology",
+        "title": "Chemical Pathology",
+        "description": "Using blood and urine chemistry to diagnose and monitor disease: electrolytes, kidney and liver function, glucose, lipids and hormones.",
+        "keyConcepts": [
+          "Fluids and electrolytes",
+          "Acid-base balance",
+          "Renal and liver function tests",
+          "Diabetes and glucose",
+          "Endocrine tests"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "med-y2-biochemistry",
+        "resources": [
+          {
+            "title": "Lab tests explained (MedlinePlus)",
+            "url": "https://medlineplus.gov/lab-tests/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y4-clinical-skills",
+        "title": "Introduction to Clinical Medicine",
+        "description": "Your first steps with patients: taking a history, examining each body system, presenting cases and basic procedures.",
+        "keyConcepts": [
+          "History taking",
+          "Systems examination",
+          "Case presentation",
+          "Clinical reasoning",
+          "Basic procedures"
+        ],
+        "type": "core",
+        "stage": 4,
+        "parent": "med-y2-physiology",
+        "resources": [
+          {
+            "title": "OSCE and clinical skills guides (Geeky Medics)",
+            "url": "https://geekymedics.com/category/osce/",
+            "type": "article"
+          },
+          {
+            "title": "Oxford Medical Education",
+            "url": "https://www.oxfordmedicaleducation.com/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y5-internal-medicine",
+        "title": "Internal Medicine",
+        "description": "Diagnosing and managing adult disease across cardiology, respiratory, gastroenterology, nephrology, neurology, endocrinology and infectious disease.",
+        "keyConcepts": [
+          "Clerking patients",
+          "Differential diagnosis",
+          "Investigations",
+          "Management plans",
+          "Ward rounds"
+        ],
+        "type": "core",
+        "stage": 5,
+        "parent": "med-y4-clinical-skills",
+        "resources": [
+          {
+            "title": "MSD Manual Professional Version (free)",
+            "url": "https://www.msdmanuals.com/professional",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "med-y5-surgery",
+        "title": "Surgery",
+        "description": "General surgery and its specialties: the acute abdomen, trauma, perioperative care, wounds, and assisting in theatre.",
+        "keyConcepts": [
+          "Acute abdomen",
+          "Trauma (ATLS principles)",
+          "Pre- and post-operative care",
+          "Wound management",
+          "Surgical specialties"
+        ],
+        "type": "core",
+        "stage": 5,
+        "parent": "med-y4-clinical-skills",
+        "resources": [
+          {
+            "title": "TeachMeSurgery",
+            "url": "https://teachmesurgery.com/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y5-community-medicine",
+        "title": "Community Medicine and Public Health",
+        "description": "Health at the population level: epidemiology, disease prevention, immunisation, nutrition, primary health care and health systems. Usually includes a rural community posting.",
+        "keyConcepts": [
+          "Epidemiology",
+          "Disease surveillance",
+          "Immunisation programmes",
+          "Primary health care",
+          "Health policy"
+        ],
+        "type": "core",
+        "stage": 5,
+        "parent": "med-y3-research-biostatistics",
+        "resources": [
+          {
+            "title": "Epidemiology: The Basic Science of Public Health (Coursera, free to audit)",
+            "url": "https://www.coursera.org/learn/epidemiology",
+            "type": "course"
+          },
+          {
+            "title": "WHO fact sheets",
+            "url": "https://www.who.int/news-room/fact-sheets",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y5-psychiatry",
+        "title": "Psychiatry",
+        "description": "Assessing and treating mental illness: the mental state examination, mood and psychotic disorders, substance use, and risk assessment.",
+        "keyConcepts": [
+          "Mental state examination",
+          "Mood disorders",
+          "Psychotic disorders",
+          "Substance use",
+          "Risk assessment"
+        ],
+        "type": "core",
+        "stage": 5,
+        "parent": "med-y4-clinical-skills",
+        "resources": [
+          {
+            "title": "Psychiatric disorders (MSD Manual Professional)",
+            "url": "https://www.msdmanuals.com/professional/psychiatric-disorders",
+            "type": "book"
+          }
+        ]
+      },
+      {
+        "id": "med-y5-specialty-postings",
+        "title": "Specialty postings",
+        "description": "Shorter rotations in smaller specialties: anaesthesia, radiology, ophthalmology, ENT, dermatology and emergency medicine.",
+        "keyConcepts": [
+          "Anaesthesia",
+          "Radiology",
+          "Ophthalmology",
+          "Ear, nose and throat",
+          "Dermatology"
+        ],
+        "type": "core",
+        "stage": 5,
+        "parent": "med-y4-clinical-skills",
+        "resources": [
+          {
+            "title": "Radiopaedia",
+            "url": "https://radiopaedia.org/",
+            "type": "article"
+          },
+          {
+            "title": "DermNet",
+            "url": "https://dermnetnz.org/",
+            "type": "article"
+          },
+          {
+            "title": "EyeWiki (American Academy of Ophthalmology)",
+            "url": "https://eyewiki.org/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y6-obstetrics-gynaecology",
+        "title": "Obstetrics and Gynaecology",
+        "description": "Pregnancy, childbirth and women's reproductive health: antenatal care, normal and complicated labour, obstetric emergencies and gynaecological conditions.",
+        "keyConcepts": [
+          "Antenatal care",
+          "Labour and delivery",
+          "Obstetric emergencies",
+          "Family planning",
+          "Gynaecological conditions"
+        ],
+        "type": "core",
+        "stage": 6,
+        "parent": "med-y5-surgery",
+        "resources": [
+          {
+            "title": "TeachMeObGyn",
+            "url": "https://teachmeobgyn.com/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y6-paediatrics",
+        "title": "Paediatrics",
+        "description": "Medicine for newborns, children and adolescents: growth and development, neonatal care, childhood infections, malnutrition and immunisation.",
+        "keyConcepts": [
+          "Growth and development",
+          "Neonatology",
+          "Childhood infections",
+          "Nutrition",
+          "Immunisation schedules"
+        ],
+        "type": "core",
+        "stage": 6,
+        "parent": "med-y5-internal-medicine",
+        "resources": [
+          {
+            "title": "TeachMePaediatrics",
+            "url": "https://teachmepaediatrics.com/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y6-elective-posting",
+        "title": "Elective posting",
+        "description": "A few weeks in a specialty or hospital of your choice, sometimes abroad. Use it to explore a career interest or a different health system.",
+        "keyConcepts": [
+          "Choosing a specialty",
+          "Arranging a placement",
+          "Learning objectives",
+          "Elective report"
+        ],
+        "type": "elective",
+        "stage": 6,
+        "resources": [
+          {
+            "title": "Electives directory (TEN Global Health)",
+            "url": "https://www.electives.net/",
+            "type": "tool"
+          }
+        ]
+      },
+      {
+        "id": "med-y6-final-mbbs",
+        "title": "Final MBBS examination",
+        "description": "The final professional exam across medicine, surgery, obstetrics and gynaecology, paediatrics and community medicine, with written papers, long and short cases, OSCEs and vivas.",
+        "keyConcepts": [
+          "Long and short cases",
+          "OSCEs",
+          "Written papers",
+          "Viva voce",
+          "Clinical reasoning under time pressure"
+        ],
+        "type": "core",
+        "stage": 6,
+        "parent": "med-y5-internal-medicine",
+        "resources": [
+          {
+            "title": "Zero to Finals",
+            "url": "https://zerotofinals.com/",
+            "type": "article"
+          },
+          {
+            "title": "OSCE guides (Geeky Medics)",
+            "url": "https://geekymedics.com/category/osce/",
+            "type": "article"
+          }
+        ]
+      },
+      {
+        "id": "med-y6-after-graduation",
+        "title": "After graduation: housemanship and beyond",
+        "description": "What comes next: provisional registration and a 1-year housemanship then NYSC in Nigeria, the Foundation Programme in the UK, or USMLE and residency in the US.",
+        "keyConcepts": [
+          "Housemanship (Nigeria)",
+          "MDCN registration",
+          "UK Foundation Programme",
+          "USMLE and residency",
+          "Choosing a specialty"
+        ],
+        "type": "optional-skill",
+        "stage": 6,
+        "parent": "med-y6-final-mbbs",
+        "resources": [
+          {
+            "title": "Medical and Dental Council of Nigeria",
+            "url": "https://www.mdcn.gov.ng/",
+            "type": "article"
+          },
+          {
+            "title": "UK Foundation Programme",
+            "url": "https://foundationprogramme.nhs.uk/",
+            "type": "article"
+          },
+          {
+            "title": "USMLE",
+            "url": "https://www.usmle.org/",
+            "type": "article"
+          }
+        ]
+      }
+    ]
+  }
+}
