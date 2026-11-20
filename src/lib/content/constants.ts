@@ -94,3 +94,24 @@ export const SUBJECTS = {
 } as const;
 export type SubjectId = keyof typeof SUBJECTS;
 export const SUBJECT_IDS = Object.keys(SUBJECTS) as [SubjectId, ...SubjectId[]];
+
+/** Roadmap node types: core topics are the main line, the others branch off it. */
+export const NODE_TYPES = ["core", "elective", "optional-skill"] as const;
+export type NodeType = (typeof NODE_TYPES)[number];
+
+export const NODE_TYPE_LABELS: Record<NodeType, string> = {
+  core: "Core",
+  elective: "Elective",
+  "optional-skill": "Optional skill",
+};
+
+export const RESOURCE_TYPES = ["video", "course", "book", "article", "tool"] as const;
+export type ResourceType = (typeof RESOURCE_TYPES)[number];
+
+export const RESOURCE_TYPE_LABELS: Record<ResourceType, string> = {
+  video: "Video",
+  course: "Course",
+  book: "Book",
+  article: "Article",
+  tool: "Tool",
+};

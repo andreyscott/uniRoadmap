@@ -3,7 +3,7 @@
  * a file that doesn't match fails `npm test`, `npm run content:check` and the seed.
  */
 import { z } from "zod";
-import { DIFFICULTIES, EXAM_IDS, LINE_COLORS, SUBJECT_IDS, TAGS } from "./constants";
+import { DIFFICULTIES, EXAM_IDS, LINE_COLORS, NODE_TYPES, RESOURCE_TYPES, SUBJECT_IDS, TAGS } from "./constants";
 
 export * from "./constants";
 
@@ -28,7 +28,7 @@ export const facultiesFileSchema = z.array(facultySchema).min(1);
 export const resourceSchema = z.object({
   title: z.string().min(1),
   url: z.url({ protocol: /^https$/ }),
-  type: z.enum(["video", "course", "book", "article", "tool"]),
+  type: z.enum(RESOURCE_TYPES),
   /** Defaults to true. Set false only for paid resources, which should be rare. */
   free: z.boolean().default(true),
 });
@@ -39,7 +39,7 @@ export const nodeSchema = z.object({
   title: z.string().min(1),
   description: z.string().min(20),
   keyConcepts: z.array(z.string().min(1)).min(2),
-  type: z.enum(["core", "elective", "optional-skill"]),
+  type: z.enum(NODE_TYPES),
   /** Year (degree roadmaps) or step (skill roadmaps), starting at 1. */
   stage: z.number().int().min(1),
   /** Id of the topic this one builds on, if any. Must be in the same roadmap. */
@@ -157,4 +157,3 @@ export type Roadmap = z.infer<typeof roadmapSchema>;
 export type EntryRequirement = z.infer<typeof entryRequirementSchema>;
 export type Course = z.infer<typeof courseSchema>;
 export type SkillRoadmap = z.infer<typeof skillRoadmapSchema>;
-export type NodeType = RoadmapNode["type"];

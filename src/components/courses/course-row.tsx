@@ -1,8 +1,8 @@
-import { Fragment, type CSSProperties } from "react";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { DIFFICULTY_LABELS, EXAMS, type ExamId } from "@/lib/content/constants";
 import type { CourseListing } from "@/lib/content/directory";
-import { cn } from "@/lib/utils";
+import { YearStrip } from "@/components/year-strip";
 
 interface CourseRowProps {
   listing: CourseListing;
@@ -75,24 +75,5 @@ export function CourseRow({ listing, exam, career }: CourseRowProps) {
         </p>
       )}
     </li>
-  );
-}
-
-/** A tiny route line with one stop per year, so course lengths compare at a glance. */
-function YearStrip({ years }: { years: number }) {
-  return (
-    <span aria-hidden className="flex items-center">
-      {Array.from({ length: years }, (_, i) => (
-        <Fragment key={i}>
-          {i > 0 && <span className="h-0.5 w-2.5 bg-(--line)" />}
-          <span
-            className={cn(
-              "size-2 rounded-full border-2 border-(--line)",
-              i === years - 1 ? "bg-(--line)" : "bg-background",
-            )}
-          />
-        </Fragment>
-      ))}
-    </span>
   );
 }

@@ -124,6 +124,16 @@
   --status-progress: #fcc419;
 }
 
+/* Roadmap route arcs draw in when a topic is selected (paths use pathLength="1"). */
+@keyframes route-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -155,6 +165,10 @@
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+  /* Stop the page scrolling behind an open modal (e.g. the roadmap topic sheet). */
+  html:has(dialog[open]:modal) {
+    overflow: hidden;
   }
   @media (prefers-reduced-motion: reduce) {
     *,
