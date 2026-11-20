@@ -46,7 +46,9 @@ A roadmap has `stages` (numbered 1..n, e.g. one per year) and `nodes`:
 | `keyConcepts` | At least two                                                                    |
 | `resources`   | At least one free resource: `{ title, url (https), type }`, where `type` is `video`, `course`, `book`, `article` or `tool` |
 
-Nodes appear in the order they're written within each stage.
+Nodes appear in the order they're written within each stage. The first core node of each stage
+is also the stop shown for that year on the home page, so list the topic that best defines the
+year first.
 
 **Never rename or reuse a node id.** User progress is stored against it. You can change a
 node's title, description or position freely. If you delete a node, the seed script warns

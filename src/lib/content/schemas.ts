@@ -59,6 +59,7 @@ export const tagWeightsSchema = z
 
 /** Line colour tokens defined in globals.css (--line-*). */
 export const LINE_COLORS = ["engineering", "sciences", "health", "business", "arts", "skills"] as const;
+export type LineColor = (typeof LINE_COLORS)[number];
 
 export const facultySchema = z.object({
   id: slug,
