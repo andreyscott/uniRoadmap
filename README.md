@@ -16,7 +16,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Then open http://localhost:3000. Pages that only show content don't need a database.
+Then open http://localhost:3000. Pages that only show content don't need a database. In development, edits to `content/` show up when you refresh.
 
 ### Database setup (Supabase)
 

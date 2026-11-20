@@ -10,7 +10,7 @@ content/
 └── skills/<id>.json      # non-degree skill roadmaps
 ```
 
-The full schema, with comments, is in [`src/lib/content/schemas.ts`](../src/lib/content/schemas.ts).
+The full schema, with comments, is in [`src/lib/content/schemas.ts`](../src/lib/content/schemas.ts); allowed tags, exams and subjects are in [`constants.ts`](../src/lib/content/constants.ts).
 
 ## Workflow
 
@@ -28,7 +28,7 @@ The full schema, with comments, is in [`src/lib/content/schemas.ts`](../src/lib/
 | `overview`          | A few paragraphs separated by blank lines (`\n\n`)                           |
 | `durationYears`     | Typical length; must equal the number of roadmap stages                      |
 | `difficulty`        | `beginner`, `intermediate` or `advanced`                                     |
-| `entryRequirements` | List of `{ exam, subjects, notes? }`; `exam` is `olevel`, `utme`, `alevel` or `us-highschool` |
+| `entryRequirements` | List of `{ exam, subjects, required, notes? }`; `exam` is `olevel`, `utme`, `alevel` or `us-highschool`. `subjects` is the wording students see; `required` lists the subjects every applicant must have as ids from `SUBJECTS` in `constants.ts` (leave out "one of" choices). `required` drives the directory's "your subjects" filter |
 | `careers`           | List of `{ title, description }`                                             |
 | `tags`              | Quiz matching weights from 1 to 3, e.g. `{ "maths": 3, "helping-people": 1 }`. Allowed tags are listed in `schemas.ts` |
 | `roadmap`           | Optional. A course without one is still listed and matched by the quiz       |

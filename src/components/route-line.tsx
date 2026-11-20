@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import type { LineColor } from "@/lib/content/schemas";
+import type { LineColor } from "@/lib/content/constants";
 import type { RouteStop } from "@/lib/content/views";
 import { cn } from "@/lib/utils";
 

@@ -17,6 +17,13 @@
         "Chemistry",
         "Biology"
       ],
+      "required": [
+        "english",
+        "maths",
+        "physics",
+        "chemistry",
+        "biology"
+      ],
       "notes": "Credits in all five. Most universities require them in one sitting, and competition means high UTME and post-UTME scores."
     },
     {
@@ -26,6 +33,12 @@
         "Biology",
         "Chemistry",
         "Physics"
+      ],
+      "required": [
+        "english",
+        "biology",
+        "chemistry",
+        "physics"
       ]
     },
     {
@@ -34,6 +47,10 @@
         "Chemistry",
         "Biology",
         "One more academic subject (Maths or Physics are common)"
+      ],
+      "required": [
+        "chemistry",
+        "biology"
       ],
       "notes": "Usually A*AA to AAA, plus the UCAT admissions test and an interview. Some schools accept Chemistry with one other science."
     },
@@ -44,6 +61,12 @@
         "Chemistry",
         "Physics",
         "Calculus or Statistics"
+      ],
+      "required": [
+        "biology",
+        "chemistry",
+        "physics",
+        "maths"
       ],
       "notes": "In the US you first complete a bachelor's degree with pre-med courses, then take the MCAT to apply to medical school."
     }

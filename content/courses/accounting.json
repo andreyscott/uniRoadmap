@@ -16,6 +16,11 @@
         "Economics",
         "Two of: Financial Accounting, Commerce, Government, Geography, or another subject"
       ],
+      "required": [
+        "english",
+        "maths",
+        "economics"
+      ],
       "notes": "Five credits in not more than two sittings. Check your chosen university's exact subject list."
     },
     {
@@ -25,6 +30,11 @@
         "Mathematics",
         "Economics",
         "One other Arts or Social Science subject (e.g. Principles of Accounts, Commerce, Government)"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "economics"
       ]
     },
     {
@@ -33,6 +43,7 @@
         "No specific subjects usually required",
         "Mathematics, Economics or Accounting are helpful"
       ],
+      "required": [],
       "notes": "Most universities also ask for a good GCSE pass in Mathematics."
     },
     {
@@ -41,6 +52,9 @@
         "Algebra",
         "Statistics (helpful)",
         "Accounting or Business (helpful, not required)"
+      ],
+      "required": [
+        "maths"
       ]
     }
   ],

@@ -58,6 +58,8 @@
  * Every text/background pair below meets WCAG AA (4.5:1); line colours meet 3:1 for graphics.
  */
 :root {
+  /* Native controls (selects, checkboxes, scrollbars) follow the theme. */
+  color-scheme: light;
   --radius: 0.625rem;
 
   --background: #f6f7fa;
@@ -91,6 +93,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: #0d1424;
   --foreground: #e4e8f1;
   --card: #141d31;

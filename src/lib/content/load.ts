@@ -87,9 +87,11 @@ export function loadContent(dir: string = CONTENT_DIR): Content {
   return { faculties, courses, skills };
 }
 
-// Module-level cache: content never changes while the process runs.
+// Module-level cache: in production, content never changes while the process runs.
+// In development, re-read on every call so edits to content/ show up on refresh.
 let cached: Content | undefined;
 function content(): Content {
+  if (process.env.NODE_ENV === "development") return loadContent();
   return (cached ??= loadContent());
 }
 

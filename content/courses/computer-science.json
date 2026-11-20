@@ -16,6 +16,11 @@
         "Physics",
         "Two of: Chemistry, Biology, Further Mathematics, Economics, Agricultural Science"
       ],
+      "required": [
+        "english",
+        "maths",
+        "physics"
+      ],
       "notes": "Five credits in not more than two sittings. Exact subject combinations vary by university, so check your chosen school's brochure."
     },
     {
@@ -25,6 +30,11 @@
         "Mathematics",
         "Physics",
         "One of: Chemistry, Biology, Economics, Agricultural Science"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "physics"
       ]
     },
     {
@@ -32,6 +42,9 @@
       "subjects": [
         "Mathematics (usually required)",
         "Further Mathematics, Computer Science or Physics (often preferred)"
+      ],
+      "required": [
+        "maths"
       ]
     },
     {
@@ -40,6 +53,9 @@
         "Precalculus or Calculus",
         "Computer Science (helpful, not required)",
         "Physics (recommended)"
+      ],
+      "required": [
+        "maths"
       ]
     }
   ],

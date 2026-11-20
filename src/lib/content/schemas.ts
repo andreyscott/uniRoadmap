@@ -3,63 +3,19 @@
  * a file that doesn't match fails `npm test`, `npm run content:check` and the seed.
  */
 import { z } from "zod";
+import { DIFFICULTIES, EXAM_IDS, LINE_COLORS, SUBJECT_IDS, TAGS } from "./constants";
+
+export * from "./constants";
 
 /** Slug used for course, roadmap and faculty ids: lowercase words joined by hyphens. */
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "must be a lowercase-hyphenated slug");
 
-/**
- * Shared vocabulary for matching students to courses. Courses declare how strongly each
- * tag describes them; quiz answers add weight to tags. Add new tags here first.
- */
-export const TAGS = [
-  // school subjects
-  "maths",
-  "physics",
-  "chemistry",
-  "biology",
-  "economics",
-  "technology",
-  "writing",
-  "languages",
-  "art-design",
-  "social-studies",
-  // strengths and preferences
-  "analytical",
-  "problem-solving",
-  "creative",
-  "communication",
-  "helping-people",
-  "leadership",
-  "detail-oriented",
-  "hands-on",
-  "research",
-  "business-minded",
-  "structured",
-  // work settings
-  "lab",
-  "office",
-  "clinical",
-  "outdoors",
-  "teamwork",
-  "independent",
-  // goals
-  "high-earning",
-  "job-security",
-  "social-impact",
-  "entrepreneurship",
-  "global-mobility",
-] as const;
 export const tagSchema = z.enum(TAGS);
-export type Tag = z.infer<typeof tagSchema>;
 
 /** A partial map of tag -> weight (1 = somewhat, 3 = strongly). */
 export const tagWeightsSchema = z
   .partialRecord(tagSchema, z.number().int().min(1).max(3))
   .refine((w) => Object.keys(w).length > 0, "needs at least one tag");
-
-/** Line colour tokens defined in globals.css (--line-*). */
-export const LINE_COLORS = ["engineering", "sciences", "health", "business", "arts", "skills"] as const;
-export type LineColor = (typeof LINE_COLORS)[number];
 
 export const facultySchema = z.object({
   id: slug,
@@ -150,17 +106,15 @@ export const roadmapSchema = z
     });
   });
 
-/** Which exam or school system a set of entry requirements belongs to. */
-export const EXAMS = {
-  olevel: { label: "WAEC / NECO (O'Level)", region: "Nigeria" },
-  utme: { label: "JAMB UTME", region: "Nigeria" },
-  alevel: { label: "A-levels", region: "UK" },
-  "us-highschool": { label: "High school", region: "US" },
-} as const;
-
 export const entryRequirementSchema = z.object({
-  exam: z.enum(Object.keys(EXAMS) as [keyof typeof EXAMS, ...(keyof typeof EXAMS)[]]),
+  exam: z.enum(EXAM_IDS),
+  /** The exam's own wording, shown to students, e.g. "Use of English" or "One of: …". */
   subjects: z.array(z.string().min(1)).min(1),
+  /**
+   * Subjects every applicant must have, as ids from SUBJECTS. Leave out "one of" choices.
+   * Powers the directory's "your subjects" filter.
+   */
+  required: z.array(z.enum(SUBJECT_IDS)).default([]),
   notes: z.string().optional(),
 });
 
@@ -179,7 +133,7 @@ export const courseSchema = z.object({
   overview: z.string().min(50),
   durationYears: z.number().int().min(1).max(8),
   durationNotes: z.string().optional(),
-  difficulty: z.enum(["beginner", "intermediate", "advanced"]),
+  difficulty: z.enum(DIFFICULTIES),
   entryRequirements: z.array(entryRequirementSchema).min(1),
   careers: z.array(careerSchema).min(1),
   tags: tagWeightsSchema,
