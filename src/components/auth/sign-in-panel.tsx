@@ -14,7 +14,7 @@ const IDLE: SignInState = { status: "idle" };
 /** Email-link sign-in. Shows the right thing for every auth state. */
 export function SignInPanel() {
   const params = useSearchParams();
-  const next = safeNextPath(params.get("next"));
+  const next = safeNextPath(params.get("next"), "/dashboard");
   const linkFailed = params.get("error") === "link";
   const auth = useAuth();
   const [state, formAction, pending] = useActionState(sendSignInLink, IDLE);
@@ -37,7 +37,7 @@ export function SignInPanel() {
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <Button asChild className="h-11 px-5 text-base">
-            <Link href={next === "/" ? "/dashboard" : next}>Continue</Link>
+            <Link href={next}>Continue</Link>
           </Button>
           <Button type="button" variant="outline" className="h-11 px-5 text-base" onClick={() => signOut()}>
             Sign out

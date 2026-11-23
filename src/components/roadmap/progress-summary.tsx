@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BookmarkCheckIcon, BookmarkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { ProgressSummary as Summary } from "@/lib/progress/status";
 import type { ProgressPhase } from "./use-roadmap-progress";
@@ -7,10 +8,15 @@ interface ProgressSummaryProps {
   phase: ProgressPhase;
   summary: Summary;
   loginHref: string;
+  /** Whether the roadmap is on the user's dashboard. */
+  saved: boolean;
+  onSavedChange: (saved: boolean) => void;
+  /** Message from a failed save or unsave. */
+  saveError: string | null;
 }
 
 /** "Your progress" box above the roadmap: a bar when signed in, a prompt when not. */
-export function ProgressSummary({ phase, summary, loginHref }: ProgressSummaryProps) {
+export function ProgressSummary({ phase, summary, loginHref, saved, onSavedChange, saveError }: ProgressSummaryProps) {
   if (phase === "unavailable") return null;
 
   if (phase === "signed-out") {
@@ -65,17 +71,36 @@ export function ProgressSummary({ phase, summary, loginHref }: ProgressSummaryPr
           style={{ width: loading ? "0%" : `${summary.percent}%` }}
         />
       </div>
-      <p className="mt-2 flex min-h-5 flex-wrap gap-x-4 text-sm text-muted-foreground">
-        {loading ? (
-          "Loading your progress…"
-        ) : (
-          <>
-            <span>{summary.percent}% complete</span>
-            {summary.inProgress > 0 && <span>{summary.inProgress} in progress</span>}
-            {summary.skipped > 0 && <span>{summary.skipped} skipped, not counted</span>}
-          </>
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <p className="flex min-h-5 flex-wrap gap-x-4 text-sm text-muted-foreground">
+          {loading ? (
+            "Loading your progress…"
+          ) : (
+            <>
+              <span>{summary.percent}% complete</span>
+              {summary.inProgress > 0 && <span>{summary.inProgress} in progress</span>}
+              {summary.skipped > 0 && <span>{summary.skipped} skipped, not counted</span>}
+            </>
+          )}
+        </p>
+        {!loading && (
+          <Button
+            type="button"
+            variant={saved ? "secondary" : "outline"}
+            aria-pressed={saved}
+            onClick={() => onSavedChange(!saved)}
+            className="h-9 gap-1.5 px-3"
+          >
+            {saved ? <BookmarkCheckIcon aria-hidden /> : <BookmarkIcon aria-hidden />}
+            {saved ? "Saved to My roadmaps" : "Save to My roadmaps"}
+          </Button>
         )}
-      </p>
+      </div>
+      {saveError && (
+        <p role="alert" className="mt-2 text-sm text-destructive">
+          {saveError}
+        </p>
+      )}
     </div>
   );
 }

@@ -19,7 +19,7 @@ const emailSchema = z.email();
  */
 export async function sendSignInLink(_prev: SignInState, formData: FormData): Promise<SignInState> {
   const email = String(formData.get("email") ?? "").trim();
-  const next = safeNextPath(String(formData.get("next") ?? ""));
+  const next = safeNextPath(String(formData.get("next") ?? ""), "/dashboard");
 
   if (!emailSchema.safeParse(email).success) {
     return { status: "error", message: "Enter a valid email address, like name@example.com.", email };

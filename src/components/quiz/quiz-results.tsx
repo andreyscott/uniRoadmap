@@ -2,9 +2,11 @@
 
 import { useMemo, useState, type CSSProperties } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { CheckIcon, InfoIcon } from "lucide-react";
+import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
+import { saveQuizResult } from "@/lib/dashboard/actions";
 import { EXAMS, type ExamId } from "@/lib/content/constants";
 import type { QuizQuestion } from "@/lib/content/schemas";
 import {
@@ -13,6 +15,7 @@ import {
   isComplete,
   matchLabel,
   rankCourses,
+  type Answers,
   type Match,
   type QuizCourse,
 } from "@/lib/quiz/scoring";
@@ -86,7 +89,7 @@ export function QuizResults({ questions, courses }: QuizResultsProps) {
         </ul>
       </section>
 
-      <ResultActions />
+      <ResultActions answers={answers} />
     </>
   );
 }
@@ -169,7 +172,7 @@ function MatchCard({ rank, match, exam }: { rank: number; match: Match; exam: Ex
   );
 }
 
-function ResultActions() {
+function ResultActions({ answers }: { answers: Answers }) {
   const [copied, setCopied] = useState<"idle" | "copied" | "failed">("idle");
 
   const copyLink = async () => {
@@ -183,6 +186,7 @@ function ResultActions() {
 
   return (
     <div className="mt-12 flex flex-wrap items-center gap-3 border-t pt-8">
+      <SaveResults answers={answers} />
       <Button asChild variant="outline" className="h-11 px-5 text-base">
         <Link href="/quiz">Retake the course finder</Link>
       </Button>
@@ -197,5 +201,57 @@ function ResultActions() {
         {copied === "failed" && "Couldn't copy automatically. Copy the address from your browser's address bar instead."}
       </p>
     </div>
+  );
+}
+
+/** Saves these results to the signed-in user's dashboard, or offers sign-in first. */
+function SaveResults({ answers }: { answers: Answers }) {
+  const auth = useAuth();
+  const pathname = usePathname();
+  const params = useSearchParams();
+  const [state, setState] = useState<{ status: "idle" | "saving" | "saved" } | { status: "error"; message: string }>({
+    status: "idle",
+  });
+
+  if (auth.status === "unavailable" || auth.status === "loading") return null;
+
+  if (auth.status === "signed-out") {
+    const next = `${pathname}?${params.toString()}`;
+    return (
+      <Button asChild className="h-11 px-5 text-base">
+        <Link href={`/login?next=${encodeURIComponent(next)}`}>Sign in to save these results</Link>
+      </Button>
+    );
+  }
+
+  const save = async () => {
+    setState({ status: "saving" });
+    const result = await saveQuizResult(answers);
+    setState(result.ok ? { status: "saved" } : { status: "error", message: result.error });
+  };
+
+  return (
+    <>
+      <Button
+        type="button"
+        className="h-11 px-5 text-base"
+        disabled={state.status === "saving" || state.status === "saved"}
+        onClick={save}
+      >
+        {state.status === "saved" ? "Saved to My roadmaps" : state.status === "saving" ? "Saving…" : "Save to My roadmaps"}
+      </Button>
+      <p role="status" className="order-last w-full text-sm">
+        {state.status === "saved" && (
+          <>
+            Saved. Find these results on{" "}
+            <Link href="/dashboard" className="text-primary underline underline-offset-4">
+              My roadmaps
+            </Link>
+            .
+          </>
+        )}
+        {state.status === "error" && <span className="text-destructive">{state.message}</span>}
+      </p>
+    </>
   );
 }

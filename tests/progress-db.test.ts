@@ -43,6 +43,39 @@ describe.skipIf(!url)("progress data access", () => {
     expect(await db.getRoadmapProgress(user, "computer-science")).toEqual({ "cs-y1-calculus": "skipped" });
   });
 
+  it("saves and unsaves roadmaps", async () => {
+    await db.setRoadmapSaved(user, "exam-prep", true);
+    await db.setRoadmapSaved(user, "exam-prep", true); // saving twice is harmless
+    expect(await db.isRoadmapSaved(user, "exam-prep")).toBe(true);
+    await db.setRoadmapSaved(user, "exam-prep", false);
+    expect(await db.isRoadmapSaved(user, "exam-prep")).toBe(false);
+  });
+
+  it("builds the dashboard from progress, saves and quiz results", async () => {
+    const { getDashboardData } = await import("@/lib/dashboard/db");
+    await db.setRoadmapSaved(user, "research-basics", true);
+    const answers = { exam: ["nigeria"], subjects: ["maths"] };
+    await getDb().quizResult.create({
+      data: { userId: user.id, answers, topCourses: [{ courseId: "computer-science", score: 0.9, reasons: [] }] },
+    });
+
+    const data = await getDashboardData(user);
+    expect(data.roadmaps.map((r) => r.id).sort()).toEqual(["computer-science", "research-basics", "study-skills"]);
+    expect(data.activity.length).toBeGreaterThan(0);
+    expect(data.quizResults[0]).toMatchObject({
+      href: "/quiz/results?exam=nigeria&subjects=maths",
+      courses: [{ id: "computer-science", name: "Computer Science", href: "/courses/computer-science" }],
+    });
+
+    // The duplicate check used when saving quiz results: JSON equality on the answers.
+    const same = await getDb().quizResult.findFirst({ where: { userId: user.id, answers: { equals: answers } } });
+    const different = await getDb().quizResult.findFirst({
+      where: { userId: user.id, answers: { equals: { exam: ["alevels"] } } },
+    });
+    expect(same).not.toBeNull();
+    expect(different).toBeNull();
+  });
+
   it("keeps users' progress separate", async () => {
     const other = { id: "00000000-0000-4000-8000-000000000002", email: "progress-test-2@example.com" };
     try {

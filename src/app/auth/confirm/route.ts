@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   const { searchParams, origin } = request.nextUrl;
   const tokenHash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
-  const next = safeNextPath(nextFrom(searchParams.get("next"), origin));
+  const next = safeNextPath(nextFrom(searchParams.get("next"), origin), "/dashboard");
 
   const supabase = await createServerSupabase();
   if (supabase && tokenHash && type) {

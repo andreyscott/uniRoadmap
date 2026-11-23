@@ -108,7 +108,7 @@ export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapVi
   const panelHeadingId = useId();
   const sheetHeadingId = useId();
 
-  const { phase, progress, setStatus, saveError } = useRoadmapProgress(roadmapId);
+  const { phase, progress, saved, setStatus, setSaved, saveError } = useRoadmapProgress(roadmapId);
   const pathname = usePathname();
   const loginHref = (hash?: string) => `/login?next=${encodeURIComponent(pathname + (hash ? `#${hash}` : ""))}`;
   const showStatus = phase === "ready";
@@ -208,7 +208,7 @@ export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapVi
       status={progress[node.id] ?? null}
       onChange={(status) => void setStatus(node.id, status)}
       loginHref={loginHref(node.id)}
-      saveError={saveError}
+      saveError={saveError?.source === "topic" ? saveError : null}
     />
   );
 
@@ -218,7 +218,14 @@ export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapVi
       className="lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start lg:gap-10"
     >
       <div>
-        <ProgressSummary phase={phase} summary={summary} loginHref={loginHref()} />
+        <ProgressSummary
+          phase={phase}
+          summary={summary}
+          loginHref={loginHref()}
+          saved={saved}
+          onSavedChange={(value) => void setSaved(value)}
+          saveError={saveError?.source === "saved" ? saveError.message : null}
+        />
         <RoadmapLegend />
         <p className="mt-2 text-sm text-muted-foreground">
           Select a topic to see what it covers and free resources to learn it.

@@ -8,6 +8,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import type { z } from "zod";
+import type { RoadmapRef } from "@/lib/dashboard/build";
 import {
   courseSchema,
   facultiesFileSchema,
@@ -131,4 +132,17 @@ export function findNodeRoadmap(nodeId: string): string | undefined {
 /** True when the id is a course with a roadmap, or a skill roadmap. */
 export function roadmapExists(id: string): boolean {
   return Boolean(getCourse(id)?.roadmap || getSkillRoadmap(id));
+}
+
+/** A course roadmap or skill roadmap by id, in the shape the dashboard uses. */
+export function getRoadmapRef(id: string): RoadmapRef | undefined {
+  const course = getCourse(id);
+  if (course?.roadmap) {
+    // The loader has already checked that every course's faculty exists.
+    const color = getFaculty(course.faculty)!.color;
+    return { id, kind: "course", title: course.name, href: `/courses/${id}`, color, roadmap: course.roadmap };
+  }
+  const skill = getSkillRoadmap(id);
+  if (skill) return { id, kind: "skill", title: skill.title, href: `/skills/${id}`, color: "skills", roadmap: skill.roadmap };
+  return undefined;
 }
