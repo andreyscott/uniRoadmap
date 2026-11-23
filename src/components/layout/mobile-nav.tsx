@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
 import { NavLinks } from "./nav-links";
 
@@ -9,6 +12,8 @@ import { NavLinks } from "./nav-links";
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const menuId = useId();
+  const auth = useAuth();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!open) return;
@@ -43,6 +48,24 @@ export function MobileNav() {
           linkClassName="block py-3 text-base"
           onNavigate={() => setOpen(false)}
         />
+        {auth.status === "signed-out" && (
+          <Link
+            href={`/login?next=${encodeURIComponent(pathname)}`}
+            onClick={() => setOpen(false)}
+            className="mt-1 block border-t py-3 text-base font-medium text-primary"
+          >
+            Sign in
+          </Link>
+        )}
+        {auth.status === "signed-in" && (
+          <Link
+            href="/dashboard"
+            onClick={() => setOpen(false)}
+            className="mt-1 block border-t py-3 text-base font-medium text-primary"
+          >
+            My roadmaps
+          </Link>
+        )}
       </nav>
     </div>
   );

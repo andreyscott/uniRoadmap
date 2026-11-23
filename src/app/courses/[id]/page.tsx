@@ -113,7 +113,7 @@ async function CourseContent({ params }: Pick<PageProps<"/courses/[id]">, "param
         </h2>
         {course.roadmap ? (
           <div className="mt-4">
-            <RoadmapViewer roadmap={course.roadmap} color={faculty.color} terminus="Graduation" />
+            <RoadmapViewer roadmapId={course.id} roadmap={course.roadmap} color={faculty.color} terminus="Graduation" />
           </div>
         ) : (
           <p className="mt-4 max-w-prose rounded-xl border border-dashed p-6 text-muted-foreground">

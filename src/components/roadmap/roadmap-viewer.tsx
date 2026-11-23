@@ -10,15 +10,23 @@ import {
   useSyncExternalStore,
   type CSSProperties,
 } from "react";
+import { usePathname } from "next/navigation";
+import { CheckIcon } from "lucide-react";
 import { NODE_TYPE_LABELS, type LineColor } from "@/lib/content/constants";
 import { ancestorsOf, buildGraph, routeEdges } from "@/lib/content/roadmap-graph";
 import type { Roadmap, RoadmapNode } from "@/lib/content/schemas";
+import { STATUS_LABELS, summariseProgress, type ProgressMap, type ProgressStatus } from "@/lib/progress/status";
 import { cn } from "@/lib/utils";
 import { NodeDetails } from "./node-details";
 import { NodeStop, STOP_SIZE } from "./node-stop";
+import { ProgressSummary } from "./progress-summary";
 import { RoadmapLegend } from "./roadmap-legend";
+import { TopicStatusControl } from "./topic-status-control";
+import { useRoadmapProgress } from "./use-roadmap-progress";
 
 interface RoadmapViewerProps {
+  /** Course or skill id; progress is stored against the roadmap's nodes. */
+  roadmapId: string;
   roadmap: Roadmap;
   color: LineColor;
   /** Name of the last station, e.g. "Graduation". */
@@ -78,7 +86,7 @@ interface Arc {
  * topic opens its details (a sticky side panel on desktop, a bottom sheet on phones) and
  * lights up its route: what it builds on and what comes next.
  */
-export function RoadmapViewer({ roadmap, color, terminus }: RoadmapViewerProps) {
+export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapViewerProps) {
   const graph = useMemo(() => buildGraph(roadmap), [roadmap]);
   const isDesktop = useSyncExternalStore(
     subscribeDesktop,
@@ -99,6 +107,15 @@ export function RoadmapViewer({ roadmap, color, terminus }: RoadmapViewerProps) 
   const focusDetails = useRef(false);
   const panelHeadingId = useId();
   const sheetHeadingId = useId();
+
+  const { phase, progress, setStatus, saveError } = useRoadmapProgress(roadmapId);
+  const pathname = usePathname();
+  const loginHref = (hash?: string) => `/login?next=${encodeURIComponent(pathname + (hash ? `#${hash}` : ""))}`;
+  const showStatus = phase === "ready";
+  const summary = summariseProgress(
+    roadmap.nodes.map((n) => n.id),
+    progress,
+  );
 
   // Relation of each topic to the selected one, for highlighting.
   const relations = useMemo(() => {
@@ -185,6 +202,15 @@ export function RoadmapViewer({ roadmap, color, terminus }: RoadmapViewerProps) 
   const selectFromDetails = (id: string) => select(id, { scroll: true });
   const parentOf = (node: RoadmapNode) => (node.parent ? (graph.byId.get(node.parent) ?? null) : null);
   const nextOf = (node: RoadmapNode) => graph.children.get(node.id) ?? [];
+  const statusControl = (node: RoadmapNode) => (
+    <TopicStatusControl
+      phase={phase}
+      status={progress[node.id] ?? null}
+      onChange={(status) => void setStatus(node.id, status)}
+      loginHref={loginHref(node.id)}
+      saveError={saveError}
+    />
+  );
 
   return (
     <div
@@ -192,6 +218,7 @@ export function RoadmapViewer({ roadmap, color, terminus }: RoadmapViewerProps) 
       className="lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start lg:gap-10"
     >
       <div>
+        <ProgressSummary phase={phase} summary={summary} loginHref={loginHref()} />
         <RoadmapLegend />
         <p className="mt-2 text-sm text-muted-foreground">
           Select a topic to see what it covers and free resources to learn it.
@@ -232,7 +259,10 @@ export function RoadmapViewer({ roadmap, color, terminus }: RoadmapViewerProps) 
                   className="absolute rounded-full border-[5px] border-(--line) bg-background"
                   style={{ left: TRUNK_X - STATION_SIZE / 2, top: 0, width: STATION_SIZE, height: STATION_SIZE }}
                 />
-                <h3 className="text-xl font-bold">{stage.title}</h3>
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                  <h3 className="text-xl font-bold">{stage.title}</h3>
+                  {showStatus && <StageCount nodes={nodes} progress={progress} />}
+                </div>
                 <p className="mt-1 max-w-prose text-sm text-muted-foreground">{stage.summary}</p>
 
                 <ol className="mt-4 -ml-14 space-y-2">
@@ -242,6 +272,7 @@ export function RoadmapViewer({ roadmap, color, terminus }: RoadmapViewerProps) 
                       node={node}
                       selected={node.id === selected?.id}
                       relation={relations.get(node.id)}
+                      status={showStatus ? (progress[node.id] ?? null) : null}
                       stopRef={(el) => {
                         if (el) stopRefs.current.set(node.id, el);
                         else stopRefs.current.delete(node.id);
@@ -286,6 +317,7 @@ export function RoadmapViewer({ roadmap, color, terminus }: RoadmapViewerProps) 
               next={nextOf(selected)}
               headingId={panelHeadingId}
               headingRef={panelHeadingRef}
+              progress={statusControl(selected)}
               onSelect={selectFromDetails}
               onClose={close}
             />
@@ -328,6 +360,7 @@ export function RoadmapViewer({ roadmap, color, terminus }: RoadmapViewerProps) 
               next={nextOf(selected)}
               headingId={sheetHeadingId}
               headingRef={sheetHeadingRef}
+              progress={statusControl(selected)}
               onSelect={selectFromDetails}
               onClose={close}
             />
@@ -342,6 +375,7 @@ interface TopicRowProps {
   node: RoadmapNode;
   selected: boolean;
   relation: "before" | "after" | undefined;
+  status: ProgressStatus | null;
   stopRef: (el: HTMLElement | null) => void;
   buttonRef: (el: HTMLButtonElement | null) => void;
   onToggle: () => void;
@@ -349,7 +383,7 @@ interface TopicRowProps {
 
 const RELATION_LABELS = { before: "Needed first", after: "Comes next" } as const;
 
-function TopicRow({ node, selected, relation, stopRef, buttonRef, onToggle }: TopicRowProps) {
+function TopicRow({ node, selected, relation, status, stopRef, buttonRef, onToggle }: TopicRowProps) {
   const branch = node.type !== "core";
   const stopX = branch ? BRANCH_X : TRUNK_X;
   const size = STOP_SIZE[node.type];
@@ -378,8 +412,8 @@ function TopicRow({ node, selected, relation, stopRef, buttonRef, onToggle }: To
       <NodeStop
         ref={stopRef}
         type={node.type}
-        filled={selected}
-        className={cn("absolute", selected && "ring-4 ring-(--line)/25")}
+        status={status}
+        className={cn("absolute", selected && "ring-4 ring-(--line)/30")}
         style={{ left: stopX - size / 2, top: ROW_CENTER - size / 2 }}
       />
       <button
@@ -397,19 +431,54 @@ function TopicRow({ node, selected, relation, stopRef, buttonRef, onToggle }: To
         )}
       >
         <span className="min-w-0 flex-1">
-          <span className="block leading-snug font-medium">{node.title}</span>
+          <span className={cn("block leading-snug font-medium", status === "skipped" && "text-muted-foreground")}>
+            {node.title}
+          </span>
           {branch ? (
             <span className="block text-xs text-muted-foreground">{NODE_TYPE_LABELS[node.type]}</span>
           ) : (
             <span className="sr-only">, core topic</span>
           )}
         </span>
-        {relation && (
-          <span className="shrink-0 rounded-full bg-(--line)/15 px-2 py-0.5 text-xs font-medium">
-            {RELATION_LABELS[relation]}
+        {(relation || status) && (
+          <span className="flex shrink-0 flex-wrap justify-end gap-1.5">
+            {relation && (
+              <span className="rounded-full bg-(--line)/15 px-2 py-0.5 text-xs font-medium">
+                {RELATION_LABELS[relation]}
+              </span>
+            )}
+            {status && <StatusBadge status={status} />}
           </span>
         )}
       </button>
     </li>
+  );
+}
+
+function StatusBadge({ status }: { status: ProgressStatus }) {
+  return (
+    <span
+      className={cn(
+        "flex items-center gap-1 text-xs font-medium",
+        status === "done" && "text-status-done",
+        status === "in-progress" && "text-status-progress",
+        status === "skipped" && "text-muted-foreground",
+      )}
+    >
+      {status === "done" && <CheckIcon aria-hidden className="size-3.5" />}
+      {STATUS_LABELS[status]}
+    </span>
+  );
+}
+
+function StageCount({ nodes, progress }: { nodes: RoadmapNode[]; progress: ProgressMap }) {
+  const { done, counted } = summariseProgress(
+    nodes.map((n) => n.id),
+    progress,
+  );
+  return (
+    <p className="text-sm text-muted-foreground">
+      {done} of {counted} done
+    </p>
   );
 }

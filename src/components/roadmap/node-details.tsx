@@ -1,4 +1,4 @@
-import type { Ref } from "react";
+import type { ReactNode, Ref } from "react";
 import {
   BookOpenIcon,
   CirclePlayIcon,
@@ -36,6 +36,8 @@ interface NodeDetailsProps {
   next: RoadmapNode[];
   headingId: string;
   headingRef?: Ref<HTMLHeadingElement>;
+  /** Progress controls, shown under the title. */
+  progress?: ReactNode;
   onSelect: (id: string) => void;
   onClose: () => void;
 }
@@ -52,6 +54,7 @@ export function NodeDetails({
   next,
   headingId,
   headingRef,
+  progress,
   onSelect,
   onClose,
 }: NodeDetailsProps) {
@@ -74,7 +77,8 @@ export function NodeDetails({
       >
         {node.title}
       </h2>
-      <p className="mt-3">{node.description}</p>
+      {progress}
+      <p className="mt-4">{node.description}</p>
 
       <h3 className="mt-6 font-heading text-sm font-bold">Key concepts</h3>
       <ul className="mt-2 flex flex-wrap gap-1.5">

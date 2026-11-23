@@ -114,3 +114,21 @@ export function getQuiz(): Quiz {
   if (process.env.NODE_ENV === "development") return loadQuiz();
   return (cachedQuiz ??= loadQuiz());
 }
+
+let nodeIndex: Map<string, string> | undefined;
+/** The roadmap a node id belongs to (course or skill id), or undefined for an unknown id. */
+export function findNodeRoadmap(nodeId: string): string | undefined {
+  if (!nodeIndex || process.env.NODE_ENV === "development") {
+    const { courses, skills } = content();
+    nodeIndex = new Map([
+      ...courses.flatMap((c) => (c.roadmap?.nodes ?? []).map((n) => [n.id, c.id] as const)),
+      ...skills.flatMap((s) => s.roadmap.nodes.map((n) => [n.id, s.id] as const)),
+    ]);
+  }
+  return nodeIndex.get(nodeId);
+}
+
+/** True when the id is a course with a roadmap, or a skill roadmap. */
+export function roadmapExists(id: string): boolean {
+  return Boolean(getCourse(id)?.roadmap || getSkillRoadmap(id));
+}

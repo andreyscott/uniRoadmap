@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { AccountMenu } from "@/components/auth/account-menu";
 import { Logo } from "./logo";
 import { MobileNav } from "./mobile-nav";
 import { NavLinks } from "./nav-links";
@@ -17,10 +16,7 @@ export function SiteHeader() {
 
         <div className="ml-auto flex items-center gap-1">
           <ThemeToggle />
-          {/* Auth arrives in the "auth + progress" step; this route is a placeholder until then. */}
-          <Button asChild variant="outline" className="hidden h-10 px-4 sm:inline-flex">
-            <Link href="/login">Sign in</Link>
-          </Button>
+          <AccountMenu />
           <MobileNav />
         </div>
       </div>
