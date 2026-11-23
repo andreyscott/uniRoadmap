@@ -1,0 +1,106 @@
+{
+  "id": "civil-engineering",
+  "name": "Civil Engineering",
+  "faculty": "engineering",
+  "summary": "Plan, design and build the roads, bridges, buildings, dams and water systems that communities depend on.",
+  "overview": "Civil engineers design and build the physical world: roads and bridges, buildings, drainage, water supply and the foundations everything stands on.\n\nYou'll study maths, mechanics and materials, then structures, soils, water and transport. Much of the learning is applied, with site visits, surveying fieldwork, design projects and industrial training on real construction sites.\n\nIt suits people who like seeing their work take shape in the real world and don't mind time outdoors. Graduates usually work towards professional registration (COREN in Nigeria).",
+  "durationYears": 5,
+  "durationNotes": "5 years for a BEng in Nigeria, including industrial training (SIWES), then registration with COREN. Usually 3 years (BEng) or 4 (MEng) in the UK, and 4 years in the US.",
+  "difficulty": "advanced",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "One of: Further Mathematics, Technical Drawing, Geography"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "physics",
+        "chemistry"
+      ],
+      "notes": "Five credits in not more than two sittings. Exact subjects vary by university, so check your chosen school's brochure."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "physics",
+        "chemistry"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "Mathematics",
+        "Physics (usually required or strongly preferred)"
+      ],
+      "required": [
+        "maths"
+      ]
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Calculus or Precalculus",
+        "Physics",
+        "Chemistry (recommended)"
+      ],
+      "required": [
+        "maths",
+        "physics"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Structural engineer",
+      "description": "Designs buildings, bridges and towers so they stand up safely to loads, wind and earthquakes."
+    },
+    {
+      "title": "Site or construction engineer",
+      "description": "Runs work on a construction site, keeping it safe, on time and true to the design."
+    },
+    {
+      "title": "Highway and transport engineer",
+      "description": "Plans and designs roads, railways and traffic systems."
+    },
+    {
+      "title": "Water resources engineer",
+      "description": "Designs water supply, drainage, flood control and sanitation systems."
+    },
+    {
+      "title": "Geotechnical engineer",
+      "description": "Studies soil and rock to design safe foundations, slopes and tunnels."
+    },
+    {
+      "title": "Construction project manager",
+      "description": "Leads the budget, schedule and teams behind large building projects."
+    }
+  ],
+  "tags": {
+    "maths": 3,
+    "physics": 3,
+    "hands-on": 3,
+    "outdoors": 3,
+    "problem-solving": 2,
+    "analytical": 2,
+    "teamwork": 2,
+    "structured": 2,
+    "leadership": 1,
+    "social-impact": 2,
+    "job-security": 2,
+    "global-mobility": 2
+  }
+}

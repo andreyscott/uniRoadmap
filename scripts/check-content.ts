@@ -2,7 +2,7 @@
  * `npm run content:check`: validates everything in /content and prints a summary.
  * Run it after editing content; it's faster than the full test suite.
  */
-import { ContentError, loadContent } from "../src/lib/content/load";
+import { ContentError, loadContent, loadQuiz } from "../src/lib/content/load";
 
 try {
   const { faculties, courses, skills } = loadContent();
@@ -14,6 +14,8 @@ try {
   for (const s of skills) {
     console.log(`✓ skill   ${s.id.padEnd(28)} ${s.roadmap.nodes.length} nodes`);
   }
+  const quiz = loadQuiz();
+  console.log(`✓ quiz    ${quiz.questions.length} questions`);
 } catch (err) {
   if (err instanceof ContentError) {
     console.error(`✗ ${err.message}`);

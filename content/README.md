@@ -7,7 +7,8 @@ changes needed.
 content/
 ├── faculties.json        # faculties and their line colour
 ├── courses/<id>.json     # one degree per file (the filename must match "id")
-└── skills/<id>.json      # non-degree skill roadmaps
+├── skills/<id>.json      # non-degree skill roadmaps
+└── quiz.json             # the course finder questions
 ```
 
 The full schema, with comments, is in [`src/lib/content/schemas.ts`](../src/lib/content/schemas.ts); allowed tags, exams and subjects are in [`constants.ts`](../src/lib/content/constants.ts).
@@ -54,6 +55,24 @@ year first.
 node's title, description or position freely. If you delete a node, the seed script warns
 instead of deleting it from the database; run `npm run db:seed -- --prune` to remove it
 (this also deletes users' progress on it).
+
+## Course finder quiz
+
+`quiz.json` holds 8 to 12 questions. Each question has an `id`, a `prompt`, an optional `help`
+line, a `kind` (`single`, or `multi` with a `max` number of picks) and `options`. An option can:
+
+| Field           | Effect                                                                          |
+| --------------- | ------------------------------------------------------------------------------- |
+| `weights`       | Adds tag weights (1 to 3) to the student's profile, using the same tags as courses |
+| `exam`          | Sets the student's exam, so results show that exam's entry requirements          |
+| `maxYears`      | Courses longer than this rank lower and say why                                   |
+| `maxDifficulty` | Courses harder than this rank lower and say why                                   |
+
+Courses are matched by how closely their `tags` resemble the student's profile. When you add or
+retag a course, run `npm test`: the quiz tests check that typical students (a future doctor, a
+techie, a writer, a business-minded student) still get sensible top three matches.
+
+Question and option ids appear in results links, so changing one breaks links people have shared.
 
 ## Checking links
 

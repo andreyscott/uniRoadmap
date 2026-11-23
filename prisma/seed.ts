@@ -3,13 +3,14 @@
  *
  * - Faculties, courses, roadmaps, nodes and resources are upserted, so ids stay stable
  *   and existing user progress keeps pointing at the right nodes.
+ * - Quiz questions are replaced to match content/quiz.json (nothing references them by key).
  * - Nodes that exist in the database but were removed from /content are NOT deleted by
  *   default, because deleting a node deletes users' progress on it. They're listed as a
  *   warning. Pass `-- --prune` to delete them deliberately.
  */
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient, type Prisma } from "../src/generated/prisma/client";
-import { ContentError, loadContent } from "../src/lib/content/load";
+import { ContentError, loadContent, loadQuiz } from "../src/lib/content/load";
 import type { Course, Roadmap, RoadmapNode } from "../src/lib/content/schemas";
 
 for (const file of [".env.local", ".env"]) {
@@ -167,6 +168,17 @@ async function main() {
     );
     console.log(`✓ skill   ${skill.id} (${nodes} nodes)`);
   }
+
+  const quiz = loadQuiz();
+  await prisma.$transaction(async (tx) => {
+    for (const [position, q] of quiz.questions.entries()) {
+      const data = { position, prompt: q.prompt, help: q.help ?? null, kind: q.kind, maxChoices: q.max ?? null, options: q.options };
+      await tx.quizQuestion.upsert({ where: { id: q.id }, create: { id: q.id, ...data }, update: data });
+    }
+    // Results store answers as JSON, not foreign keys, so removed questions can simply go.
+    await tx.quizQuestion.deleteMany({ where: { id: { notIn: quiz.questions.map((q) => q.id) } } });
+  }, txOptions);
+  console.log(`✓ quiz    ${quiz.questions.length} questions`);
 }
 
 main()

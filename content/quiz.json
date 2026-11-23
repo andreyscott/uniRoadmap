@@ -1,0 +1,137 @@
+{
+  "questions": [
+    {
+      "id": "exam",
+      "prompt": "Which exams are you taking, or have you taken?",
+      "help": "We use this to show the entry requirements that apply to you. It doesn't change your matches.",
+      "kind": "single",
+      "options": [
+        { "id": "nigeria", "label": "WAEC or NECO, and JAMB UTME", "exam": "utme" },
+        { "id": "alevels", "label": "A-levels", "exam": "alevel" },
+        { "id": "us", "label": "A US high school diploma", "exam": "us-highschool" },
+        { "id": "other", "label": "Something else, or I'm not sure" }
+      ]
+    },
+    {
+      "id": "subjects",
+      "prompt": "Which school subjects do you enjoy most?",
+      "help": "Pick up to three.",
+      "kind": "multi",
+      "max": 3,
+      "options": [
+        { "id": "maths", "label": "Mathematics", "weights": { "maths": 3, "analytical": 1 } },
+        { "id": "physics", "label": "Physics", "weights": { "physics": 3, "problem-solving": 1 } },
+        { "id": "chemistry", "label": "Chemistry", "weights": { "chemistry": 3, "lab": 1 } },
+        { "id": "biology", "label": "Biology", "weights": { "biology": 3 } },
+        { "id": "economics", "label": "Economics or Commerce", "weights": { "economics": 3, "business-minded": 1 } },
+        { "id": "accounting", "label": "Financial Accounting", "weights": { "business-minded": 2, "maths": 1, "detail-oriented": 1, "structured": 1 } },
+        { "id": "english", "label": "English or Literature", "weights": { "writing": 3, "languages": 1 } },
+        { "id": "humanities", "label": "Government, History or Civic Education", "weights": { "social-studies": 3, "writing": 1 } },
+        { "id": "computing", "label": "Computer Studies or ICT", "weights": { "technology": 3, "problem-solving": 1 } },
+        { "id": "art", "label": "Fine Art or Design", "weights": { "art-design": 3, "creative": 2 } }
+      ]
+    },
+    {
+      "id": "problems",
+      "prompt": "Which kind of problem would you most enjoy working on?",
+      "kind": "single",
+      "options": [
+        { "id": "puzzle", "label": "A tricky puzzle with one right answer", "weights": { "analytical": 3, "maths": 2, "problem-solving": 2 } },
+        { "id": "machine", "label": "Working out how a machine or system works, then improving it", "weights": { "problem-solving": 2, "hands-on": 2, "technology": 2, "physics": 1 } },
+        { "id": "people", "label": "Understanding why people behave the way they do", "weights": { "social-studies": 3, "research": 1, "communication": 1 } },
+        { "id": "illness", "label": "Figuring out what's making someone ill", "weights": { "biology": 2, "helping-people": 2, "clinical": 2, "analytical": 1 } },
+        { "id": "business", "label": "Making a struggling business profitable", "weights": { "business-minded": 3, "economics": 2, "leadership": 1 } },
+        { "id": "story", "label": "Telling a story that changes how people see something", "weights": { "creative": 3, "writing": 2, "communication": 2 } }
+      ]
+    },
+    {
+      "id": "weekend",
+      "prompt": "Which of these would you most like to spend a Saturday doing?",
+      "kind": "single",
+      "options": [
+        { "id": "app", "label": "Building an app or website", "weights": { "technology": 3, "creative": 1, "independent": 1 } },
+        { "id": "outreach", "label": "Volunteering at a health outreach", "weights": { "helping-people": 3, "social-impact": 2, "clinical": 1 } },
+        { "id": "debate", "label": "Competing in a debate", "weights": { "communication": 3, "analytical": 1, "writing": 1, "leadership": 1 } },
+        { "id": "experiment", "label": "Running a science experiment", "weights": { "lab": 3, "research": 2, "chemistry": 1, "biology": 1 } },
+        { "id": "shop", "label": "Running a stall or small online shop", "weights": { "entrepreneurship": 3, "business-minded": 2, "communication": 1 } },
+        { "id": "fix", "label": "Fixing a broken gadget or generator", "weights": { "hands-on": 3, "problem-solving": 1, "physics": 1, "technology": 1 } },
+        { "id": "media", "label": "Making a video, podcast or design", "weights": { "creative": 3, "art-design": 2, "communication": 1 } }
+      ]
+    },
+    {
+      "id": "setting",
+      "prompt": "Where would you most like to work day to day?",
+      "kind": "single",
+      "options": [
+        { "id": "office", "label": "In an office", "weights": { "office": 3, "structured": 1 } },
+        { "id": "hospital", "label": "In a hospital or clinic", "weights": { "clinical": 3, "helping-people": 1 } },
+        { "id": "lab", "label": "In a laboratory", "weights": { "lab": 3, "research": 1 } },
+        { "id": "site", "label": "Out on site or in the field", "weights": { "outdoors": 3, "hands-on": 2 } },
+        { "id": "laptop", "label": "Anywhere, as long as I have a laptop", "weights": { "technology": 2, "independent": 2 } },
+        { "id": "out-and-about", "label": "Somewhere different every day, meeting people", "weights": { "communication": 2, "outdoors": 1, "teamwork": 1 } }
+      ]
+    },
+    {
+      "id": "teamwork",
+      "prompt": "How do you prefer to work?",
+      "kind": "single",
+      "options": [
+        { "id": "team", "label": "In a team, sharing the work", "weights": { "teamwork": 3 } },
+        { "id": "mostly-alone", "label": "Mostly on my own, with some teamwork", "weights": { "independent": 2, "teamwork": 1 } },
+        { "id": "alone", "label": "On my own, at my own pace", "weights": { "independent": 3 } },
+        { "id": "lead", "label": "Leading a group", "weights": { "leadership": 3, "teamwork": 1 } }
+      ]
+    },
+    {
+      "id": "strengths",
+      "prompt": "What comes most easily to you?",
+      "help": "Pick up to two.",
+      "kind": "multi",
+      "max": 2,
+      "options": [
+        { "id": "numbers", "label": "Working with numbers", "weights": { "maths": 2, "analytical": 1 } },
+        { "id": "explaining", "label": "Writing and explaining ideas", "weights": { "writing": 2, "communication": 1 } },
+        { "id": "details", "label": "Remembering lots of detail", "weights": { "detail-oriented": 3 } },
+        { "id": "people", "label": "Talking to people and putting them at ease", "weights": { "communication": 2, "helping-people": 2 } },
+        { "id": "organising", "label": "Organising plans and people", "weights": { "structured": 2, "leadership": 2 } },
+        { "id": "making", "label": "Making and fixing things", "weights": { "hands-on": 3 } },
+        { "id": "ideas", "label": "Coming up with new ideas", "weights": { "creative": 3, "entrepreneurship": 1 } }
+      ]
+    },
+    {
+      "id": "goals",
+      "prompt": "What matters most to you in a career?",
+      "help": "Pick up to two.",
+      "kind": "multi",
+      "max": 2,
+      "options": [
+        { "id": "salary", "label": "Earning a high salary", "weights": { "high-earning": 3 } },
+        { "id": "security", "label": "A secure, steady job", "weights": { "job-security": 3 } },
+        { "id": "impact", "label": "Making a difference in people's lives", "weights": { "social-impact": 3, "helping-people": 1 } },
+        { "id": "own-boss", "label": "Being my own boss", "weights": { "entrepreneurship": 3, "independent": 1 } },
+        { "id": "abroad", "label": "Being able to work abroad", "weights": { "global-mobility": 3 } }
+      ]
+    },
+    {
+      "id": "length",
+      "prompt": "How long are you happy to study for your first degree?",
+      "help": "Some courses, like Medicine and Pharmacy, take six years.",
+      "kind": "single",
+      "options": [
+        { "id": "four", "label": "4 years at most", "maxYears": 4 },
+        { "id": "five", "label": "Up to 5 years", "maxYears": 5 },
+        { "id": "any", "label": "As long as it takes for the right career" }
+      ]
+    },
+    {
+      "id": "challenge",
+      "prompt": "How demanding a course do you want?",
+      "kind": "single",
+      "options": [
+        { "id": "manageable", "label": "Manageable, with time for other things", "maxDifficulty": "beginner" },
+        { "id": "balanced", "label": "Challenging, but balanced", "maxDifficulty": "intermediate" },
+        { "id": "tough", "label": "As tough as it needs to be" }
+      ]
+    }
+  ]
+}

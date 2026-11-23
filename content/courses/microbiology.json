@@ -1,0 +1,107 @@
+{
+  "id": "microbiology",
+  "name": "Microbiology",
+  "faculty": "sciences",
+  "summary": "Study bacteria, viruses and fungi: how they cause disease, keep food safe, clean the environment and make medicines.",
+  "overview": "Microbiology is the study of living things too small to see: bacteria, viruses, fungi and parasites. They cause disease, but they also make bread, yoghurt, antibiotics and vaccines, and they recycle almost everything on Earth.\n\nYou'll start with biology and chemistry, then move into microbial genetics, immunology, food and industrial microbiology and environmental microbiology. A lot of your time is spent in the lab culturing, staining and identifying organisms.\n\nIt suits careful, curious people who enjoy lab work. Graduates work in hospitals, food and drink companies, pharmaceutical firms, water boards and research institutes.",
+  "durationYears": 4,
+  "durationNotes": "4 years in Nigeria and the US; usually 3 years in England.",
+  "difficulty": "intermediate",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Biology",
+        "Chemistry",
+        "Physics"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "biology",
+        "chemistry",
+        "physics"
+      ],
+      "notes": "Five credits in not more than two sittings. Exact subjects vary by university, so check your chosen school's brochure."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Biology",
+        "Chemistry",
+        "Physics or Mathematics"
+      ],
+      "required": [
+        "english",
+        "biology",
+        "chemistry"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "Biology",
+        "Chemistry",
+        "A third subject (Maths or Physics is helpful)"
+      ],
+      "required": [
+        "biology",
+        "chemistry"
+      ]
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Biology",
+        "Chemistry",
+        "Algebra"
+      ],
+      "required": [
+        "biology",
+        "chemistry"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Clinical or diagnostic microbiologist",
+      "description": "Identifies the organisms behind infections so doctors can choose the right treatment."
+    },
+    {
+      "title": "Food quality and safety microbiologist",
+      "description": "Tests food and drink to keep it safe, working for manufacturers and regulators."
+    },
+    {
+      "title": "Pharmaceutical microbiologist",
+      "description": "Helps make and test antibiotics, vaccines and sterile medicines."
+    },
+    {
+      "title": "Public health or epidemiology officer",
+      "description": "Tracks and controls outbreaks of infectious disease in communities."
+    },
+    {
+      "title": "Environmental microbiologist",
+      "description": "Uses microbes to treat water and waste, and monitors pollution."
+    },
+    {
+      "title": "Research scientist",
+      "description": "Investigates microbes in a university, hospital or research institute."
+    }
+  ],
+  "tags": {
+    "biology": 3,
+    "chemistry": 2,
+    "lab": 3,
+    "research": 3,
+    "detail-oriented": 3,
+    "analytical": 2,
+    "independent": 2,
+    "helping-people": 1,
+    "social-impact": 1,
+    "job-security": 1,
+    "global-mobility": 1
+  }
+}

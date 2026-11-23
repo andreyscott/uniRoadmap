@@ -1,0 +1,94 @@
+{
+  "id": "business-administration",
+  "name": "Business Administration",
+  "faculty": "business",
+  "summary": "Learn how organisations are run: management, marketing, finance and people, with a strong push towards starting your own.",
+  "overview": "Business Administration teaches how organisations work and how to run them well. You'll cover management, marketing, accounting and finance, human resources, operations and business law.\n\nThe course is broad rather than deep, with lots of case studies, group projects and presentations. Many programmes include entrepreneurship modules, and some students launch businesses before they graduate.\n\nIt suits sociable, organised people who like leading and persuading. Graduates go into management trainee schemes, marketing, banking, HR and consulting, or start their own companies.",
+  "durationYears": 4,
+  "durationNotes": "4 years in Nigeria and the US; usually 3 years in England, or 4 with a placement year.",
+  "difficulty": "beginner",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Economics",
+        "Two other subjects"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "economics"
+      ],
+      "notes": "Five credits in not more than two sittings. Exact subjects vary by university, so check your chosen school's brochure."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Mathematics",
+        "Economics",
+        "One other social science subject"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "economics"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "No specific subjects usually required",
+        "Mathematics, Business or Economics are helpful"
+      ],
+      "required": [],
+      "notes": "Most universities also ask for a good GCSE pass in Mathematics."
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Algebra",
+        "Business or Economics (helpful, not required)"
+      ],
+      "required": [
+        "maths"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Entrepreneur",
+      "description": "Starts and grows a business of their own."
+    },
+    {
+      "title": "Marketing manager",
+      "description": "Plans how products are priced, promoted and sold, including online."
+    },
+    {
+      "title": "Human resources manager",
+      "description": "Recruits, trains and looks after the people in an organisation."
+    },
+    {
+      "title": "Operations manager",
+      "description": "Keeps the day-to-day running of a company efficient, from supply to delivery."
+    },
+    {
+      "title": "Management trainee",
+      "description": "Rotates through departments of a bank or large company on the way to a management role."
+    }
+  ],
+  "tags": {
+    "business-minded": 3,
+    "leadership": 3,
+    "communication": 3,
+    "entrepreneurship": 3,
+    "teamwork": 2,
+    "structured": 2,
+    "economics": 2,
+    "maths": 1,
+    "office": 2,
+    "high-earning": 2
+  }
+}

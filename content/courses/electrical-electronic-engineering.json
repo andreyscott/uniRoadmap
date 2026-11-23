@@ -1,0 +1,105 @@
+{
+  "id": "electrical-electronic-engineering",
+  "name": "Electrical and Electronic Engineering",
+  "faculty": "engineering",
+  "summary": "Design the circuits, machines and networks that generate, move and use electricity, from power grids to phones.",
+  "overview": "Electrical and Electronic Engineering covers everything that runs on electricity: power stations and grids, motors and generators, the electronics inside every device, and the networks that carry signals between them.\n\nThe first years build strong foundations in maths, physics and circuit theory. Later you specialise, usually in power systems, electronics, telecommunications or control, and spend long hours in labs building and testing real hardware.\n\nIt is a demanding, practical degree. Graduates are needed wherever power is unreliable or technology is growing, which makes the skills valuable in Nigeria and abroad.",
+  "durationYears": 5,
+  "durationNotes": "5 years for a BEng in Nigeria, including industrial training (SIWES). Usually 3 years for a BEng or 4 for an MEng in the UK, and 4 years in the US.",
+  "difficulty": "advanced",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "One of: Further Mathematics, Technical Drawing, Biology"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "physics",
+        "chemistry"
+      ],
+      "notes": "Five credits in not more than two sittings. Exact subjects vary by university, so check your chosen school's brochure."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "physics",
+        "chemistry"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "Mathematics",
+        "Physics",
+        "Further Mathematics (helpful)"
+      ],
+      "required": [
+        "maths",
+        "physics"
+      ]
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Calculus or Precalculus",
+        "Physics",
+        "Chemistry (recommended)"
+      ],
+      "required": [
+        "maths",
+        "physics"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Power systems engineer",
+      "description": "Plans, runs and maintains the generation and distribution of electricity, from power plants to local grids."
+    },
+    {
+      "title": "Electronics or embedded systems engineer",
+      "description": "Designs circuit boards and the small computers built into devices, vehicles and machines."
+    },
+    {
+      "title": "Telecommunications engineer",
+      "description": "Builds and manages mobile, internet and satellite networks."
+    },
+    {
+      "title": "Renewable energy engineer",
+      "description": "Designs and installs solar, wind and battery systems, a fast-growing field across Africa."
+    },
+    {
+      "title": "Control and automation engineer",
+      "description": "Makes factories, plants and robots run themselves safely and efficiently."
+    }
+  ],
+  "tags": {
+    "maths": 3,
+    "physics": 3,
+    "technology": 3,
+    "problem-solving": 3,
+    "hands-on": 3,
+    "analytical": 2,
+    "teamwork": 2,
+    "lab": 1,
+    "outdoors": 1,
+    "job-security": 2,
+    "high-earning": 2,
+    "global-mobility": 2,
+    "entrepreneurship": 1
+  }
+}

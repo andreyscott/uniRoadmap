@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getCourses, getFaculties, getFaculty } from "@/lib/content/load";
+import { getCourse, getFaculties, getFaculty } from "@/lib/content/load";
 import {
   EMPTY_FILTERS,
   careerId,
@@ -12,7 +12,9 @@ import {
   type DirectoryFilters,
 } from "@/lib/content/directory";
 
-const listings = getCourses().map((c) => toListing(c, getFaculty(c.faculty)!));
+// A fixed set of real courses, so adding content doesn't change these expectations.
+const FIXTURE_IDS = ["accounting", "computer-science", "medicine-and-surgery"];
+const listings = FIXTURE_IDS.map((id) => getCourse(id)!).map((c) => toListing(c, getFaculty(c.faculty)!));
 const options = directoryOptions(listings, getFaculties());
 const ids = (filters: Partial<DirectoryFilters>) =>
   filterCourses(listings, { ...EMPTY_FILTERS, ...filters }).map((l) => l.id);

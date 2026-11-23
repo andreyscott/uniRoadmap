@@ -11,9 +11,11 @@ import type { z } from "zod";
 import {
   courseSchema,
   facultiesFileSchema,
+  quizFileSchema,
   skillRoadmapSchema,
   type Course,
   type Faculty,
+  type Quiz,
   type SkillRoadmap,
 } from "./schemas";
 
@@ -101,3 +103,14 @@ export const getCourses = () => content().courses;
 export const getCourse = (id: string) => content().courses.find((c) => c.id === id);
 export const getSkillRoadmaps = () => content().skills;
 export const getSkillRoadmap = (id: string) => content().skills.find((s) => s.id === id);
+
+/** The course finder quiz (content/quiz.json). */
+export function loadQuiz(dir: string = CONTENT_DIR): Quiz {
+  return readJson(path.join(dir, "quiz.json"), quizFileSchema);
+}
+
+let cachedQuiz: Quiz | undefined;
+export function getQuiz(): Quiz {
+  if (process.env.NODE_ENV === "development") return loadQuiz();
+  return (cachedQuiz ??= loadQuiz());
+}

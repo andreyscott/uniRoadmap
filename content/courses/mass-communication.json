@@ -1,0 +1,97 @@
+{
+  "id": "mass-communication",
+  "name": "Mass Communication",
+  "faculty": "arts",
+  "summary": "Learn to inform, persuade and entertain through journalism, broadcasting, public relations, advertising and digital media.",
+  "overview": "Mass Communication covers how messages reach large audiences: newspapers, radio, TV, film, advertising, public relations and, increasingly, social media and online video.\n\nYou'll study media history, law and ethics alongside practical skills such as news writing, broadcasting, photography, video production and campaign planning. Most programmes run campus radio stations, newspapers or studios where you get hands-on practice.\n\nIt suits curious, creative people who write well and enjoy talking to people. Graduates work as journalists, presenters, PR and advertising professionals and digital content creators.",
+  "durationYears": 4,
+  "durationNotes": "4 years in Nigeria and the US; usually 3 years in England for media or journalism degrees.",
+  "difficulty": "beginner",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Literature in English",
+        "Mathematics",
+        "Two other subjects, such as Government or Economics"
+      ],
+      "required": [
+        "english",
+        "literature",
+        "maths"
+      ],
+      "notes": "Five credits in not more than two sittings. Exact subjects vary by university, so check your chosen school's brochure."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Literature in English",
+        "Two of: Government, Economics, CRS/IRS, History"
+      ],
+      "required": [
+        "english",
+        "literature"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "No specific subjects usually required",
+        "English or Media Studies are helpful"
+      ],
+      "required": []
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "English",
+        "Journalism or Media classes (helpful)"
+      ],
+      "required": [
+        "english"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Journalist or reporter",
+      "description": "Finds, checks and tells news stories in print, broadcast or online."
+    },
+    {
+      "title": "Broadcaster or presenter",
+      "description": "Presents and produces radio, TV or podcast programmes."
+    },
+    {
+      "title": "Public relations officer",
+      "description": "Manages how an organisation communicates with the public and the press."
+    },
+    {
+      "title": "Advertising copywriter or strategist",
+      "description": "Creates and plans campaigns that sell products and ideas."
+    },
+    {
+      "title": "Social media and content manager",
+      "description": "Runs a brand's online channels and makes content for them."
+    },
+    {
+      "title": "Film and video producer",
+      "description": "Plans and makes documentaries, adverts and shows."
+    }
+  ],
+  "tags": {
+    "writing": 3,
+    "communication": 3,
+    "creative": 3,
+    "social-studies": 2,
+    "languages": 1,
+    "art-design": 1,
+    "teamwork": 2,
+    "independent": 1,
+    "outdoors": 1,
+    "entrepreneurship": 2,
+    "leadership": 1,
+    "social-impact": 1
+  }
+}

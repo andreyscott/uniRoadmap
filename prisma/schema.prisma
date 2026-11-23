@@ -173,12 +173,18 @@ model SavedRoadmap {
   @@map("saved_roadmaps")
 }
 
+/// Copied from content/quiz.json by the seed script.
 model QuizQuestion {
-  id       String @id
-  position Int
-  prompt   String
-  /// [{ id, label, weights: { tag: number } }]
-  options  Json
+  id         String  @id
+  position   Int
+  prompt     String
+  /// Hint shown under the question.
+  help       String?
+  /// "single" (pick one) or "multi" (pick up to maxChoices).
+  kind       String  @default("single")
+  maxChoices Int?
+  /// [{ id, label, weights?: { tag: 1-3 }, exam?, maxYears?, maxDifficulty? }]
+  options    Json
 
   @@map("quiz_questions")
 }
@@ -187,7 +193,7 @@ model QuizResult {
   id         String   @id @default(cuid())
   userId     String?  @db.Uuid // null for anonymous results (shareable by link)
   user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
-  /// { questionId: optionId }
+  /// { questionId: optionId[] }
   answers    Json
   /// [{ courseId, score, reasons: string[] }]
   topCourses Json

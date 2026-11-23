@@ -1,0 +1,102 @@
+{
+  "id": "economics",
+  "name": "Economics",
+  "faculty": "business",
+  "summary": "Study how people, businesses and governments make choices with limited resources, and what that means for jobs, prices and growth.",
+  "overview": "Economics asks why some countries grow rich and others don't, what causes inflation and unemployment, and how people and businesses decide what to buy, sell and invest in.\n\nYou'll learn microeconomics, macroeconomics and a good deal of maths and statistics, then apply them to topics like development, public finance, money and banking, and international trade. Increasingly, the work involves analysing real data.\n\nIt suits analytical people who like ideas and numbers in equal measure. The degree opens doors in banking, finance, government, consulting and international organisations.",
+  "durationYears": 4,
+  "durationNotes": "4 years in Nigeria and the US; usually 3 years in England.",
+  "difficulty": "intermediate",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Economics",
+        "Two other subjects, usually social sciences"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "economics"
+      ],
+      "notes": "Five credits in not more than two sittings. Exact subjects vary by university, so check your chosen school's brochure."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Mathematics",
+        "Economics",
+        "One of: Government, Geography, Commerce, Accounting"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "economics"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "Mathematics (required by most top universities)",
+        "Economics (helpful, rarely required)"
+      ],
+      "required": [
+        "maths"
+      ]
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Calculus or Precalculus",
+        "Statistics (helpful)"
+      ],
+      "required": [
+        "maths"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Economist or policy analyst",
+      "description": "Analyses data and advises governments, central banks or think tanks on policy."
+    },
+    {
+      "title": "Financial analyst",
+      "description": "Studies markets and companies to guide investment decisions."
+    },
+    {
+      "title": "Banker",
+      "description": "Works in retail, corporate or investment banking."
+    },
+    {
+      "title": "Data analyst",
+      "description": "Turns business and economic data into decisions, using statistics and code."
+    },
+    {
+      "title": "Development economist",
+      "description": "Works on poverty, health and growth programmes with NGOs and international agencies."
+    },
+    {
+      "title": "Management consultant",
+      "description": "Helps organisations solve business problems and improve performance."
+    }
+  ],
+  "tags": {
+    "economics": 3,
+    "maths": 3,
+    "analytical": 3,
+    "research": 2,
+    "business-minded": 2,
+    "social-studies": 2,
+    "writing": 1,
+    "office": 2,
+    "independent": 1,
+    "high-earning": 2,
+    "global-mobility": 2,
+    "social-impact": 1,
+    "job-security": 1
+  }
+}

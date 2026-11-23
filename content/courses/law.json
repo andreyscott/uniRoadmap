@@ -1,0 +1,97 @@
+{
+  "id": "law",
+  "name": "Law",
+  "faculty": "arts",
+  "summary": "Learn how laws are made, argued and applied, and train to advise clients and represent them in court.",
+  "overview": "Law studies the rules that govern society: contracts, crime, property, families, businesses and the constitution itself. You'll learn to read cases and statutes closely, build arguments and write clearly and precisely.\n\nExpect a lot of reading, essays and moots (practice court hearings). In Nigeria, the LLB is followed by a year at the Nigerian Law School before you are called to the Bar as a barrister and solicitor.\n\nIt suits people who enjoy reading, arguing and getting the details exactly right. Lawyers work in firms, companies, government, the courts and human rights organisations.",
+  "durationYears": 5,
+  "durationNotes": "5 years for an LLB in Nigeria, then one year at the Nigerian Law School before the call to the Bar. Usually 3 years in England. In the US, law is a 3-year graduate degree (JD) taken after a bachelor's.",
+  "difficulty": "advanced",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Literature in English",
+        "Mathematics",
+        "Two other arts or social science subjects"
+      ],
+      "required": [
+        "english",
+        "literature",
+        "maths"
+      ],
+      "notes": "Credits in all five, usually in one sitting at competitive schools."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Literature in English",
+        "Two of: Government, History, CRS/IRS, Economics"
+      ],
+      "required": [
+        "english",
+        "literature"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "No specific subjects required",
+        "Essay subjects such as History or English Literature are helpful"
+      ],
+      "required": [],
+      "notes": "Some UK universities also require the LNAT admissions test."
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "English",
+        "History or Government (helpful)"
+      ],
+      "required": [],
+      "notes": "In the US you first complete any bachelor's degree, then take the LSAT to apply to law school."
+    }
+  ],
+  "careers": [
+    {
+      "title": "Barrister and solicitor",
+      "description": "Advises clients and represents them in court. In Nigeria the two roles are combined."
+    },
+    {
+      "title": "Corporate lawyer",
+      "description": "Handles contracts, deals and disputes for businesses."
+    },
+    {
+      "title": "In-house legal adviser",
+      "description": "Works inside a company or bank to keep it within the law."
+    },
+    {
+      "title": "Human rights lawyer",
+      "description": "Defends people's rights through the courts and campaigns."
+    },
+    {
+      "title": "Judge or magistrate",
+      "description": "Decides cases, usually after many years of practice."
+    },
+    {
+      "title": "Compliance officer",
+      "description": "Makes sure an organisation follows regulations, especially in finance."
+    }
+  ],
+  "tags": {
+    "writing": 3,
+    "communication": 3,
+    "analytical": 3,
+    "social-studies": 3,
+    "detail-oriented": 2,
+    "research": 2,
+    "leadership": 2,
+    "independent": 1,
+    "office": 2,
+    "high-earning": 3,
+    "social-impact": 2,
+    "job-security": 2
+  }
+}

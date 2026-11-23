@@ -1,0 +1,103 @@
+{
+  "id": "pharmacy",
+  "name": "Pharmacy",
+  "faculty": "health",
+  "summary": "Learn how medicines are made, how they work in the body, and how to make sure patients use them safely.",
+  "overview": "Pharmacists are the experts on medicines. They check that prescriptions are safe, advise patients and doctors, and make sure drugs are manufactured, stored and sold properly.\n\nThe course is heavy on chemistry and biology: pharmaceutical chemistry, pharmacology, how drugs are formulated into tablets and injections, and clinical pharmacy on hospital wards. Expect plenty of lab work and a lot to learn by heart.\n\nGraduates work in community pharmacies, hospitals, the drug industry and regulators such as NAFDAC, and many open their own pharmacies.",
+  "durationYears": 6,
+  "durationNotes": "6 years for the Doctor of Pharmacy (PharmD), which has replaced the 5-year BPharm at most Nigerian universities, then a one-year internship. 4 years for an MPharm in the UK. In the US, the PharmD is a 4-year professional degree taken after pre-pharmacy college courses.",
+  "difficulty": "advanced",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Biology",
+        "Chemistry",
+        "Physics"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "biology",
+        "chemistry",
+        "physics"
+      ],
+      "notes": "Credits in all five, usually in one sitting."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Biology",
+        "Chemistry",
+        "Physics"
+      ],
+      "required": [
+        "english",
+        "biology",
+        "chemistry",
+        "physics"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "Chemistry",
+        "Biology, Mathematics or Physics"
+      ],
+      "required": [
+        "chemistry"
+      ]
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Chemistry",
+        "Biology",
+        "Calculus or Statistics (helpful)"
+      ],
+      "required": [
+        "chemistry",
+        "biology"
+      ],
+      "notes": "In the US you take two or more years of pre-pharmacy college courses before applying to a PharmD programme."
+    }
+  ],
+  "careers": [
+    {
+      "title": "Community pharmacist",
+      "description": "Dispenses medicines and advises patients in a retail pharmacy, often as the owner."
+    },
+    {
+      "title": "Hospital or clinical pharmacist",
+      "description": "Works with doctors on wards to choose the safest, most effective treatments."
+    },
+    {
+      "title": "Industrial pharmacist",
+      "description": "Develops, manufactures and quality-tests medicines in the pharmaceutical industry."
+    },
+    {
+      "title": "Regulatory affairs officer",
+      "description": "Makes sure medicines meet the law, working for regulators like NAFDAC or for drug companies."
+    },
+    {
+      "title": "Medical representative",
+      "description": "Explains new medicines to doctors and pharmacists for a pharmaceutical company."
+    }
+  ],
+  "tags": {
+    "chemistry": 3,
+    "biology": 3,
+    "detail-oriented": 3,
+    "helping-people": 2,
+    "clinical": 2,
+    "lab": 2,
+    "analytical": 2,
+    "job-security": 3,
+    "high-earning": 2,
+    "entrepreneurship": 2,
+    "global-mobility": 2
+  }
+}

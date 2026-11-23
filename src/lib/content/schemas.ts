@@ -157,3 +157,61 @@ export type Roadmap = z.infer<typeof roadmapSchema>;
 export type EntryRequirement = z.infer<typeof entryRequirementSchema>;
 export type Course = z.infer<typeof courseSchema>;
 export type SkillRoadmap = z.infer<typeof skillRoadmapSchema>;
+
+/** One answer to a quiz question, and what choosing it says about the student. */
+export const quizOptionSchema = z.object({
+  id: slug,
+  label: z.string().min(1),
+  /** Tags this answer adds to the student's profile (weights 1-3). */
+  weights: tagWeightsSchema.optional(),
+  /** The exam the student is taking; results then show that exam's entry requirements. */
+  exam: z.enum(EXAM_IDS).optional(),
+  /** Longest first degree, in years, the student is happy with. Longer courses rank lower. */
+  maxYears: z.number().int().min(1).max(8).optional(),
+  /** Hardest course the student wants. Harder courses rank lower. */
+  maxDifficulty: z.enum(DIFFICULTIES).optional(),
+});
+
+export const quizQuestionSchema = z
+  .object({
+    id: slug,
+    prompt: z.string().min(1),
+    /** Hint shown under the question. */
+    help: z.string().optional(),
+    /** "single" shows radio buttons; "multi" shows checkboxes, allowing up to `max` picks. */
+    kind: z.enum(["single", "multi"]),
+    max: z.number().int().min(2).optional(),
+    options: z.array(quizOptionSchema).min(2),
+  })
+  .superRefine((q, ctx) => {
+    if (q.kind === "multi" && (q.max === undefined || q.max > q.options.length)) {
+      ctx.addIssue({ code: "custom", path: ["max"], message: "multi questions need a max no larger than the number of options" });
+    }
+    if (q.kind === "single" && q.max !== undefined) {
+      ctx.addIssue({ code: "custom", path: ["max"], message: "single questions can't have a max" });
+    }
+    const seen = new Set<string>();
+    q.options.forEach((option, i) => {
+      if (seen.has(option.id)) {
+        ctx.addIssue({ code: "custom", path: ["options", i, "id"], message: `duplicate option id "${option.id}"` });
+      }
+      seen.add(option.id);
+    });
+  });
+
+/** content/quiz.json: the course finder. The brief asks for 8-12 questions. */
+export const quizFileSchema = z
+  .object({ questions: z.array(quizQuestionSchema).min(8).max(12) })
+  .superRefine((quiz, ctx) => {
+    const seen = new Set<string>();
+    quiz.questions.forEach((question, i) => {
+      if (seen.has(question.id)) {
+        ctx.addIssue({ code: "custom", path: ["questions", i, "id"], message: `duplicate question id "${question.id}"` });
+      }
+      seen.add(question.id);
+    });
+  });
+
+export type QuizOption = z.infer<typeof quizOptionSchema>;
+export type QuizQuestion = z.infer<typeof quizQuestionSchema>;
+export type Quiz = z.infer<typeof quizFileSchema>;

@@ -1,0 +1,100 @@
+{
+  "id": "nursing",
+  "name": "Nursing",
+  "faculty": "health",
+  "summary": "Train to care for patients, from emergencies to long-term illness, and lead the health care they receive.",
+  "overview": "Nurses are at the centre of health care. They assess patients, give treatments and medicines, spot when someone is getting worse, and support patients and families through illness.\n\nThe degree combines sciences such as anatomy, physiology and pharmacology with nursing practice, and you spend a large share of it on clinical placements in hospitals and community health centres.\n\nIt is hard, people-centred work that rewards calm, kind and organised people. Qualified nurses are in demand around the world, and many go on to specialise in midwifery, critical care, public health or teaching.",
+  "durationYears": 5,
+  "durationNotes": "5 years for a BNSc in Nigeria, then a one-year internship and licensing by the Nursing and Midwifery Council of Nigeria. Usually 3 years in the UK and 4 years for a BSN in the US.",
+  "difficulty": "intermediate",
+  "entryRequirements": [
+    {
+      "exam": "olevel",
+      "subjects": [
+        "English Language",
+        "Mathematics",
+        "Biology",
+        "Chemistry",
+        "Physics"
+      ],
+      "required": [
+        "english",
+        "maths",
+        "biology",
+        "chemistry",
+        "physics"
+      ],
+      "notes": "Credits in all five, usually in one sitting at competitive schools."
+    },
+    {
+      "exam": "utme",
+      "subjects": [
+        "Use of English",
+        "Biology",
+        "Chemistry",
+        "Physics"
+      ],
+      "required": [
+        "english",
+        "biology",
+        "chemistry",
+        "physics"
+      ]
+    },
+    {
+      "exam": "alevel",
+      "subjects": [
+        "Biology or another science (often preferred, not always required)"
+      ],
+      "required": [],
+      "notes": "Most UK nursing degrees also interview applicants and ask for GCSE English and Maths."
+    },
+    {
+      "exam": "us-highschool",
+      "subjects": [
+        "Biology",
+        "Chemistry",
+        "Algebra"
+      ],
+      "required": [
+        "biology",
+        "chemistry"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Registered nurse",
+      "description": "Cares for patients on hospital wards, in clinics or in their homes."
+    },
+    {
+      "title": "Midwife",
+      "description": "Supports women through pregnancy, birth and the weeks after, usually after extra training."
+    },
+    {
+      "title": "Critical care nurse",
+      "description": "Looks after the most seriously ill patients in intensive care and emergency units."
+    },
+    {
+      "title": "Public health nurse",
+      "description": "Runs vaccination, maternal health and health education programmes in communities."
+    },
+    {
+      "title": "Nurse educator or manager",
+      "description": "Trains new nurses or leads nursing teams and services."
+    }
+  ],
+  "tags": {
+    "biology": 3,
+    "chemistry": 1,
+    "helping-people": 3,
+    "clinical": 3,
+    "communication": 3,
+    "teamwork": 3,
+    "detail-oriented": 2,
+    "hands-on": 2,
+    "job-security": 3,
+    "social-impact": 3,
+    "global-mobility": 3
+  }
+}
