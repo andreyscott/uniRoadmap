@@ -115,3 +115,28 @@ export const RESOURCE_TYPE_LABELS: Record<ResourceType, string> = {
   article: "Article",
   tool: "Tool",
 };
+
+export const OWNERSHIPS = ["federal", "state", "private"] as const;
+export type Ownership = (typeof OWNERSHIPS)[number];
+
+export const OWNERSHIP_LABELS: Record<Ownership, string> = {
+  federal: "Federal",
+  state: "State",
+  private: "Private",
+};
+
+export const SEMESTERS = ["first", "second"] as const;
+export type Semester = (typeof SEMESTERS)[number];
+
+export const SEMESTER_LABELS: Record<Semester, string> = {
+  first: "First semester",
+  second: "Second semester",
+};
+
+/** Nigeria's 36 states and the FCT, suggested (not enforced) when entering a university's state. */
+export const NIGERIAN_STATES = [
+  "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno", "Cross River",
+  "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "FCT", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano",
+  "Katsina", "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo",
+  "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara",
+] as const;

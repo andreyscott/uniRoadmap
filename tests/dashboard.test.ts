@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildDashboard, type ProgressRow, type RoadmapRef } from "@/lib/dashboard/build";
+import { buildDashboard, buildUniversityDashboard, type ProgressRow, type RoadmapRef } from "@/lib/dashboard/build";
 import { findNodeRoadmap, getCourse, getSkillRoadmap } from "@/lib/content/load";
 import { formatRelative } from "@/lib/format";
 
@@ -84,5 +84,42 @@ describe("formatRelative", () => {
     expect(formatRelative(ago(26 * 3600), now)).toBe("yesterday");
     expect(formatRelative(ago(15 * 24 * 3600), now)).toBe("2 weeks ago");
     expect(formatRelative(ago(400 * 24 * 3600), now)).toBe("last year");
+  });
+});
+
+describe("buildUniversityDashboard", () => {
+  const course = {
+    id: "uc1",
+    title: "Example Course at TESTU",
+    href: "/universities/testu/example",
+    color: "engineering" as const,
+    modules: [
+      { id: "m1", code: "TST 101", title: "First", type: "core" as const },
+      { id: "m2", code: "TST 102", title: "Second", type: "elective" as const },
+      { id: "m3", code: "TST 103", title: "Third", type: "core" as const },
+    ],
+  };
+
+  it("summarises modules and suggests the next core module", () => {
+    const { roadmaps, activity } = buildUniversityDashboard(
+      [{ moduleId: "m1", universityCourseId: "uc1", status: "done", updatedAt: at(5) }],
+      [course],
+    );
+    expect(roadmaps[0]).toMatchObject({
+      kind: "university",
+      title: "Example Course at TESTU",
+      summary: { total: 3, done: 1, percent: 33 },
+      next: { id: "m3", title: "TST 103 Third", status: null },
+    });
+    expect(activity[0]).toMatchObject({ title: "TST 101 First", href: "/universities/testu/example#m1" });
+  });
+
+  it("prefers a module in progress, and leaves out courses with no progress", () => {
+    const { roadmaps } = buildUniversityDashboard(
+      [{ moduleId: "m2", universityCourseId: "uc1", status: "in-progress", updatedAt: at(5) }],
+      [course, { ...course, id: "uc2" }],
+    );
+    expect(roadmaps).toHaveLength(1);
+    expect(roadmaps[0].next).toEqual({ id: "m2", title: "TST 102 Second", status: "in-progress" });
   });
 });

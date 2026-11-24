@@ -68,7 +68,7 @@ async function SkillContent({ params }: Pick<PageProps<"/skills/[id]">, "params"
           Roadmap
         </h2>
         <div className="mt-4">
-          <RoadmapViewer roadmapId={skill.id} roadmap={skill.roadmap} color="skills" terminus="Finish line" />
+          <RoadmapViewer progressSource={{ kind: "roadmap", id: skill.id }} roadmap={skill.roadmap} color="skills" terminus="Finish line" />
         </div>
       </section>
     </div>

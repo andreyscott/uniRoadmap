@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { DropdownMenu } from "radix-ui";
 import { Button } from "@/components/ui/button";
-import { signOut, useAuth } from "./auth-provider";
+import { signOut, useAuth, useProfile } from "./auth-provider";
 
 const ITEM =
   "flex w-full cursor-pointer items-center rounded-md px-2.5 py-2 text-sm outline-none select-none data-highlighted:bg-muted";
@@ -12,14 +12,12 @@ const ITEM =
 /** Header account control: "Sign in" when signed out, an account menu when signed in. */
 export function AccountMenu() {
   const auth = useAuth();
+  const { profile } = useProfile();
   const pathname = usePathname();
 
   if (auth.status === "unavailable") return null;
 
-  if (auth.status === "loading") {
-    // Hold the space so the header doesn't shift when the session loads.
-    return <span aria-hidden className="hidden h-10 w-[5.25rem] sm:block" />;
-  }
+  if (auth.status === "loading") return <AccountMenuPlaceholder />;
 
   if (auth.status === "signed-out") {
     return (
@@ -57,6 +55,16 @@ export function AccountMenu() {
           <DropdownMenu.Item asChild className={ITEM}>
             <Link href="/dashboard">My roadmaps</Link>
           </DropdownMenu.Item>
+          {profile?.university && (
+            <DropdownMenu.Item asChild className={ITEM}>
+              <Link href={`/universities/${profile.university.id}`}>My university ({profile.university.shortName})</Link>
+            </DropdownMenu.Item>
+          )}
+          {profile?.canEdit && (
+            <DropdownMenu.Item asChild className={ITEM}>
+              <Link href="/admin">Admin</Link>
+            </DropdownMenu.Item>
+          )}
           <DropdownMenu.Item className={ITEM} onSelect={() => void signOut()}>
             Sign out
           </DropdownMenu.Item>
@@ -64,4 +72,9 @@ export function AccountMenu() {
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
   );
+}
+
+/** Holds the account control's space so the header doesn't shift while it loads. */
+export function AccountMenuPlaceholder() {
+  return <span aria-hidden className="hidden h-10 w-[5.25rem] sm:block" />;
 }

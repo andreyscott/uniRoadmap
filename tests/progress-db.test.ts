@@ -23,6 +23,8 @@ describe.skipIf(!url)("progress data access", () => {
   afterAll(async () => {
     // Deleting the user cascades to their progress.
     await getDb().user.deleteMany({ where: { id: user.id } });
+    // Close the pool so test files don't pile up open connections on a small test database.
+    await getDb().$disconnect();
   });
 
   it("creates the user on first save and reads progress back per roadmap", async () => {

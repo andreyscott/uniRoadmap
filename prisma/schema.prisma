@@ -1,8 +1,9 @@
 // Uniroadmap database schema.
 //
-// Course and roadmap content is authored in /content (JSON) and copied here by
-// `npm run db:seed`, so the content files stay the source of truth. The database exists so
-// user data (progress, saves, quiz results) can reference real rows with foreign keys.
+// General course and roadmap content is authored in /content (JSON) and copied here by
+// `npm run db:seed`, so those files stay its source of truth. University data (universities,
+// their versions of each course, curricula) is edited by admins in /admin, so for that the
+// database is the source of truth. User data (progress, saves, quiz results) lives here too.
 //
 // Connection URLs live in prisma.config.ts (Prisma 7), not in this file.
 
@@ -38,6 +39,25 @@ enum ProgressStatus {
   SKIPPED
 }
 
+enum Role {
+  STUDENT
+  /// Can edit the universities listed in university_editors.
+  EDITOR
+  /// Can edit every university and manage editors and admins.
+  ADMIN
+}
+
+enum Ownership {
+  FEDERAL
+  STATE
+  PRIVATE
+}
+
+enum Semester {
+  FIRST
+  SECOND
+}
+
 enum ResourceType {
   VIDEO
   COURSE
@@ -48,13 +68,20 @@ enum ResourceType {
 
 /// One row per Supabase Auth user. `id` is the auth.users id, so no password data lives here.
 model User {
-  id          String         @id @db.Uuid
-  email       String         @unique
-  name        String?
-  createdAt   DateTime       @default(now())
-  progress    UserProgress[]
-  saved       SavedRoadmap[]
-  quizResults QuizResult[]
+  id             String             @id @db.Uuid
+  email          String             @unique
+  name           String?
+  createdAt      DateTime           @default(now())
+  progress       UserProgress[]
+  saved          SavedRoadmap[]
+  quizResults    QuizResult[]
+  role           Role               @default(STUDENT)
+  /// The student's own university ("My university"), if they've chosen one.
+  universityId   String?
+  university     University?        @relation("StudentUniversity", fields: [universityId], references: [id], onDelete: SetNull)
+  editorOf       UniversityEditor[]
+  edits          EditLog[]
+  moduleProgress ModuleProgress[]
 
   @@map("users")
 }
@@ -72,10 +99,10 @@ model Faculty {
 }
 
 model Course {
-  id                String     @id // slug, e.g. "computer-science"
+  id                String             @id // slug, e.g. "computer-science"
   name              String
   facultyId         String
-  faculty           Faculty    @relation(fields: [facultyId], references: [id])
+  faculty           Faculty            @relation(fields: [facultyId], references: [id])
   summary           String
   overview          String
   durationYears     Int
@@ -88,7 +115,8 @@ model Course {
   /// Quiz-matching weights, e.g. { "maths": 3, "helping-people": 1 }
   tagProfile        Json
   roadmap           Roadmap?
-  updatedAt         DateTime   @updatedAt
+  offerings         UniversityCourse[]
+  updatedAt         DateTime           @updatedAt
 
   @@index([facultyId])
   @@map("courses")
@@ -113,13 +141,13 @@ model Roadmap {
 
 model RoadmapNode {
   /// Stable, globally unique id (e.g. "cs-y1-discrete-math"). Never rename: progress points here.
-  id          String         @id
+  id          String             @id
   roadmapId   String
-  roadmap     Roadmap        @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+  roadmap     Roadmap            @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
   /// The topic this one builds on, drawn as a connector in the roadmap view.
   parentId    String?
-  parent      RoadmapNode?   @relation("NodeTree", fields: [parentId], references: [id], onDelete: SetNull)
-  children    RoadmapNode[]  @relation("NodeTree")
+  parent      RoadmapNode?       @relation("NodeTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children    RoadmapNode[]      @relation("NodeTree")
   title       String
   description String
   keyConcepts String[]
@@ -128,6 +156,7 @@ model RoadmapNode {
   position    Int // order within the stage
   resources   Resource[]
   progress    UserProgress[]
+  modules     UniversityModule[]
 
   @@index([roadmapId, stage, position])
   @@index([parentId])
@@ -201,4 +230,124 @@ model QuizResult {
 
   @@index([userId])
   @@map("quiz_results")
+}
+
+/// A university. The starter list comes from content/universities.json; after that, admins
+/// edit universities in /admin and the seed never overwrites them.
+model University {
+  id          String             @id // slug, e.g. "uniben"
+  name        String
+  shortName   String
+  city        String
+  state       String
+  ownership   Ownership
+  website     String?
+  description String?
+  courses     UniversityCourse[]
+  editors     UniversityEditor[]
+  students    User[]             @relation("StudentUniversity")
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  @@map("universities")
+}
+
+/// A general course as taught at one university: that school's details and curriculum.
+model UniversityCourse {
+  id             String             @id @default(cuid())
+  universityId   String
+  university     University         @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  courseId       String
+  course         Course             @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  department     String?
+  faculty        String?
+  /// Only when it differs from the general course.
+  durationYears  Int?
+  /// The school's UTME subject combination, in its own wording.
+  utmeSubjects   String[]
+  /// Cut-off marks, post-UTME screening and other admission notes.
+  admissionNotes String?
+  notes          String?
+  modules        UniversityModule[]
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  @@unique([universityId, courseId])
+  @@index([courseId])
+  @@map("university_courses")
+}
+
+/// One module in a university's curriculum, e.g. "CSC 211 Data Structures, 3 units, first semester".
+model UniversityModule {
+  id                 String           @id @default(cuid())
+  universityCourseId String
+  universityCourse   UniversityCourse @relation(fields: [universityCourseId], references: [id], onDelete: Cascade)
+  code               String
+  title              String
+  year               Int
+  /// Null for a module that runs all year, such as industrial training.
+  semester           Semester?
+  creditUnits        Int?
+  type               NodeType         @default(CORE)
+  description        String?
+  /// The general roadmap topic it covers; that topic's explanation and free resources show too.
+  topicId            String?
+  topic              RoadmapNode?     @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  position           Int              @default(0)
+  progress           ModuleProgress[]
+
+  @@index([universityCourseId, year, semester, position])
+  @@index([topicId])
+  @@map("university_modules")
+}
+
+/// A student's progress on a university module (general topics use user_progress).
+model ModuleProgress {
+  userId    String           @db.Uuid
+  moduleId  String
+  status    ProgressStatus
+  updatedAt DateTime         @updatedAt
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  module    UniversityModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, moduleId])
+  @@index([moduleId])
+  @@map("module_progress")
+}
+
+/// Which universities an EDITOR may change. Admins may change all of them.
+model UniversityEditor {
+  userId       String     @db.Uuid
+  universityId String
+  createdAt    DateTime   @default(now())
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  university   University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+
+  @@id([userId, universityId])
+  @@index([universityId])
+  @@map("university_editors")
+}
+
+/// Every change made in /admin, with before/after snapshots so it can be reviewed and undone.
+model EditLog {
+  id           String    @id @default(cuid())
+  userId       String?   @db.Uuid
+  user         User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  /// Plain text, not a foreign key, so history survives the university being deleted.
+  universityId String?
+  /// "university" | "universityCourse" | "module" | "editor" | "role"
+  entity       String
+  entityId     String
+  /// "create" | "update" | "delete"
+  action       String
+  summary      String
+  before       Json?
+  after        Json?
+  undoneAt     DateTime?
+  undoneById   String?   @db.Uuid
+  createdAt    DateTime  @default(now())
+
+  @@index([universityId, createdAt])
+  @@index([entity, entityId, createdAt])
+  @@map("edit_log")
 }

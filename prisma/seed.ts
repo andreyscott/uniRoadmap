@@ -4,13 +4,15 @@
  * - Faculties, courses, roadmaps, nodes and resources are upserted, so ids stay stable
  *   and existing user progress keeps pointing at the right nodes.
  * - Quiz questions are replaced to match content/quiz.json (nothing references them by key).
+ * - Universities from content/universities.json are added only if missing: once they exist,
+ *   admins edit them in /admin and the seed never overwrites those edits.
  * - Nodes that exist in the database but were removed from /content are NOT deleted by
  *   default, because deleting a node deletes users' progress on it. They're listed as a
  *   warning. Pass `-- --prune` to delete them deliberately.
  */
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient, type Prisma } from "../src/generated/prisma/client";
-import { ContentError, loadContent, loadQuiz } from "../src/lib/content/load";
+import { ContentError, loadContent, loadQuiz, loadUniversities } from "../src/lib/content/load";
 import type { Course, Roadmap, RoadmapNode } from "../src/lib/content/schemas";
 
 for (const file of [".env.local", ".env"]) {
@@ -179,6 +181,13 @@ async function main() {
     await tx.quizQuestion.deleteMany({ where: { id: { notIn: quiz.questions.map((q) => q.id) } } });
   }, txOptions);
   console.log(`✓ quiz    ${quiz.questions.length} questions`);
+
+  const universities = loadUniversities();
+  const { count } = await prisma.university.createMany({
+    data: universities.map((u) => ({ ...u, ownership: toEnum(u.ownership) as "FEDERAL" | "STATE" | "PRIVATE" })),
+    skipDuplicates: true,
+  });
+  console.log(`✓ universities: ${count} added, ${universities.length - count} already there`);
 }
 
 main()

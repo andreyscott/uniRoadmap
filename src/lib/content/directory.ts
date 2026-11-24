@@ -37,6 +37,8 @@ export interface DirectoryFilters {
   exam: ExamId | null;
   /** Only meaningful with an exam: subjects the student has for it. */
   subjects: SubjectId[];
+  /** University id: only courses with a version at that university. */
+  university: string | null;
 }
 
 export interface DirectoryOptions {
@@ -53,6 +55,7 @@ export const EMPTY_FILTERS: DirectoryFilters = {
   career: null,
   exam: null,
   subjects: [],
+  university: null,
 };
 
 /** URL search param names. */
@@ -63,6 +66,7 @@ const PARAM = {
   career: "career",
   exam: "exam",
   subject: "subject",
+  university: "university",
 } as const;
 
 /** Lowercase with accents removed, so "café" matches "cafe". */
@@ -136,6 +140,8 @@ export function parseFilters(params: ParamSource, options: DirectoryOptions): Di
   const examParam = params.get(PARAM.exam);
   const exam = examParam && examParam in options.subjectsByExam ? (examParam as ExamId) : null;
   const career = params.get(PARAM.career);
+  // Checked against the loaded university list by the view; here just shape-checked.
+  const university = params.get(PARAM.university);
 
   return {
     q: (params.get(PARAM.q) ?? "").trim(),
@@ -146,6 +152,7 @@ export function parseFilters(params: ParamSource, options: DirectoryOptions): Di
     subjects: exam
       ? known(params.getAll(PARAM.subject), (options.subjectsByExam[exam] ?? []).map((s) => s.id))
       : [],
+    university: university && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(university) ? university : null,
   };
 }
 
@@ -160,6 +167,7 @@ export function filtersToQuery(filters: DirectoryFilters): string {
     params.set(PARAM.exam, filters.exam);
     for (const s of filters.subjects) params.append(PARAM.subject, s);
   }
+  if (filters.university) params.set(PARAM.university, filters.university);
   return params.toString();
 }
 
@@ -170,7 +178,8 @@ export function countActiveFilters(filters: DirectoryFilters): number {
     filters.difficulties.length +
     (filters.career ? 1 : 0) +
     (filters.exam ? 1 : 0) +
-    filters.subjects.length
+    filters.subjects.length +
+    (filters.university ? 1 : 0)
   );
 }
 
@@ -196,14 +205,19 @@ export function searchScore(listing: CourseListing, query: string): number {
   return score;
 }
 
-/** Applies every filter. Results are A-Z, or by search score (then A-Z) when there's a query. */
-export function filterCourses(listings: CourseListing[], filters: DirectoryFilters): CourseListing[] {
+/**
+ * Applies every filter. Results are A-Z, or by search score (then A-Z) when there's a query.
+ * `offered` is the set of course ids the chosen university has versions of; until it has
+ * loaded, the university filter is skipped rather than showing nothing.
+ */
+export function filterCourses(listings: CourseListing[], filters: DirectoryFilters, offered?: Set<string>): CourseListing[] {
   const results: { listing: CourseListing; score: number }[] = [];
 
   for (const listing of listings) {
     if (filters.faculties.length && !filters.faculties.includes(listing.faculty.id)) continue;
     if (filters.difficulties.length && !filters.difficulties.includes(listing.difficulty)) continue;
     if (filters.career && !listing.careers.some((c) => c.id === filters.career)) continue;
+    if (filters.university && offered && !offered.has(listing.id)) continue;
     if (filters.exam) {
       const entry = listing.entry[filters.exam];
       if (!entry) continue;

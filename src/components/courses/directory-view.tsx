@@ -32,12 +32,21 @@ interface DirectoryViewProps {
    * known), where the controls render disabled so the layout doesn't jump on hydration.
    */
   onChange?: (filters: DirectoryFilters) => void;
+  /** Universities for the university filter; null while loading or if they couldn't load. */
+  universities?: UniversityOption[] | null;
+}
+
+export interface UniversityOption {
+  id: string;
+  name: string;
+  shortName: string;
+  courseIds: string[];
 }
 
 const toggle = <T,>(list: T[], value: T) =>
   list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
 
-export function DirectoryView({ listings, options, filters, onChange }: DirectoryViewProps) {
+export function DirectoryView({ listings, options, filters, onChange, universities = null }: DirectoryViewProps) {
   const disabled = !onChange;
   const panelId = useId();
   const [panelOpen, setPanelOpen] = useState(false);
@@ -52,9 +61,17 @@ export function DirectoryView({ listings, options, filters, onChange }: Director
     if (filters.q !== query.trim()) setQuery(filters.q);
   }
 
+  // Only universities with at least one course version are worth filtering by.
+  const universityOptions = (universities ?? []).filter((u) => u.courseIds.length > 0);
+  const chosenUniversity = universities?.find((u) => u.id === filters.university) ?? null;
+  const offered = useMemo(
+    // An unknown or not-yet-loaded university leaves the list unfiltered rather than empty.
+    () => (chosenUniversity ? new Set(chosenUniversity.courseIds) : undefined),
+    [chosenUniversity],
+  );
   const results = useMemo(
-    () => filterCourses(listings, { ...filters, q: query.trim() }),
-    [listings, filters, query],
+    () => filterCourses(listings, { ...filters, q: query.trim() }, offered),
+    [listings, filters, query, offered],
   );
   const activeCount = countActiveFilters(filters);
   const canClear = activeCount > 0 || query.trim() !== "";
@@ -193,6 +210,29 @@ export function DirectoryView({ listings, options, filters, onChange }: Director
             </Select>
           </div>
 
+          {universityOptions.length > 0 && (
+            <div>
+              <label htmlFor="directory-university" className="font-heading text-sm font-bold">
+                University
+              </label>
+              <Select
+                id="directory-university"
+                name="university"
+                value={filters.university ?? ""}
+                disabled={disabled}
+                onChange={(e) => update({ university: e.target.value || null })}
+              >
+                <option value="">Any university</option>
+                {universityOptions.map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {u.shortName} ({u.name})
+                  </option>
+                ))}
+              </Select>
+              <p className="mt-1.5 text-xs text-muted-foreground">Courses with that university&apos;s own roadmap.</p>
+            </div>
+          )}
+
           <div>
             <label htmlFor="directory-exam" className="font-heading text-sm font-bold">
               Entry exam
@@ -275,7 +315,13 @@ export function DirectoryView({ listings, options, filters, onChange }: Director
         {results.length > 0 ? (
           <ul className="mt-2 grid gap-1">
             {results.map((listing) => (
-              <CourseRow key={listing.id} listing={listing} exam={filters.exam} career={filters.career} />
+              <CourseRow
+                key={listing.id}
+                listing={listing}
+                exam={filters.exam}
+                career={filters.career}
+                university={chosenUniversity}
+              />
             ))}
           </ul>
         ) : (

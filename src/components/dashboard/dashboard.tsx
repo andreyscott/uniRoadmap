@@ -179,7 +179,7 @@ function RoadmapCard({ roadmap }: { roadmap: DashboardRoadmap }) {
           </Link>
         </h3>
         <span className="shrink-0 pt-1 text-xs text-muted-foreground">
-          {roadmap.kind === "course" ? "Degree" : "Skill"}
+          {roadmap.kind === "course" ? "Degree" : roadmap.kind === "university" ? "University" : "Skill"}
         </span>
       </div>
 

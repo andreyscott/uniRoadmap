@@ -1,0 +1,25 @@
+{
+  "universities": [
+    { "id": "uniben", "name": "University of Benin", "shortName": "UNIBEN", "city": "Benin City", "state": "Edo", "ownership": "federal" },
+    { "id": "unilag", "name": "University of Lagos", "shortName": "UNILAG", "city": "Akoka, Lagos", "state": "Lagos", "ownership": "federal" },
+    { "id": "ui", "name": "University of Ibadan", "shortName": "UI", "city": "Ibadan", "state": "Oyo", "ownership": "federal" },
+    { "id": "unn", "name": "University of Nigeria, Nsukka", "shortName": "UNN", "city": "Nsukka", "state": "Enugu", "ownership": "federal" },
+    { "id": "oau", "name": "Obafemi Awolowo University", "shortName": "OAU", "city": "Ile-Ife", "state": "Osun", "ownership": "federal" },
+    { "id": "abu", "name": "Ahmadu Bello University", "shortName": "ABU", "city": "Zaria", "state": "Kaduna", "ownership": "federal" },
+    { "id": "uniport", "name": "University of Port Harcourt", "shortName": "UNIPORT", "city": "Port Harcourt", "state": "Rivers", "ownership": "federal" },
+    { "id": "unilorin", "name": "University of Ilorin", "shortName": "UNILORIN", "city": "Ilorin", "state": "Kwara", "ownership": "federal" },
+    { "id": "unical", "name": "University of Calabar", "shortName": "UNICAL", "city": "Calabar", "state": "Cross River", "ownership": "federal" },
+    { "id": "uniuyo", "name": "University of Uyo", "shortName": "UNIUYO", "city": "Uyo", "state": "Akwa Ibom", "ownership": "federal" },
+    { "id": "unijos", "name": "University of Jos", "shortName": "UNIJOS", "city": "Jos", "state": "Plateau", "ownership": "federal" },
+    { "id": "buk", "name": "Bayero University Kano", "shortName": "BUK", "city": "Kano", "state": "Kano", "ownership": "federal" },
+    { "id": "unimaid", "name": "University of Maiduguri", "shortName": "UNIMAID", "city": "Maiduguri", "state": "Borno", "ownership": "federal" },
+    { "id": "unizik", "name": "Nnamdi Azikiwe University", "shortName": "UNIZIK", "city": "Awka", "state": "Anambra", "ownership": "federal" },
+    { "id": "futa", "name": "Federal University of Technology, Akure", "shortName": "FUTA", "city": "Akure", "state": "Ondo", "ownership": "federal" },
+    { "id": "futo", "name": "Federal University of Technology, Owerri", "shortName": "FUTO", "city": "Owerri", "state": "Imo", "ownership": "federal" },
+    { "id": "lasu", "name": "Lagos State University", "shortName": "LASU", "city": "Ojo, Lagos", "state": "Lagos", "ownership": "state" },
+    { "id": "delsu", "name": "Delta State University", "shortName": "DELSU", "city": "Abraka", "state": "Delta", "ownership": "state" },
+    { "id": "rsu", "name": "Rivers State University", "shortName": "RSU", "city": "Port Harcourt", "state": "Rivers", "ownership": "state" },
+    { "id": "covenant", "name": "Covenant University", "shortName": "CU", "city": "Ota", "state": "Ogun", "ownership": "private" },
+    { "id": "babcock", "name": "Babcock University", "shortName": "BABCOCK", "city": "Ilishan-Remo", "state": "Ogun", "ownership": "private" }
+  ]
+}

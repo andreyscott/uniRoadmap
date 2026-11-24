@@ -10,12 +10,14 @@ interface CourseRowProps {
   exam: ExamId | null;
   /** When set, this career is listed first. */
   career: string | null;
+  /** When set, links to this university's version of the course. */
+  university?: { id: string; shortName: string } | null;
 }
 
 const CAREERS_SHOWN = 3;
 
 /** One course in the directory. The whole row is a link to the course page. */
-export function CourseRow({ listing, exam, career }: CourseRowProps) {
+export function CourseRow({ listing, exam, career, university }: CourseRowProps) {
   const careers = career
     ? [...listing.careers].sort((a, b) => Number(b.id === career) - Number(a.id === career))
     : listing.careers;
@@ -68,6 +70,17 @@ export function CourseRow({ listing, exam, career }: CourseRowProps) {
           .join(", ")}
         {moreCareers > 0 && ` and ${moreCareers} more`}
       </p>
+      {university && (
+        <p className="mt-2 text-sm">
+          {/* Above the row's stretched link so it stays clickable on its own. */}
+          <Link
+            href={`/universities/${university.id}/${listing.id}`}
+            className="relative z-10 font-medium text-primary underline underline-offset-4 hover:no-underline"
+          >
+            {listing.name} at {university.shortName}
+          </Link>
+        </p>
+      )}
       {exam && entry && (
         <p className="mt-1 max-w-2xl text-sm">
           {/* Subjects can contain commas ("One of: Chemistry, Biology"), so join with semicolons. */}

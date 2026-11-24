@@ -7,6 +7,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   nav: [
     { href: "/courses", label: "Courses" },
+    { href: "/universities", label: "Universities" },
     { href: "/skills", label: "Skill roadmaps" },
     { href: "/quiz", label: "Course finder" },
   ],

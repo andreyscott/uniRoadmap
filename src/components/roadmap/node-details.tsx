@@ -11,7 +11,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RESOURCE_TYPE_LABELS, type NodeType, type ResourceType } from "@/lib/content/constants";
-import type { RoadmapNode } from "@/lib/content/schemas";
+import Link from "next/link";
+import { SEMESTER_LABELS } from "@/lib/content/constants";
+import type { ViewerNode } from "./types";
 
 const RESOURCE_ICONS: Record<ResourceType, LucideIcon> = {
   video: CirclePlayIcon,
@@ -28,12 +30,12 @@ const TYPE_PHRASE: Record<NodeType, string> = {
 };
 
 interface NodeDetailsProps {
-  node: RoadmapNode;
+  node: ViewerNode;
   stageTitle: string;
   /** The topic this one builds on, if any. */
-  parent: RoadmapNode | null;
+  parent: ViewerNode | null;
   /** Topics that build on this one. */
-  next: RoadmapNode[];
+  next: ViewerNode[];
   headingId: string;
   headingRef?: Ref<HTMLHeadingElement>;
   /** Progress controls, shown under the title. */
@@ -62,7 +64,7 @@ export function NodeDetails({
     <article aria-labelledby={headingId}>
       <div className="flex items-start justify-between gap-3">
         <p className="pt-1.5 text-sm text-muted-foreground">
-          {TYPE_PHRASE[node.type]}, {stageTitle}
+          {moduleLine(node) ?? `${TYPE_PHRASE[node.type]}, ${stageTitle}`}
         </p>
         <Button type="button" variant="ghost" size="icon" className="-mr-2 size-9" onClick={onClose}>
           <XIcon aria-hidden className="size-5" />
@@ -78,16 +80,29 @@ export function NodeDetails({
         {node.title}
       </h2>
       {progress}
-      <p className="mt-4">{node.description}</p>
+      <p className="mt-4">{node.description || <span className="text-muted-foreground">No description yet.</span>}</p>
+      {node.generalTopic && (
+        <p className="mt-3 text-sm text-muted-foreground">
+          Covers the general topic{" "}
+          <Link href={node.generalTopic.href} className="font-medium text-primary underline underline-offset-4">
+            {node.generalTopic.title}
+          </Link>
+          .
+        </p>
+      )}
 
-      <h3 className="mt-6 font-heading text-sm font-bold">Key concepts</h3>
-      <ul className="mt-2 flex flex-wrap gap-1.5">
-        {node.keyConcepts.map((concept) => (
-          <li key={concept} className="rounded-md bg-muted px-2 py-1 text-sm">
-            {concept}
-          </li>
-        ))}
-      </ul>
+      {node.keyConcepts.length > 0 && (
+        <>
+          <h3 className="mt-6 font-heading text-sm font-bold">Key concepts</h3>
+          <ul className="mt-2 flex flex-wrap gap-1.5">
+            {node.keyConcepts.map((concept) => (
+              <li key={concept} className="rounded-md bg-muted px-2 py-1 text-sm">
+                {concept}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
 
       {(parent || next.length > 0) && (
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
@@ -113,6 +128,9 @@ export function NodeDetails({
       )}
 
       <h3 className="mt-6 font-heading text-sm font-bold">Free resources</h3>
+      {node.resources.length === 0 && (
+        <p className="mt-2 text-sm text-muted-foreground">No free resources linked yet.</p>
+      )}
       <ul className="mt-2 grid gap-2">
         {node.resources.map((resource) => {
           const Icon = RESOURCE_ICONS[resource.type];
@@ -145,7 +163,7 @@ export function NodeDetails({
   );
 }
 
-function RelatedButton({ node, onSelect }: { node: RoadmapNode; onSelect: (id: string) => void }) {
+function RelatedButton({ node, onSelect }: { node: ViewerNode; onSelect: (id: string) => void }) {
   return (
     <button
       type="button"
@@ -155,4 +173,17 @@ function RelatedButton({ node, onSelect }: { node: RoadmapNode; onSelect: (id: s
       {node.title}
     </button>
   );
+}
+
+/** "CSC 211, 3 units, first semester" for a university module; null for general topics. */
+function moduleLine(node: ViewerNode): string | null {
+  if (!node.code) return null;
+  return [
+    node.code,
+    node.creditUnits != null && `${node.creditUnits} ${node.creditUnits === 1 ? "unit" : "units"}`,
+    node.semester ? SEMESTER_LABELS[node.semester].toLowerCase() : "all year",
+    TYPE_PHRASE[node.type].toLowerCase(),
+  ]
+    .filter(Boolean)
+    .join(", ");
 }

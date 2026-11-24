@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
+import { CourseUniversities } from "@/components/universities/course-universities";
 import { RoadmapPageSkeleton } from "@/components/roadmap/roadmap-page-skeleton";
 import { RoadmapViewer } from "@/components/roadmap/roadmap-viewer";
 import { YearStrip } from "@/components/year-strip";
@@ -94,6 +95,8 @@ async function CourseContent({ params }: Pick<PageProps<"/courses/[id]">, "param
           <Fact label="Roadmap">{course.roadmap ? `${course.roadmap.nodes.length} topics` : "Coming soon"}</Fact>
         </dl>
 
+        <CourseUniversities courseId={course.id} courseName={course.name} />
+
         <nav aria-label="On this page" className="mt-8 border-y py-3">
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
             {SECTIONS.map((section) => (
@@ -113,7 +116,7 @@ async function CourseContent({ params }: Pick<PageProps<"/courses/[id]">, "param
         </h2>
         {course.roadmap ? (
           <div className="mt-4">
-            <RoadmapViewer roadmapId={course.id} roadmap={course.roadmap} color={faculty.color} terminus="Graduation" />
+            <RoadmapViewer progressSource={{ kind: "roadmap", id: course.id }} roadmap={course.roadmap} color={faculty.color} terminus="Graduation" />
           </div>
         ) : (
           <p className="mt-4 max-w-prose rounded-xl border border-dashed p-6 text-muted-foreground">

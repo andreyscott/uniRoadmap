@@ -8,7 +8,8 @@ content/
 ├── faculties.json        # faculties and their line colour
 ├── courses/<id>.json     # one degree per file (the filename must match "id")
 ├── skills/<id>.json      # non-degree skill roadmaps
-└── quiz.json             # the course finder questions
+├── quiz.json             # the course finder questions
+└── universities.json     # starter list of universities (copied into the database once)
 ```
 
 The full schema, with comments, is in [`src/lib/content/schemas.ts`](../src/lib/content/schemas.ts); allowed tags, exams and subjects are in [`constants.ts`](../src/lib/content/constants.ts).

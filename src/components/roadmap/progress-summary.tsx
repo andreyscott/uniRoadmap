@@ -10,7 +10,8 @@ interface ProgressSummaryProps {
   loginHref: string;
   /** Whether the roadmap is on the user's dashboard. */
   saved: boolean;
-  onSavedChange: (saved: boolean) => void;
+  /** Omit to hide the save toggle (university curricula can't be saved yet). */
+  onSavedChange?: (saved: boolean) => void;
   /** Message from a failed save or unsave. */
   saveError: string | null;
 }
@@ -83,7 +84,7 @@ export function ProgressSummary({ phase, summary, loginHref, saved, onSavedChang
             </>
           )}
         </p>
-        {!loading && (
+        {!loading && onSavedChange && (
           <Button
             type="button"
             variant={saved ? "secondary" : "outline"}

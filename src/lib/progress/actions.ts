@@ -2,7 +2,8 @@
 
 import { z } from "zod";
 import { findNodeRoadmap } from "@/lib/content/load";
-import { saveTopicStatus } from "@/lib/progress/db";
+import { getDb } from "@/lib/db";
+import { saveModuleStatus, saveTopicStatus } from "@/lib/progress/db";
 import { getSessionUser } from "@/lib/supabase/server";
 import { PROGRESS_STATUSES, type ProgressStatus } from "./status";
 
@@ -33,6 +34,27 @@ export async function setTopicStatus(nodeId: string, status: ProgressStatus | nu
     return { ok: true };
   } catch (err) {
     console.error("[progress] save failed:", err);
+    return { ok: false, error: "Your progress couldn't be saved. Try again in a moment." };
+  }
+}
+
+/** Like setTopicStatus, for a module in a university's curriculum. */
+export async function setModuleStatus(moduleId: string, status: ProgressStatus | null): Promise<SetStatusResult> {
+  const input = inputSchema.safeParse({ nodeId: moduleId, status });
+  if (!input.success) return { ok: false, error: "That module doesn't exist." };
+
+  const user = await getSessionUser();
+  if (!user) {
+    return { ok: false, error: "You've been signed out. Sign in again to save your progress.", signedOut: true };
+  }
+
+  try {
+    const exists = await getDb().universityModule.findUnique({ where: { id: moduleId }, select: { id: true } });
+    if (!exists) return { ok: false, error: "That module has been removed. Reload the page." };
+    await saveModuleStatus(user, moduleId, input.data.status);
+    return { ok: true };
+  } catch (err) {
+    console.error("[progress] module save failed:", err);
     return { ok: false, error: "Your progress couldn't be saved. Try again in a moment." };
   }
 }

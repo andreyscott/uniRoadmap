@@ -3,7 +3,7 @@
  * a file that doesn't match fails `npm test`, `npm run content:check` and the seed.
  */
 import { z } from "zod";
-import { DIFFICULTIES, EXAM_IDS, LINE_COLORS, NODE_TYPES, RESOURCE_TYPES, SUBJECT_IDS, TAGS } from "./constants";
+import { DIFFICULTIES, EXAM_IDS, LINE_COLORS, NODE_TYPES, OWNERSHIPS, RESOURCE_TYPES, SUBJECT_IDS, TAGS } from "./constants";
 
 export * from "./constants";
 
@@ -215,3 +215,27 @@ export const quizFileSchema = z
 export type QuizOption = z.infer<typeof quizOptionSchema>;
 export type QuizQuestion = z.infer<typeof quizQuestionSchema>;
 export type Quiz = z.infer<typeof quizFileSchema>;
+
+/** A university in content/universities.json, the starter list copied into the database once. */
+export const universitySeedSchema = z.object({
+  id: slug,
+  name: z.string().min(1),
+  /** The abbreviation students use, e.g. "UNIBEN". */
+  shortName: z.string().min(1).max(20),
+  city: z.string().min(1),
+  state: z.string().min(1),
+  ownership: z.enum(OWNERSHIPS),
+  website: z.url({ protocol: /^https$/ }).optional(),
+});
+
+export const universitiesFileSchema = z
+  .object({ universities: z.array(universitySeedSchema) })
+  .superRefine((file, ctx) => {
+    const seen = new Set<string>();
+    file.universities.forEach((u, i) => {
+      if (seen.has(u.id)) ctx.addIssue({ code: "custom", path: ["universities", i, "id"], message: `duplicate id "${u.id}"` });
+      seen.add(u.id);
+    });
+  });
+
+export type UniversitySeed = z.infer<typeof universitySeedSchema>;

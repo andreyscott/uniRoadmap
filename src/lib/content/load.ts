@@ -13,11 +13,13 @@ import {
   courseSchema,
   facultiesFileSchema,
   quizFileSchema,
+  universitiesFileSchema,
   skillRoadmapSchema,
   type Course,
   type Faculty,
   type Quiz,
   type SkillRoadmap,
+  type UniversitySeed,
 } from "./schemas";
 
 export const CONTENT_DIR = path.join(process.cwd(), "content");
@@ -145,4 +147,9 @@ export function getRoadmapRef(id: string): RoadmapRef | undefined {
   const skill = getSkillRoadmap(id);
   if (skill) return { id, kind: "skill", title: skill.title, href: `/skills/${id}`, color: "skills", roadmap: skill.roadmap };
   return undefined;
+}
+
+/** The starter list of universities (content/universities.json). Only the seed uses it. */
+export function loadUniversities(dir: string = CONTENT_DIR): UniversitySeed[] {
+  return readJson(path.join(dir, "universities.json"), universitiesFileSchema).universities;
 }

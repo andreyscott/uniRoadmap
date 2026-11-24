@@ -52,6 +52,7 @@ describe("parseFilters and filtersToQuery", () => {
       career: "auditor",
       exam: "utme",
       subjects: ["english", "maths"],
+      university: "uniben",
     };
     const query = filtersToQuery(filters);
     expect(parseFilters(new URLSearchParams(query), options)).toEqual(filters);
@@ -93,6 +94,12 @@ describe("filterCourses", () => {
     expect(ids({ career: careerId("Software engineer") })).toEqual(["computer-science"]);
   });
 
+  it("keeps courses a chosen university offers, once its list has loaded", () => {
+    const filters = { ...EMPTY_FILTERS, university: "uniben" };
+    expect(filterCourses(listings, filters).map((l) => l.id)).toHaveLength(3);
+    expect(filterCourses(listings, filters, new Set(["accounting"])).map((l) => l.id)).toEqual(["accounting"]);
+  });
+
   it("keeps courses whose required subjects the student has", () => {
     // A typical science UTME combination without Biology.
     expect(ids({ exam: "utme", subjects: ["english", "maths", "physics", "chemistry"] })).toEqual([
@@ -119,7 +126,8 @@ describe("countActiveFilters", () => {
         career: "c",
         exam: "utme",
         subjects: ["english"],
+        university: "uniben",
       }),
-    ).toBe(6);
+    ).toBe(7);
   });
 });

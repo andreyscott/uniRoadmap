@@ -65,3 +65,26 @@ export async function setRoadmapSaved(user: SessionUser, roadmapId: string, save
     await db.savedRoadmap.deleteMany({ where: { userId: user.id, roadmapId } });
   }
 }
+
+/** Progress on a university course's modules, as { moduleId: status }. */
+export async function getModuleProgress(user: SessionUser, universityCourseId: string): Promise<ProgressMap> {
+  const rows = await getDb().moduleProgress.findMany({
+    where: { userId: user.id, module: { universityCourseId } },
+    select: { moduleId: true, status: true },
+  });
+  return Object.fromEntries(rows.map((row) => [row.moduleId, FROM_DB[row.status]]));
+}
+
+export async function saveModuleStatus(user: SessionUser, moduleId: string, status: ProgressStatus | null) {
+  const db = getDb();
+  await ensureUserRow(user);
+  if (status === null) {
+    await db.moduleProgress.deleteMany({ where: { userId: user.id, moduleId } });
+  } else {
+    await db.moduleProgress.upsert({
+      where: { userId_moduleId: { userId: user.id, moduleId } },
+      create: { userId: user.id, moduleId, status: TO_DB[status] },
+      update: { status: TO_DB[status] },
+    });
+  }
+}

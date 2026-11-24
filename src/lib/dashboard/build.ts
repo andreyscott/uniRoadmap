@@ -2,7 +2,7 @@
  * Turns a user's raw rows (progress, saved roadmaps) plus the content files into what the
  * dashboard shows. Pure, so it's tested without a database.
  */
-import type { LineColor } from "@/lib/content/constants";
+import type { LineColor, NodeType } from "@/lib/content/constants";
 import type { Roadmap } from "@/lib/content/schemas";
 import { summariseProgress, type ProgressMap, type ProgressStatus, type ProgressSummary } from "@/lib/progress/status";
 
@@ -29,7 +29,7 @@ export interface SavedRow {
 
 export interface DashboardRoadmap {
   id: string;
-  kind: "course" | "skill";
+  kind: "course" | "skill" | "university";
   title: string;
   href: string;
   color: LineColor;
@@ -135,4 +135,75 @@ function nextTopic(roadmap: Roadmap, rowsNewestFirst: ProgressRow[], map: Progre
   const unstarted = ordered.filter((n) => !map[n.id]);
   const pick = unstarted.find((n) => n.type === "core") ?? unstarted[0];
   return pick ? { id: pick.id, title: pick.title, status: null } : null;
+}
+
+export interface ModuleProgressRow {
+  moduleId: string;
+  universityCourseId: string;
+  status: ProgressStatus;
+  updatedAt: Date;
+}
+
+/** A university course as the dashboard needs it. Modules are in curriculum order. */
+export interface UniversityCourseRef {
+  id: string;
+  title: string;
+  href: string;
+  color: LineColor;
+  modules: { id: string; code: string; title: string; type: NodeType }[];
+}
+
+/** Dashboard entries and activity for progress on university curricula (module progress). */
+export function buildUniversityDashboard(rows: ModuleProgressRow[], courses: UniversityCourseRef[]): DashboardContent {
+  const newestFirst = [...rows].sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime());
+  const byId = new Map(courses.map((c) => [c.id, c]));
+
+  const roadmaps: DashboardRoadmap[] = courses.flatMap((course) => {
+    const courseRows = newestFirst.filter((r) => r.universityCourseId === course.id);
+    if (courseRows.length === 0) return [];
+    const map: ProgressMap = Object.fromEntries(courseRows.map((r) => [r.moduleId, r.status]));
+    const label = (m: { code: string; title: string }) => `${m.code} ${m.title}`;
+    const inProgress = courseRows.find((r) => r.status === "in-progress");
+    const inProgressModule = inProgress && course.modules.find((m) => m.id === inProgress.moduleId);
+    const unstarted = course.modules.filter((m) => !map[m.id]);
+    const nextModule = unstarted.find((m) => m.type === "core") ?? unstarted[0];
+    return [
+      {
+        id: course.id,
+        kind: "university" as const,
+        title: course.title,
+        href: course.href,
+        color: course.color,
+        summary: summariseProgress(
+          course.modules.map((m) => m.id),
+          map,
+        ),
+        saved: false,
+        lastActive: courseRows[0].updatedAt.toISOString(),
+        next: inProgressModule
+          ? { id: inProgressModule.id, title: label(inProgressModule), status: "in-progress" as const }
+          : nextModule
+            ? { id: nextModule.id, title: label(nextModule), status: null }
+            : null,
+      },
+    ];
+  });
+
+  const activity: ActivityItem[] = newestFirst.flatMap((row) => {
+    const course = byId.get(row.universityCourseId);
+    const mod = course?.modules.find((m) => m.id === row.moduleId);
+    if (!course || !mod) return [];
+    return [
+      {
+        nodeId: mod.id,
+        title: `${mod.code} ${mod.title}`,
+        status: row.status,
+        updatedAt: row.updatedAt.toISOString(),
+        roadmapTitle: course.title,
+        href: `${course.href}#${mod.id}`,
+      },
+    ];
+  });
+
+  return { roadmaps, activity };
 }

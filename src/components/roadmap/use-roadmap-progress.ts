@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@/components/auth/auth-provider";
 import { setRoadmapSaved } from "@/lib/dashboard/actions";
-import { setTopicStatus } from "@/lib/progress/actions";
+import { setModuleStatus, setTopicStatus } from "@/lib/progress/actions";
 import type { ProgressMap, ProgressStatus } from "@/lib/progress/status";
 
 export type ProgressPhase =
@@ -15,6 +15,9 @@ export type ProgressPhase =
   /** Signed in, but progress couldn't be loaded (e.g. database down). */
   | "error";
 
+/** What the progress belongs to: a general or skill roadmap, or a university's curriculum. */
+export type ProgressSource = { kind: "roadmap"; id: string } | { kind: "university-course"; id: string };
+
 type Loaded = { key: string; progress: ProgressMap; saved: boolean } | { key: string; error: string };
 /** Where a failed change came from, so each control shows only its own errors. */
 export type SaveError = { source: "topic" | "saved"; message: string; signedOut: boolean } | null;
@@ -24,18 +27,21 @@ export type SaveError = { source: "topic" | "saved"; message: string; signedOut:
  * loaded in the browser so the page itself stays prerendered. Changes apply instantly and
  * roll back if saving fails.
  */
-export function useRoadmapProgress(roadmapId: string) {
+export function useRoadmapProgress(source: ProgressSource) {
+  const roadmapId = source.id;
+  const isUniversity = source.kind === "university-course";
   const auth = useAuth();
   // Results are tagged with who and what they were loaded for, so a different user or roadmap
   // never sees stale data, without resetting state in an effect.
-  const key = auth.status === "signed-in" ? `${auth.user.id}:${roadmapId}` : null;
+  const key = auth.status === "signed-in" ? `${auth.user.id}:${source.kind}:${roadmapId}` : null;
   const [loaded, setLoaded] = useState<Loaded | null>(null);
   const [saveError, setSaveError] = useState<SaveError>(null);
 
   useEffect(() => {
     if (!key) return;
     let cancelled = false;
-    fetch(`/api/progress?roadmap=${encodeURIComponent(roadmapId)}`, { cache: "no-store" })
+    const query = isUniversity ? `universityCourse=${encodeURIComponent(roadmapId)}` : `roadmap=${encodeURIComponent(roadmapId)}`;
+    fetch(`/api/progress?${query}`, { cache: "no-store" })
       .then(async (res) => {
         const body = (await res.json().catch(() => ({}))) as { progress?: ProgressMap; saved?: boolean; error?: string };
         if (!res.ok || !body.progress) throw new Error(body.error ?? "Your progress couldn't be loaded.");
@@ -46,7 +52,7 @@ export function useRoadmapProgress(roadmapId: string) {
     return () => {
       cancelled = true;
     };
-  }, [key, roadmapId]);
+  }, [key, roadmapId, isUniversity]);
 
   const current = loaded && loaded.key === key ? loaded : null;
   const phase: ProgressPhase =
@@ -90,7 +96,7 @@ export function useRoadmapProgress(roadmapId: string) {
       "topic",
       () => set(status ?? undefined),
       () => set(previous),
-      () => setTopicStatus(nodeId, status),
+      () => (isUniversity ? setModuleStatus(nodeId, status) : setTopicStatus(nodeId, status)),
     );
   };
 

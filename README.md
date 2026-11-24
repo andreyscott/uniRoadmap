@@ -39,6 +39,9 @@ Students sign in with a one-time email link (no passwords). Progress is saved pe
 
 1. Copy the project URL and publishable key from **Project Settings → API Keys** into
    `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+   Use the publishable key (`sb_publishable_...`), never the secret key. Anything in a
+   `NEXT_PUBLIC_` variable is sent to every browser, so `npm run dev` and `npm run build` stop
+   with an error naming the variable if a secret key is found in one.
 2. In **Authentication → URL Configuration**, set the Site URL to your live address and add
    these redirect URLs: `http://localhost:3000/**` and `https://<your-domain>/**`.
 3. Recommended: in **Authentication → Emails → Magic Link**, change the link to
@@ -54,6 +57,24 @@ Pages stay prerendered: the browser reads the session to show the right UI, and 
 re-checks it in `/api/progress` and in the Server Action that saves progress. There's no
 proxy (middleware): nothing server-rendered reads the session, and the browser client refreshes
 its own tokens.
+
+### Universities and the admin area
+
+Each university can have its own version of a course: its department, UTME subject combination,
+admission notes and curriculum (module codes, titles, credit units and semesters, year by year).
+Students find them at `/universities`. This data lives in the database, not in `content/`, and is
+edited by people at `/admin`:
+
+- **Admins** edit every university, add universities and manage who has access at `/admin/people`.
+  Anyone whose email is in `ADMIN_EMAILS` is always an admin; that's how the first admin gets in.
+- **Editors** can only edit the universities they've been given.
+- Changes go live straight away. Every change is listed at `/admin/history` with who made it, and
+  the latest change to anything can be undone.
+- `content/universities.json` is a starter list. The seed adds any university that's missing and
+  never overwrites one that already exists, so admin edits are safe.
+
+Please enter course codes, units and cut-offs from official departmental handbooks. Wrong numbers
+mislead students choosing a school.
 
 ## Scripts
 

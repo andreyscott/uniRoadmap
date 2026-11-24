@@ -14,5 +14,7 @@ export default defineConfig({
   test: {
     include: ["tests/**/*.test.ts"],
     environment: "node",
+    // Database tests share one database; run files one at a time when they're enabled.
+    fileParallelism: !process.env.TEST_DATABASE_URL,
   },
 });

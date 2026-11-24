@@ -14,7 +14,8 @@ import { usePathname } from "next/navigation";
 import { CheckIcon } from "lucide-react";
 import { NODE_TYPE_LABELS, type LineColor } from "@/lib/content/constants";
 import { ancestorsOf, buildGraph, routeEdges } from "@/lib/content/roadmap-graph";
-import type { Roadmap, RoadmapNode } from "@/lib/content/schemas";
+import { SEMESTER_LABELS } from "@/lib/content/constants";
+import type { ViewerNode, ViewerRoadmap } from "./types";
 import { STATUS_LABELS, summariseProgress, type ProgressMap, type ProgressStatus } from "@/lib/progress/status";
 import { cn } from "@/lib/utils";
 import { NodeDetails } from "./node-details";
@@ -22,12 +23,12 @@ import { NodeStop, STOP_SIZE } from "./node-stop";
 import { ProgressSummary } from "./progress-summary";
 import { RoadmapLegend } from "./roadmap-legend";
 import { TopicStatusControl } from "./topic-status-control";
-import { useRoadmapProgress } from "./use-roadmap-progress";
+import { useRoadmapProgress, type ProgressSource } from "./use-roadmap-progress";
 
 interface RoadmapViewerProps {
-  /** Course or skill id; progress is stored against the roadmap's nodes. */
-  roadmapId: string;
-  roadmap: Roadmap;
+  /** Where progress is stored: a course or skill roadmap, or a university's curriculum. */
+  progressSource: ProgressSource;
+  roadmap: ViewerRoadmap;
   color: LineColor;
   /** Name of the last station, e.g. "Graduation". */
   terminus: string;
@@ -86,7 +87,7 @@ interface Arc {
  * topic opens its details (a sticky side panel on desktop, a bottom sheet on phones) and
  * lights up its route: what it builds on and what comes next.
  */
-export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapViewerProps) {
+export function RoadmapViewer({ progressSource, roadmap, color, terminus }: RoadmapViewerProps) {
   const graph = useMemo(() => buildGraph(roadmap), [roadmap]);
   const isDesktop = useSyncExternalStore(
     subscribeDesktop,
@@ -108,7 +109,7 @@ export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapVi
   const panelHeadingId = useId();
   const sheetHeadingId = useId();
 
-  const { phase, progress, saved, setStatus, setSaved, saveError } = useRoadmapProgress(roadmapId);
+  const { phase, progress, saved, setStatus, setSaved, saveError } = useRoadmapProgress(progressSource);
   const pathname = usePathname();
   const loginHref = (hash?: string) => `/login?next=${encodeURIComponent(pathname + (hash ? `#${hash}` : ""))}`;
   const showStatus = phase === "ready";
@@ -196,13 +197,13 @@ export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapVi
     if (id) buttonRefs.current.get(id)?.focus({ preventScroll: true });
   };
 
-  const stageTitle = (node: RoadmapNode) =>
+  const stageTitle = (node: ViewerNode) =>
     graph.stages.find((s) => s.stage.stage === node.stage)?.stage.title ?? "";
 
   const selectFromDetails = (id: string) => select(id, { scroll: true });
-  const parentOf = (node: RoadmapNode) => (node.parent ? (graph.byId.get(node.parent) ?? null) : null);
-  const nextOf = (node: RoadmapNode) => graph.children.get(node.id) ?? [];
-  const statusControl = (node: RoadmapNode) => (
+  const parentOf = (node: ViewerNode) => (node.parent ? (graph.byId.get(node.parent) ?? null) : null);
+  const nextOf = (node: ViewerNode) => graph.children.get(node.id) ?? [];
+  const statusControl = (node: ViewerNode) => (
     <TopicStatusControl
       phase={phase}
       status={progress[node.id] ?? null}
@@ -223,7 +224,7 @@ export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapVi
           summary={summary}
           loginHref={loginHref()}
           saved={saved}
-          onSavedChange={(value) => void setSaved(value)}
+          onSavedChange={progressSource.kind === "roadmap" ? (value) => void setSaved(value) : undefined}
           saveError={saveError?.source === "saved" ? saveError.message : null}
         />
         <RoadmapLegend />
@@ -272,26 +273,33 @@ export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapVi
                 </div>
                 <p className="mt-1 max-w-prose text-sm text-muted-foreground">{stage.summary}</p>
 
-                <ol className="mt-4 -ml-14 space-y-2">
-                  {nodes.map((node) => (
-                    <TopicRow
-                      key={node.id}
-                      node={node}
-                      selected={node.id === selected?.id}
-                      relation={relations.get(node.id)}
-                      status={showStatus ? (progress[node.id] ?? null) : null}
-                      stopRef={(el) => {
-                        if (el) stopRefs.current.set(node.id, el);
-                        else stopRefs.current.delete(node.id);
-                      }}
-                      buttonRef={(el) => {
-                        if (el) buttonRefs.current.set(node.id, el);
-                        else buttonRefs.current.delete(node.id);
-                      }}
-                      onToggle={() => (node.id === selected?.id ? close() : select(node.id))}
-                    />
-                  ))}
-                </ol>
+                {semesterGroups(nodes).map((group) => (
+                  <div key={group.key}>
+                    {group.label && (
+                      <p className="mt-5 text-sm font-medium text-muted-foreground">{group.label}</p>
+                    )}
+                    <ol className={cn("-ml-14 space-y-2", group.label ? "mt-2" : "mt-4")}>
+                      {group.nodes.map((node) => (
+                        <TopicRow
+                          key={node.id}
+                          node={node}
+                          selected={node.id === selected?.id}
+                          relation={relations.get(node.id)}
+                          status={showStatus ? (progress[node.id] ?? null) : null}
+                          stopRef={(el) => {
+                            if (el) stopRefs.current.set(node.id, el);
+                            else stopRefs.current.delete(node.id);
+                          }}
+                          buttonRef={(el) => {
+                            if (el) buttonRefs.current.set(node.id, el);
+                            else buttonRefs.current.delete(node.id);
+                          }}
+                          onToggle={() => (node.id === selected?.id ? close() : select(node.id))}
+                        />
+                      ))}
+                    </ol>
+                  </div>
+                ))}
               </li>
             ))}
             <li className="relative pl-14">
@@ -379,7 +387,7 @@ export function RoadmapViewer({ roadmapId, roadmap, color, terminus }: RoadmapVi
 }
 
 interface TopicRowProps {
-  node: RoadmapNode;
+  node: ViewerNode;
   selected: boolean;
   relation: "before" | "after" | undefined;
   status: ProgressStatus | null;
@@ -439,10 +447,15 @@ function TopicRow({ node, selected, relation, status, stopRef, buttonRef, onTogg
       >
         <span className="min-w-0 flex-1">
           <span className={cn("block leading-snug font-medium", status === "skipped" && "text-muted-foreground")}>
+            {node.code && <span className="mr-1.5 text-muted-foreground tabular-nums">{node.code}</span>}
             {node.title}
           </span>
-          {branch ? (
-            <span className="block text-xs text-muted-foreground">{NODE_TYPE_LABELS[node.type]}</span>
+          {branch || node.creditUnits != null ? (
+            <span className="block text-xs text-muted-foreground">
+              {[branch && NODE_TYPE_LABELS[node.type], node.creditUnits != null && `${node.creditUnits} ${node.creditUnits === 1 ? "unit" : "units"}`]
+                .filter(Boolean)
+                .join(", ")}
+            </span>
           ) : (
             <span className="sr-only">, core topic</span>
           )}
@@ -478,7 +491,7 @@ function StatusBadge({ status }: { status: ProgressStatus }) {
   );
 }
 
-function StageCount({ nodes, progress }: { nodes: RoadmapNode[]; progress: ProgressMap }) {
+function StageCount({ nodes, progress }: { nodes: ViewerNode[]; progress: ProgressMap }) {
   const { done, counted } = summariseProgress(
     nodes.map((n) => n.id),
     progress,
@@ -488,4 +501,20 @@ function StageCount({ nodes, progress }: { nodes: RoadmapNode[]; progress: Progr
       {done} of {counted} done
     </p>
   );
+}
+
+/**
+ * Splits a stage's nodes into semesters for university curricula ("First semester (18 units)").
+ * General roadmaps have no semesters, so they come back as one unlabelled group.
+ */
+function semesterGroups(nodes: ViewerNode[]): { key: string; label: string | null; nodes: ViewerNode[] }[] {
+  if (!nodes.some((n) => n.semester !== undefined)) return [{ key: "all", label: null, nodes }];
+  const order = ["first", "second", null] as const;
+  return order.flatMap((semester) => {
+    const inGroup = nodes.filter((n) => (n.semester ?? null) === semester);
+    if (inGroup.length === 0) return [];
+    const units = inGroup.reduce((sum, n) => sum + (n.creditUnits ?? 0), 0);
+    const name = semester ? SEMESTER_LABELS[semester] : "All year";
+    return [{ key: semester ?? "all-year", label: units ? `${name} (${units} units)` : name, nodes: inGroup }];
+  });
 }
